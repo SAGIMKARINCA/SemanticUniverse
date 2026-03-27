@@ -1,0 +1,22 @@
+name: Foundation Validation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  foundation-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify foundation files
+        shell: bash
+        run: |
+          test -f README.md
+          test -f docs/FOUNDATION_MAP.md
+          test -f docs/INITIAL_ROADMAP.md
+          test -f docs/LIVE_PLATFORM_ROADMAP.md
+          test -f docs/INFRASTRUCTURE_STACK.md
