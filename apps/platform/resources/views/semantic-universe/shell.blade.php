@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-xl-5">
+                        <div class="col-12 col-xl-4">
                             <div class="su-topbar-right">
                                 <div class="su-search">{{ $isGodMode ? 'Global arama' : 'Bos shell gorunumu' }}</div>
                                 <div class="su-topbar-actions" aria-label="GodMode ust islemleri">
@@ -347,10 +347,10 @@
             <footer class="su-bottom">
                 <div class="container-fluid px-0">
                     <div class="row g-3 align-items-center">
-                        <div class="col-12 col-xl-5">
+                        <div class="col-12 col-xl-4">
                             <div class="su-bottom-left">Stratejik Bilgiler, Roller, Degiskenler Menusu</div>
                         </div>
-                        <div class="col-12 col-xl-5">
+                        <div class="col-12 col-xl-4">
                             <div class="su-bottom-dock">
                                 <span class="su-dock-item">Home</span>
                                 <span class="su-dock-item">Universe</span>
@@ -625,6 +625,7 @@
                     if (preset === 'desktop') {
                         settings = {
                             theme: settings.theme,
+                            topMenu: settings.topMenu || 'system',
                             frames: {
                                 topbar: 'fixed',
                                 ribbon: 'fixed',
@@ -639,6 +640,7 @@
                     if (preset === 'focus') {
                         settings = {
                             theme: settings.theme,
+                            topMenu: settings.topMenu || 'system',
                             frames: {
                                 topbar: 'fixed',
                                 ribbon: 'fixed',
@@ -653,6 +655,7 @@
                     if (preset === 'review') {
                         settings = {
                             theme: settings.theme,
+                            topMenu: settings.topMenu || 'system',
                             frames: {
                                 topbar: 'fixed',
                                 ribbon: 'scroll',
@@ -671,7 +674,6 @@
     </script>
 </body>
 </html>
-
 
 
 

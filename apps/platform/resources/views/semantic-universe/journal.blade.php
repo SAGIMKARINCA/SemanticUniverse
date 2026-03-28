@@ -3,16 +3,33 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SemanticUniverse Journal</title>
+    <title>SemanticUniverse History</title>
     <link rel="stylesheet" href="{{ asset('semantic-universe.css') }}">
 </head>
 <body>
-    <div class="su-journal-shell">
-        <header class="su-journal-header">
-            <div>
-                <span class="su-kicker">SemanticUniverse Journal</span>
-                <h1>History ve Timeline Atolyesi</h1>
-                <p>Ortak hafiza katmani, karar izi ve deney gunlugu burada korunur.</p>
+    <div class="su-journal-shell su-journal-documentary">
+        <header class="su-journal-header su-journal-hero">
+            <div class="su-journal-hero-copy">
+                <span class="su-kicker">SemanticUniverse History</span>
+                <h1>Evrenin Dogus Belgeseli</h1>
+                <p>
+                    Bu alan sadece kayit tutmaz. Burada SemanticUniverse atolyemizin tarihini, karar izlerini,
+                    tanimlarini ve deneylerini zaman boyunca izleriz.
+                </p>
+                <div class="su-journal-hero-stats">
+                    <div class="su-journal-stat">
+                        <span class="su-journal-stat-value">{{ count($timelineEntries) }}</span>
+                        <span class="su-journal-stat-label">Timeline kaydi</span>
+                    </div>
+                    <div class="su-journal-stat">
+                        <span class="su-journal-stat-value">4</span>
+                        <span class="su-journal-stat-label">Ortak hafiza dosyasi</span>
+                    </div>
+                    <div class="su-journal-stat">
+                        <span class="su-journal-stat-value">Canli</span>
+                        <span class="su-journal-stat-label">Atolye durumu</span>
+                    </div>
+                </div>
             </div>
             <div class="su-journal-header-actions">
                 <a class="su-chip su-chip-link" href="{{ route('semantic-universe.home') }}">Atolyeye Don</a>
@@ -29,8 +46,8 @@
             <main class="su-journal-lock">
                 <section class="su-journal-lock-card">
                     <span class="su-kicker">Korumali Alan</span>
-                    <h2>SemanticUniverse Journal Kilitli</h2>
-                    <p>Bu alan history, timeline, decisions, definitions ve experiments kayitlarini gosterir.</p>
+                    <h2>History Atolyesi Kilitli</h2>
+                    <p>Bu katman timeline, decisions, definitions ve experiments kayitlarini korur.</p>
                     <p class="su-journal-hint">{{ $journalPasswordHint }}</p>
 
                     @if ($passwordError)
@@ -43,27 +60,53 @@
                             <span>Journal Sifresi</span>
                             <input type="password" name="password" autocomplete="current-password" required>
                         </label>
-                        <button type="submit" class="su-btn su-btn-primary">Journali Ac</button>
+                        <button type="submit" class="su-btn su-btn-primary">History Katmanini Ac</button>
                     </form>
                 </section>
             </main>
         @else
             <main class="su-journal-main">
-                <section class="su-journal-rule">
+                <section class="su-journal-rule su-journal-rule-banner">
                     <span class="su-kicker">Calisma Kurali</span>
                     <p>{{ $ruleText }}</p>
                 </section>
 
-                <section class="su-journal-grid">
+                <section class="su-journal-storyboard">
+                    <article class="su-journal-story-card">
+                        <span class="su-kicker">Act I</span>
+                        <h3>Toprak ve Atolye</h3>
+                        <p>
+                            Yerel prototiplerden canli staging ortamina gecis, SemanticUniverse icin ilk gercek
+                            yaratici atolye zeminini kurdu.
+                        </p>
+                    </article>
+                    <article class="su-journal-story-card">
+                        <span class="su-kicker">Act II</span>
+                        <h3>Kavram ve Cekirdek</h3>
+                        <p>
+                            Kaynak, nesne, olay, proses ve semantik ayrimlar ortak hafiza katmanina aktarildi.
+                        </p>
+                    </article>
+                    <article class="su-journal-story-card">
+                        <span class="su-kicker">Act III</span>
+                        <h3>Canli Belgesel</h3>
+                        <p>
+                            Timeline ve karar izi, history hostu uzerinden bagimsiz bir anlatim katmanina donusuyor.
+                        </p>
+                    </article>
+                </section>
+
+                <section class="su-journal-grid su-journal-grid-documentary">
                     <section class="su-journal-panel su-journal-timeline">
                         <div class="su-form-block-head">
                             <h3>Timeline</h3>
-                            <p>Yapilan ana aktivitelerin tarih sirali akisi.</p>
+                            <p>Evrenin olusum adimlari tarih sirasiyla burada akar.</p>
                         </div>
 
-                        <div class="su-timeline-list">
+                        <div class="su-timeline-list su-timeline-list-documentary">
                             @foreach ($timelineEntries as $entry)
-                                <article class="su-timeline-entry">
+                                <article class="su-timeline-entry su-timeline-entry-documentary">
+                                    <div class="su-timeline-marker"></div>
                                     <div class="su-timeline-date">{{ $entry['date'] }}</div>
                                     <h4>{{ $entry['title'] }}</h4>
 
@@ -104,28 +147,30 @@
                         </div>
                     </section>
 
-                    <section class="su-journal-panel">
-                        <div class="su-form-block-head">
-                            <h3>Decisions</h3>
-                            <p>Resmi kararlar ve stratejik sabitler.</p>
-                        </div>
-                        <div class="su-markdown-content">{!! $decisionsHtml !!}</div>
-                    </section>
+                    <section class="su-journal-side-stack">
+                        <section class="su-journal-panel">
+                            <div class="su-form-block-head">
+                                <h3>Decisions</h3>
+                                <p>Resmi kararlar ve stratejik sabitler.</p>
+                            </div>
+                            <div class="su-markdown-content">{!! $decisionsHtml !!}</div>
+                        </section>
 
-                    <section class="su-journal-panel">
-                        <div class="su-form-block-head">
-                            <h3>Definitions</h3>
-                            <p>Semantik cekirdegin bugune kadar alinmis tanimlari.</p>
-                        </div>
-                        <div class="su-markdown-content">{!! $definitionsHtml !!}</div>
-                    </section>
+                        <section class="su-journal-panel">
+                            <div class="su-form-block-head">
+                                <h3>Definitions</h3>
+                                <p>Semantik cekirdegin bugune kadar alinmis tanimlari.</p>
+                            </div>
+                            <div class="su-markdown-content">{!! $definitionsHtml !!}</div>
+                        </section>
 
-                    <section class="su-journal-panel">
-                        <div class="su-form-block-head">
-                            <h3>Experiments</h3>
-                            <p>Denenen yollar, takilan yerler ve ogrenmeler.</p>
-                        </div>
-                        <div class="su-markdown-content">{!! $experimentsHtml !!}</div>
+                        <section class="su-journal-panel">
+                            <div class="su-form-block-head">
+                                <h3>Experiments</h3>
+                                <p>Denenen yollar, takilan yerler ve ogrenmeler.</p>
+                            </div>
+                            <div class="su-markdown-content">{!! $experimentsHtml !!}</div>
+                        </section>
                     </section>
                 </section>
             </main>
