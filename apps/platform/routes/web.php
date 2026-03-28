@@ -165,6 +165,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
                 if ($current) {
                     $current['category'] = $classifyTimelineCategory($current['title'], $current['actions'], $current['why'], $current['result']);
                     $current['anchor'] = 'timeline-' . count($entries);
+                    $current['year'] = preg_match('/^\d{4}/', $current['date'], $matches) ? $matches[0] : 'Bilinmiyor';
                     $entries[] = $current;
                 }
 
@@ -213,6 +214,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         if ($current) {
             $current['category'] = $classifyTimelineCategory($current['title'], $current['actions'], $current['why'], $current['result']);
             $current['anchor'] = 'timeline-' . count($entries);
+            $current['year'] = preg_match('/^\d{4}/', $current['date'], $matches) ? $matches[0] : 'Bilinmiyor';
             $entries[] = $current;
         }
 
@@ -242,6 +244,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         'history' => 'History',
     ];
     $timelineCounts = ['all' => count($timelineEntries)];
+    $timelineYears = [];
 
     foreach ($timelineCategories as $key => $label) {
         if ($key === 'all') {
@@ -250,6 +253,12 @@ Route::get('/semantic-universe/journal', function (Request $request) {
 
         $timelineCounts[$key] = count(array_filter($timelineEntries, fn (array $entry) => $entry['category'] === $key));
     }
+
+    foreach ($timelineEntries as $entry) {
+        $timelineYears[$entry['year']] = $entry['year'];
+    }
+
+    krsort($timelineYears);
 
     $featuredEntries = array_slice(array_reverse($timelineEntries), 0, 3);
 
@@ -260,6 +269,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         'timelineEntries' => $timelineEntries,
         'timelineCategories' => $timelineCategories,
         'timelineCounts' => $timelineCounts,
+        'timelineYears' => $timelineYears,
         'featuredEntries' => $featuredEntries,
         'decisionsHtml' => $markdownToHtml($rawDecisions),
         'definitionsHtml' => $markdownToHtml($rawDefinitions),

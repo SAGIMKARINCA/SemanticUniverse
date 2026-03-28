@@ -6,7 +6,7 @@
     <title>SemanticUniverse History</title>
     <link rel="stylesheet" href="{{ asset('semantic-universe.css') }}">
 </head>
-<body>
+<body class="su-page-journal">
     <div class="su-journal-shell su-journal-documentary">
         <header class="su-journal-header su-journal-hero">
             <div class="su-journal-hero-copy">
@@ -116,9 +116,30 @@
                         </div>
                     </div>
 
+                    <div class="su-journal-toolbar">
+                        <label class="su-journal-toolbar-field">
+                            <span>Arama</span>
+                            <input type="search" class="su-journal-search-input" placeholder="Kayitlarda ara..." data-search>
+                        </label>
+
+                        <label class="su-journal-toolbar-field">
+                            <span>Yil</span>
+                            <select class="su-journal-year-select" data-year>
+                                <option value="all">Tum yillar</option>
+                                @foreach ($timelineYears as $year)
+                                    <option value="{{ $year }}">{{ $year }}</option>
+                                @endforeach
+                            </select>
+                        </label>
+
+                        <button type="button" class="su-journal-mode-toggle" data-presentation-toggle>
+                            Sunum Modu
+                        </button>
+                    </div>
+
                     <div class="su-journal-featured-strip">
                         @foreach ($featuredEntries as $entry)
-                            <a class="su-journal-featured-card" href="#{{ $entry['anchor'] }}">
+                            <a class="su-journal-featured-card" href="#{{ $entry['anchor'] }}" data-category="{{ $entry['category'] }}" data-year="{{ $entry['year'] }}">
                                 <span class="su-kicker">{{ $timelineCategories[$entry['category']] ?? 'Akis' }}</span>
                                 <strong>{{ $entry['title'] }}</strong>
                                 <small>{{ $entry['date'] }}</small>
@@ -140,6 +161,8 @@
                                     id="{{ $entry['anchor'] }}"
                                     class="su-timeline-entry su-timeline-entry-documentary"
                                     data-category="{{ $entry['category'] }}"
+                                    data-year="{{ $entry['year'] }}"
+                                    data-search="{{ mb_strtolower($entry['title'] . ' ' . implode(' ', $entry['actions']) . ' ' . implode(' ', $entry['why']) . ' ' . implode(' ', $entry['result'])) }}"
                                 >
                                     <div class="su-timeline-marker"></div>
                                     <div class="su-timeline-date">{{ $entry['date'] }}</div>
@@ -218,22 +241,62 @@
     @if ($isUnlocked)
         <script>
             (() => {
+                const shell = document.querySelector('.su-journal-shell');
                 const filterButtons = document.querySelectorAll('.su-journal-filter-pill');
                 const entries = document.querySelectorAll('.su-timeline-entry-documentary');
+                const featuredCards = document.querySelectorAll('.su-journal-featured-card');
+                const searchInput = document.querySelector('[data-search]');
+                const yearSelect = document.querySelector('[data-year]');
+                const presentationToggle = document.querySelector('[data-presentation-toggle]');
+
+                let activeCategory = 'all';
+                let activeYear = 'all';
+                let searchTerm = '';
+
+                const applyFilters = () => {
+                    entries.forEach((entry) => {
+                        const categoryMatch = activeCategory === 'all' || entry.dataset.category === activeCategory;
+                        const yearMatch = activeYear === 'all' || entry.dataset.year === activeYear;
+                        const textMatch = searchTerm === '' || (entry.dataset.search || '').includes(searchTerm);
+                        entry.style.display = categoryMatch && yearMatch && textMatch ? '' : 'none';
+                    });
+
+                    featuredCards.forEach((card) => {
+                        const categoryMatch = activeCategory === 'all' || card.dataset.category === activeCategory;
+                        const yearMatch = activeYear === 'all' || card.dataset.year === activeYear;
+                        card.style.display = categoryMatch && yearMatch ? '' : 'none';
+                    });
+                };
 
                 filterButtons.forEach((button) => {
                     button.addEventListener('click', () => {
-                        const target = button.dataset.filter;
-
+                        activeCategory = button.dataset.filter;
                         filterButtons.forEach((pill) => pill.classList.remove('is-active'));
                         button.classList.add('is-active');
-
-                        entries.forEach((entry) => {
-                            const visible = target === 'all' || entry.dataset.category === target;
-                            entry.style.display = visible ? '' : 'none';
-                        });
+                        applyFilters();
                     });
                 });
+
+                if (searchInput) {
+                    searchInput.addEventListener('input', () => {
+                        searchTerm = searchInput.value.trim().toLocaleLowerCase('tr');
+                        applyFilters();
+                    });
+                }
+
+                if (yearSelect) {
+                    yearSelect.addEventListener('change', () => {
+                        activeYear = yearSelect.value;
+                        applyFilters();
+                    });
+                }
+
+                if (presentationToggle) {
+                    presentationToggle.addEventListener('click', () => {
+                        shell.classList.toggle('su-journal-presentation');
+                        presentationToggle.classList.toggle('is-active');
+                    });
+                }
             })();
         </script>
     @endif

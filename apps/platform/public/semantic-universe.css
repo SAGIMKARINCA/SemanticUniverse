@@ -1378,3 +1378,110 @@ html, body {
         grid-template-columns: 1fr;
     }
 }
+
+/* Journal Page Overflow and Filters */
+html:has(body.su-page-journal),
+body.su-page-journal {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.su-page-journal .su-journal-shell {
+    min-height: 100vh;
+}
+
+.su-journal-hero {
+    align-items: start;
+}
+
+.su-journal-hero-copy {
+    max-width: 960px;
+}
+
+.su-journal-toolbar {
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) 180px auto;
+    gap: 14px;
+    margin-top: 18px;
+    align-items: end;
+}
+
+.su-journal-toolbar-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.su-journal-toolbar-field span {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #547080;
+}
+
+.su-journal-search-input,
+.su-journal-year-select {
+    width: 100%;
+    min-height: 48px;
+    border-radius: 16px;
+    border: 1px solid rgba(8,57,77,0.12);
+    background: rgba(255,255,255,0.96);
+    padding: 12px 14px;
+    font: inherit;
+    color: #143246;
+    box-shadow: 0 10px 20px rgba(8,57,77,0.06);
+}
+
+.su-journal-mode-toggle {
+    min-height: 48px;
+    border: 0;
+    border-radius: 16px;
+    padding: 0 18px;
+    font: inherit;
+    font-weight: 700;
+    color: #eff9ff;
+    background: linear-gradient(135deg, #11344a, #0b617d);
+    box-shadow: 0 12px 22px rgba(8,57,77,0.14);
+    cursor: pointer;
+}
+
+.su-journal-mode-toggle.is-active {
+    background: linear-gradient(135deg, #0b617d, #1698c9);
+}
+
+.su-timeline-entry-documentary {
+    scroll-margin-top: 30px;
+}
+
+.su-journal-presentation .su-journal-side-stack,
+.su-journal-presentation .su-journal-storyboard,
+.su-journal-presentation .su-journal-rule-banner {
+    display: none;
+}
+
+.su-journal-presentation .su-journal-grid-documentary {
+    grid-template-columns: 1fr;
+}
+
+.su-journal-presentation .su-journal-nav-band {
+    background: linear-gradient(135deg, rgba(17,52,74,0.96), rgba(20,91,118,0.9));
+}
+
+.su-journal-presentation .su-journal-nav-head h3,
+.su-journal-presentation .su-journal-nav-band .su-kicker {
+    color: #eff9ff;
+}
+
+.su-journal-presentation .su-journal-featured-card {
+    min-height: 180px;
+}
+
+@media (max-width: 1100px) {
+    .su-journal-toolbar {
+        grid-template-columns: 1fr;
+    }
+}
