@@ -73,7 +73,7 @@ html, body {
 .su-shell { display: flex; height: 100vh; overflow: hidden; }
 .su-app-rail {
     width: 68px; background: linear-gradient(180deg, #18344d 0%, #102434 100%); color: var(--white); display: flex;
-    flex-direction: column; justify-content: space-between; align-items: center; padding: 20px 0;
+    flex-direction: column; justify-content: flex-start; align-items: center; gap: 24px; padding: 20px 0 32px;
     box-shadow: inset -1px 0 0 rgba(255,255,255,0.08);
     flex: 0 0 68px;
 }
@@ -84,19 +84,32 @@ html, body {
     background: linear-gradient(135deg, rgba(82,192,215,0.88), rgba(255,255,255,0.18));
     box-shadow: 0 12px 24px rgba(0,0,0,0.18);
 }
-.su-rail-stack { display: flex; flex-direction: column; gap: 14px; }
+.su-rail-stack {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+}
 .su-rail-item { border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.08); font-size: 12px; }
 .su-rail-item-active { background: var(--white); color: var(--rail); }
-.su-rail-label { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 13px; letter-spacing: 0.14em; }
+.su-rail-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    margin-top: auto;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    opacity: 0.92;
+}
 .su-main { flex: 1; display: flex; flex-direction: column; min-width: 0; height: 100vh; overflow: hidden; }
 .su-workspace-shell {
     min-height: 0;
     overflow: hidden;
 }
 .su-topbar {
-    min-height: 72px; background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(239,247,252,0.94)); border-bottom: 2px solid var(--line);
+    min-height: 96px; background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(239,247,252,0.94)); border-bottom: 2px solid var(--line);
     display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 24px;
-    flex: 0 0 72px;
+    flex: 0 0 auto;
 }
 .su-topbar-merged {
     display: flex;
@@ -112,7 +125,13 @@ html, body {
 }
 .su-kicker { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.24em; color: #0a7d88; }
 .su-title { margin: 4px 0 0; font-size: 24px; line-height: 1.1; }
-.su-topbar-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.su-topbar-right {
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) auto;
+    align-items: start;
+    gap: 12px;
+    width: 100%;
+}
 .su-mobile-toggle {
     background: linear-gradient(135deg, #0b617d, #11455d);
     color: var(--white);
@@ -126,7 +145,14 @@ html, body {
     border-radius: 14px;
 }
 .su-search, .su-chip { border: 1px solid #c7d5df; background: rgba(255,255,255,0.88); padding: 12px 16px; font-size: 14px; box-shadow: 0 6px 16px rgba(15,60,81,0.06); }
-.su-search { min-width: 220px; min-height: 48px; color: #64748b; display: flex; align-items: center; }
+.su-search {
+    min-width: 0;
+    width: 100%;
+    min-height: 48px;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+}
 .su-menubar-group {
     display: flex;
     flex-wrap: wrap;
@@ -134,7 +160,7 @@ html, body {
     gap: 6px;
 }
 .su-menubar-brand {
-    min-width: 250px;
+    min-width: 270px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -721,8 +747,8 @@ html, body {
 
 .su-topbar-right {
     display: grid;
-    grid-template-columns: minmax(260px, 1fr) auto;
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
     gap: 12px;
     width: 100%;
 }
@@ -732,7 +758,7 @@ html, body {
     align-items: center;
     justify-content: flex-end;
     gap: 10px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .su-search {
@@ -741,7 +767,7 @@ html, body {
 }
 
 .su-chip-profile {
-    max-width: 260px;
+    max-width: 220px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -757,10 +783,33 @@ html, body {
 
     .su-topbar-actions {
         justify-content: flex-start;
-        flex-wrap: wrap;
     }
 
     .su-chip-profile {
         max-width: none;
     }
+}
+
+@media (max-width: 1650px) {
+    .su-menubar-brand {
+        min-width: 230px;
+    }
+
+    .su-topbar-actions {
+        justify-content: flex-start;
+    }
+
+    .su-chip-profile {
+        max-width: 180px;
+    }
+}
+
+.su-menu-item:focus,
+.su-menu-item:focus-visible,
+.su-ribbon-button:focus,
+.su-ribbon-button:focus-visible,
+.su-nav-subitem-link:focus,
+.su-nav-subitem-link:focus-visible {
+    outline: none;
+    box-shadow: none;
 }

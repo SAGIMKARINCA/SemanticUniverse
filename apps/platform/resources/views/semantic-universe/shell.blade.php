@@ -25,7 +25,7 @@
             <header class="su-topbar">
                 <div class="container-fluid px-0">
                     <div class="row g-3 align-items-center">
-                        <div class="col-12 col-xl-8">
+                        <div class="col-12 col-xl-7">
                             <div class="su-topbar-merged">
                                 <button class="btn su-mobile-toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#suSystemMenu" aria-controls="suSystemMenu">
                                     Menu
@@ -49,10 +49,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-xl-4">
+                        <div class="col-12 col-xl-5">
                             <div class="su-topbar-right">
                                 <div class="su-search">{{ $isGodMode ? 'Global arama' : 'Bos shell gorunumu' }}</div>
-                                <div class="su-topbar-actions">
+                                <div class="su-topbar-actions" aria-label="GodMode ust islemleri">
                                     @if ($isGodMode)
                                         <a class="su-chip su-chip-link" href="{{ route('semantic-universe.logout') }}">Cikis</a>
                                     @else
@@ -346,7 +346,7 @@
             <footer class="su-bottom">
                 <div class="container-fluid px-0">
                     <div class="row g-3 align-items-center">
-                        <div class="col-12 col-xl-4">
+                        <div class="col-12 col-xl-5">
                             <div class="su-bottom-left">Stratejik Bilgiler, Roller, Degiskenler Menusu</div>
                         </div>
                         <div class="col-12 col-xl-5">
