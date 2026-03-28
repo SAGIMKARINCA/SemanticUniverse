@@ -1,6 +1,7 @@
-﻿<?php
+<?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect('/semantic-universe'));
@@ -31,3 +32,187 @@ Route::get('/semantic-universe/logout', function (Request $request) {
 
     return redirect()->route('semantic-universe.home');
 })->name('semantic-universe.logout');
+
+Route::get('/semantic-universe/journal', function (Request $request) {
+    $isUnlocked = $request->session()->get('semantic_universe_journal_unlocked', false);
+    $passwordError = $request->session()->pull('semantic_universe_journal_error');
+    $journalPath = resource_path('semantic-universe-journal');
+
+    $markdownToHtml = function (string $markdown): string {
+        $lines = preg_split("/\r\n|\n|\r/", $markdown);
+        $html = '';
+        $inList = false;
+
+        foreach ($lines as $line) {
+            $trimmed = trim($line);
+
+            if ($trimmed === '') {
+                if ($inList) {
+                    $html .= '</ul>';
+                    $inList = false;
+                }
+                continue;
+            }
+
+            $escaped = e($trimmed);
+
+            if (str_starts_with($trimmed, '### ')) {
+                if ($inList) {
+                    $html .= '</ul>';
+                    $inList = false;
+                }
+                $html .= '<h4>' . e(substr($trimmed, 4)) . '</h4>';
+                continue;
+            }
+
+            if (str_starts_with($trimmed, '## ')) {
+                if ($inList) {
+                    $html .= '</ul>';
+                    $inList = false;
+                }
+                $html .= '<h3>' . e(substr($trimmed, 3)) . '</h3>';
+                continue;
+            }
+
+            if (str_starts_with($trimmed, '# ')) {
+                if ($inList) {
+                    $html .= '</ul>';
+                    $inList = false;
+                }
+                $html .= '<h2>' . e(substr($trimmed, 2)) . '</h2>';
+                continue;
+            }
+
+            if (str_starts_with($trimmed, '- ')) {
+                if (! $inList) {
+                    $html .= '<ul>';
+                    $inList = true;
+                }
+                $html .= '<li>' . e(substr($trimmed, 2)) . '</li>';
+                continue;
+            }
+
+            if ($inList) {
+                $html .= '</ul>';
+                $inList = false;
+            }
+
+            $html .= '<p>' . $escaped . '</p>';
+        }
+
+        if ($inList) {
+            $html .= '</ul>';
+        }
+
+        return $html;
+    };
+
+    $parseTimelineEntries = function (string $markdown): array {
+        $lines = preg_split("/\r\n|\n|\r/", $markdown);
+        $entries = [];
+        $current = null;
+        $currentListLabel = null;
+
+        foreach ($lines as $line) {
+            $trimmed = trim($line);
+
+            if (str_starts_with($trimmed, '## ')) {
+                if ($current) {
+                    $entries[] = $current;
+                }
+
+                $title = substr($trimmed, 3);
+                $parts = array_map('trim', explode('|', $title, 2));
+                $current = [
+                    'title' => $parts[1] ?? $parts[0],
+                    'date' => $parts[0] ?? '',
+                    'why' => [],
+                    'actions' => [],
+                    'result' => [],
+                ];
+                $currentListLabel = null;
+                continue;
+            }
+
+            if (! $current || $trimmed === '') {
+                continue;
+            }
+
+            if ($trimmed === 'Ne yaptik:') {
+                $currentListLabel = 'actions';
+                continue;
+            }
+
+            if ($trimmed === 'Neden yaptik:') {
+                $currentListLabel = 'why';
+                continue;
+            }
+
+            if ($trimmed === 'Sonuc:') {
+                $currentListLabel = 'result';
+                continue;
+            }
+
+            if (str_starts_with($trimmed, '- ') && $currentListLabel) {
+                $current[$currentListLabel][] = substr($trimmed, 2);
+                continue;
+            }
+
+            if (! $currentListLabel) {
+                $current['actions'][] = $trimmed;
+            }
+        }
+
+        if ($current) {
+            $entries[] = $current;
+        }
+
+        return $entries;
+    };
+
+    $rawTimeline = File::exists($journalPath . DIRECTORY_SEPARATOR . 'timeline.md')
+        ? File::get($journalPath . DIRECTORY_SEPARATOR . 'timeline.md')
+        : '';
+    $rawDecisions = File::exists($journalPath . DIRECTORY_SEPARATOR . 'decisions.md')
+        ? File::get($journalPath . DIRECTORY_SEPARATOR . 'decisions.md')
+        : '';
+    $rawDefinitions = File::exists($journalPath . DIRECTORY_SEPARATOR . 'definitions.md')
+        ? File::get($journalPath . DIRECTORY_SEPARATOR . 'definitions.md')
+        : '';
+    $rawExperiments = File::exists($journalPath . DIRECTORY_SEPARATOR . 'experiments.md')
+        ? File::get($journalPath . DIRECTORY_SEPARATOR . 'experiments.md')
+        : '';
+
+    return view('semantic-universe.journal', [
+        'isUnlocked' => $isUnlocked,
+        'passwordError' => $passwordError,
+        'journalPasswordHint' => env('SEMANTIC_UNIVERSE_JOURNAL_HINT', 'Kurucu sifre gerektirir'),
+        'timelineEntries' => $parseTimelineEntries($rawTimeline),
+        'decisionsHtml' => $markdownToHtml($rawDecisions),
+        'definitionsHtml' => $markdownToHtml($rawDefinitions),
+        'experimentsHtml' => $markdownToHtml($rawExperiments),
+        'ruleText' => 'Her yaptigin isi timeline.md, decisions.md, definitions.md ve experiments.md dosyalarina yaz.',
+    ]);
+})->name('semantic-universe.journal');
+
+Route::post('/semantic-universe/journal/unlock', function (Request $request) {
+    $input = (string) $request->input('password', '');
+    $expected = (string) env('SEMANTIC_UNIVERSE_JOURNAL_PASSWORD', 'semanticuniverse-journal-2026');
+
+    if (hash_equals($expected, $input)) {
+        $request->session()->put('semantic_universe_journal_unlocked', true);
+
+        return redirect()->route('semantic-universe.journal');
+    }
+
+    $request->session()->forget('semantic_universe_journal_unlocked');
+    $request->session()->put('semantic_universe_journal_error', 'Gecersiz sifre.');
+
+    return redirect()->route('semantic-universe.journal');
+})->name('semantic-universe.journal.unlock');
+
+Route::post('/semantic-universe/journal/lock', function (Request $request) {
+    $request->session()->forget('semantic_universe_journal_unlocked');
+
+    return redirect()->route('semantic-universe.journal');
+})->name('semantic-universe.journal.lock');

@@ -53,6 +53,7 @@
                             <div class="su-topbar-right">
                                 <div class="su-search">{{ $isGodMode ? 'Global arama' : 'Bos shell gorunumu' }}</div>
                                 <div class="su-topbar-actions" aria-label="GodMode ust islemleri">
+                                    <a class="su-chip su-chip-link" href="{{ route('semantic-universe.journal') }}">Journal</a>
                                     @if ($isGodMode)
                                         <a class="su-chip su-chip-link" href="{{ route('semantic-universe.logout') }}">Cikis</a>
                                     @else
