@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -107,7 +107,52 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         return $html;
     };
 
-    $parseTimelineEntries = function (string $markdown): array {
+    $classifyTimelineCategory = function (string $title, array $actions, array $why, array $result): string {
+        $haystack = mb_strtolower(trim($title . ' ' . implode(' ', $actions) . ' ' . implode(' ', $why) . ' ' . implode(' ', $result)));
+
+        if (str_contains($haystack, 'history') || str_contains($haystack, 'journal') || str_contains($haystack, 'belgesel')) {
+            return 'history';
+        }
+
+        if (
+            str_contains($haystack, 'ubuntu') ||
+            str_contains($haystack, 'nginx') ||
+            str_contains($haystack, 'postgresql') ||
+            str_contains($haystack, 'redis') ||
+            str_contains($haystack, 'dns') ||
+            str_contains($haystack, 'staging') ||
+            str_contains($haystack, 'github') ||
+            str_contains($haystack, 'sunucu') ||
+            str_contains($haystack, 'host')
+        ) {
+            return 'infrastructure';
+        }
+
+        if (
+            str_contains($haystack, 'shell') ||
+            str_contains($haystack, 'layout') ||
+            str_contains($haystack, 'menu') ||
+            str_contains($haystack, 'gorunum') ||
+            str_contains($haystack, 'journal web') ||
+            str_contains($haystack, 'timeline katmani')
+        ) {
+            return 'interface';
+        }
+
+        if (
+            str_contains($haystack, 'kaynak') ||
+            str_contains($haystack, 'semantik') ||
+            str_contains($haystack, 'tanim') ||
+            str_contains($haystack, 'cekirdek') ||
+            str_contains($haystack, 'determinant')
+        ) {
+            return 'semantic';
+        }
+
+        return 'foundation';
+    };
+
+    $parseTimelineEntries = function (string $markdown) use ($classifyTimelineCategory): array {
         $lines = preg_split("/\r\n|\n|\r/", $markdown);
         $entries = [];
         $current = null;
@@ -118,6 +163,8 @@ Route::get('/semantic-universe/journal', function (Request $request) {
 
             if (str_starts_with($trimmed, '## ')) {
                 if ($current) {
+                    $current['category'] = $classifyTimelineCategory($current['title'], $current['actions'], $current['why'], $current['result']);
+                    $current['anchor'] = 'timeline-' . count($entries);
                     $entries[] = $current;
                 }
 
@@ -164,6 +211,8 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         }
 
         if ($current) {
+            $current['category'] = $classifyTimelineCategory($current['title'], $current['actions'], $current['why'], $current['result']);
+            $current['anchor'] = 'timeline-' . count($entries);
             $entries[] = $current;
         }
 
@@ -183,11 +232,35 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         ? File::get($journalPath . DIRECTORY_SEPARATOR . 'experiments.md')
         : '';
 
+    $timelineEntries = $parseTimelineEntries($rawTimeline);
+    $timelineCategories = [
+        'all' => 'Tum Akis',
+        'foundation' => 'Kurulus',
+        'semantic' => 'Semantik',
+        'interface' => 'Arayuz',
+        'infrastructure' => 'Altyapi',
+        'history' => 'History',
+    ];
+    $timelineCounts = ['all' => count($timelineEntries)];
+
+    foreach ($timelineCategories as $key => $label) {
+        if ($key === 'all') {
+            continue;
+        }
+
+        $timelineCounts[$key] = count(array_filter($timelineEntries, fn (array $entry) => $entry['category'] === $key));
+    }
+
+    $featuredEntries = array_slice(array_reverse($timelineEntries), 0, 3);
+
     return view('semantic-universe.journal', [
         'isUnlocked' => $isUnlocked,
         'passwordError' => $passwordError,
         'journalPasswordHint' => env('SEMANTIC_UNIVERSE_JOURNAL_HINT', 'Kurucu sifre gerektirir'),
-        'timelineEntries' => $parseTimelineEntries($rawTimeline),
+        'timelineEntries' => $timelineEntries,
+        'timelineCategories' => $timelineCategories,
+        'timelineCounts' => $timelineCounts,
+        'featuredEntries' => $featuredEntries,
         'decisionsHtml' => $markdownToHtml($rawDecisions),
         'definitionsHtml' => $markdownToHtml($rawDefinitions),
         'experimentsHtml' => $markdownToHtml($rawExperiments),

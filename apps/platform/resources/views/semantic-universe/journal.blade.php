@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="utf-8">
@@ -96,6 +96,37 @@
                     </article>
                 </section>
 
+                <section class="su-journal-nav-band">
+                    <div class="su-journal-nav-head">
+                        <div>
+                            <span class="su-kicker">Timeline Navigasyonu</span>
+                            <h3>Akisi kategoriye gore gez</h3>
+                        </div>
+                        <div class="su-journal-filter-pills">
+                            @foreach ($timelineCategories as $key => $label)
+                                <button
+                                    type="button"
+                                    class="su-journal-filter-pill{{ $key === 'all' ? ' is-active' : '' }}"
+                                    data-filter="{{ $key }}"
+                                >
+                                    {{ $label }}
+                                    <span>{{ $timelineCounts[$key] ?? 0 }}</span>
+                                </button>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="su-journal-featured-strip">
+                        @foreach ($featuredEntries as $entry)
+                            <a class="su-journal-featured-card" href="#{{ $entry['anchor'] }}">
+                                <span class="su-kicker">{{ $timelineCategories[$entry['category']] ?? 'Akis' }}</span>
+                                <strong>{{ $entry['title'] }}</strong>
+                                <small>{{ $entry['date'] }}</small>
+                            </a>
+                        @endforeach
+                    </div>
+                </section>
+
                 <section class="su-journal-grid su-journal-grid-documentary">
                     <section class="su-journal-panel su-journal-timeline">
                         <div class="su-form-block-head">
@@ -105,9 +136,16 @@
 
                         <div class="su-timeline-list su-timeline-list-documentary">
                             @foreach ($timelineEntries as $entry)
-                                <article class="su-timeline-entry su-timeline-entry-documentary">
+                                <article
+                                    id="{{ $entry['anchor'] }}"
+                                    class="su-timeline-entry su-timeline-entry-documentary"
+                                    data-category="{{ $entry['category'] }}"
+                                >
                                     <div class="su-timeline-marker"></div>
                                     <div class="su-timeline-date">{{ $entry['date'] }}</div>
+                                    <div class="su-timeline-meta">
+                                        <span class="su-timeline-category">{{ $timelineCategories[$entry['category']] ?? 'Akis' }}</span>
+                                    </div>
                                     <h4>{{ $entry['title'] }}</h4>
 
                                     @if (! empty($entry['actions']))
@@ -176,5 +214,28 @@
             </main>
         @endif
     </div>
+
+    @if ($isUnlocked)
+        <script>
+            (() => {
+                const filterButtons = document.querySelectorAll('.su-journal-filter-pill');
+                const entries = document.querySelectorAll('.su-timeline-entry-documentary');
+
+                filterButtons.forEach((button) => {
+                    button.addEventListener('click', () => {
+                        const target = button.dataset.filter;
+
+                        filterButtons.forEach((pill) => pill.classList.remove('is-active'));
+                        button.classList.add('is-active');
+
+                        entries.forEach((entry) => {
+                            const visible = target === 'all' || entry.dataset.category === target;
+                            entry.style.display = visible ? '' : 'none';
+                        });
+                    });
+                });
+            })();
+        </script>
+    @endif
 </body>
 </html>
