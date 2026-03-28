@@ -22,8 +22,8 @@
                         <span class="su-journal-stat-label">Timeline kaydi</span>
                     </div>
                     <div class="su-journal-stat">
-                        <span class="su-journal-stat-value">4</span>
-                        <span class="su-journal-stat-label">Ortak hafiza dosyasi</span>
+                        <span class="su-journal-stat-value">{{ count($timelineEntries) }}</span>
+                        <span class="su-journal-stat-label">Kayit kimligi</span>
                     </div>
                     <div class="su-journal-stat">
                         <span class="su-journal-stat-value">Canli</span>
@@ -140,7 +140,10 @@
                     <div class="su-journal-featured-strip">
                         @foreach ($featuredEntries as $entry)
                             <a class="su-journal-featured-card" href="#{{ $entry['anchor'] }}" data-category="{{ $entry['category'] }}" data-year="{{ $entry['year'] }}">
-                                <span class="su-kicker">{{ $timelineCategories[$entry['category']] ?? 'Akis' }}</span>
+                                <div class="su-featured-card-top">
+                                    <span class="su-kicker">{{ $timelineCategories[$entry['category']] ?? 'Akis' }}</span>
+                                    <span class="su-record-badge">{{ $entry['record_id'] }}</span>
+                                </div>
                                 <strong>{{ $entry['title'] }}</strong>
                                 <small>{{ $entry['date'] }}</small>
                             </a>
@@ -162,12 +165,21 @@
                                     class="su-timeline-entry su-timeline-entry-documentary"
                                     data-category="{{ $entry['category'] }}"
                                     data-year="{{ $entry['year'] }}"
-                                    data-search="{{ mb_strtolower($entry['title'] . ' ' . implode(' ', $entry['actions']) . ' ' . implode(' ', $entry['why']) . ' ' . implode(' ', $entry['result'])) }}"
+                                    data-search="{{ mb_strtolower($entry['record_id'] . ' ' . $entry['title'] . ' ' . implode(' ', $entry['actions']) . ' ' . implode(' ', $entry['why']) . ' ' . implode(' ', $entry['result'])) }}"
                                 >
                                     <div class="su-timeline-marker"></div>
-                                    <div class="su-timeline-date">{{ $entry['date'] }}</div>
-                                    <div class="su-timeline-meta">
-                                        <span class="su-timeline-category">{{ $timelineCategories[$entry['category']] ?? 'Akis' }}</span>
+                                    <div class="su-timeline-entry-head">
+                                        <div>
+                                            <div class="su-timeline-date">{{ $entry['date'] }}</div>
+                                            <div class="su-timeline-meta">
+                                                <span class="su-timeline-category">{{ $timelineCategories[$entry['category']] ?? 'Akis' }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="su-timeline-entry-actions">
+                                            <span class="su-record-badge">{{ $entry['record_id'] }}</span>
+                                            <span class="su-sequence-badge">Gun ici {{ str_pad((string) $entry['sequence'], 2, '0', STR_PAD_LEFT) }}</span>
+                                            <button type="button" class="su-detail-trigger" data-detail-open="{{ $entry['record_id'] }}">Detaylar</button>
+                                        </div>
                                     </div>
                                     <h4>{{ $entry['title'] }}</h4>
 
@@ -235,6 +247,26 @@
                     </section>
                 </section>
             </main>
+
+            @foreach ($timelineEntries as $entry)
+                <div class="su-detail-modal" data-detail-panel="{{ $entry['record_id'] }}" hidden>
+                    <div class="su-detail-backdrop" data-detail-close></div>
+                    <div class="su-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="detail-title-{{ $entry['record_id'] }}">
+                        <div class="su-detail-header">
+                            <div>
+                                <span class="su-kicker">Kayit Detayi</span>
+                                <h3 id="detail-title-{{ $entry['record_id'] }}">{{ $entry['record_id'] }} | {{ $entry['title'] }}</h3>
+                                <p>{{ $entry['date'] }} Â· Gun ici {{ str_pad((string) $entry['sequence'], 2, '0', STR_PAD_LEFT) }} Â· {{ $timelineCategories[$entry['category']] ?? 'Akis' }}</p>
+                            </div>
+                            <button type="button" class="su-detail-close" data-detail-close>Kapat</button>
+                        </div>
+                        <div class="su-detail-body">
+                            <div class="su-detail-file">Dosya: {{ $entry['detail_file'] }}</div>
+                            <div class="su-markdown-content">{!! $entry['detail_html'] !!}</div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         @endif
     </div>
 
@@ -248,6 +280,9 @@
                 const searchInput = document.querySelector('[data-search]');
                 const yearSelect = document.querySelector('[data-year]');
                 const presentationToggle = document.querySelector('[data-presentation-toggle]');
+                const detailButtons = document.querySelectorAll('[data-detail-open]');
+                const detailPanels = document.querySelectorAll('[data-detail-panel]');
+                const detailClosers = document.querySelectorAll('[data-detail-close]');
 
                 let activeCategory = 'all';
                 let activeYear = 'all';
@@ -264,7 +299,15 @@
                     featuredCards.forEach((card) => {
                         const categoryMatch = activeCategory === 'all' || card.dataset.category === activeCategory;
                         const yearMatch = activeYear === 'all' || card.dataset.year === activeYear;
-                        card.style.display = categoryMatch && yearMatch ? '' : 'none';
+                        const textMatch = searchTerm === '' || ((card.textContent || '').toLocaleLowerCase('tr').includes(searchTerm));
+                        card.style.display = categoryMatch && yearMatch && textMatch ? '' : 'none';
+                    });
+                };
+
+                const closeDetailPanels = () => {
+                    document.body.classList.remove('su-modal-open');
+                    detailPanels.forEach((panel) => {
+                        panel.hidden = true;
                     });
                 };
 
@@ -297,6 +340,30 @@
                         presentationToggle.classList.toggle('is-active');
                     });
                 }
+
+                detailButtons.forEach((button) => {
+                    button.addEventListener('click', () => {
+                        const target = button.dataset.detailOpen;
+                        const panel = document.querySelector(`[data-detail-panel="${target}"]`);
+                        if (! panel) {
+                            return;
+                        }
+
+                        closeDetailPanels();
+                        document.body.classList.add('su-modal-open');
+                        panel.hidden = false;
+                    });
+                });
+
+                detailClosers.forEach((button) => {
+                    button.addEventListener('click', closeDetailPanels);
+                });
+
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape') {
+                        closeDetailPanels();
+                    }
+                });
             })();
         </script>
     @endif

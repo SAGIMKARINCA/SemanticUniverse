@@ -252,3 +252,98 @@ Neden yaptik:
 
 Sonuc:
 - staging ortami icin sifre korumali journal arayuzu hazirlandi
+
+## 2026-03-28 | history hostu staging sunucuda hazirlandi
+
+Ne yaptik:
+- `history.semanger.com` icin staging sunucuda ayri Nginx vhost tanimi olusturuldu
+- kok istekleri `semantic-universe/journal` alanina yonlendirecek host akisi kuruldu
+- staging sunucuda `git pull`, `composer install`, `optimize:clear` ve Nginx/PHP-FPM yenilemeleri yapildi
+
+Neden yaptik:
+- ortak hafizayi ana atolyeden ayri, belgesel/tarihce odakli bir host kimligiyle sunmak
+
+Sonuc:
+- sunucu tarafi hazirlandi; `history.semanger.com` DNS kaydi `89.252.182.73`e yonlendirildiginde sifreli journal alani dogrudan acilabilecek
+
+## 2026-03-29 | Staging shell yerlesim ve preset davranis hatalari duzeltildi
+
+Ne yaptik:
+- ust bar sag aksiyon alaninin tasma riskini azaltan grid duzeltmeleri yapildi
+- alt dock grid oranlari daha dengeli hale getirildi
+- app rail alt etiketi icin bosluk duzeltildi
+- preset secimlerinde aktif ust menu bilgisinin korunmasi saglandi
+
+Neden yaptik:
+- staging shell'de gorunen ilk yerlesim ve durum yonetimi hatalarini temizlemek
+
+Sonuc:
+- shell daha kararli bir yerlesime kavustu ve preset degisiminde aktif menu durumu korunur hale geldi
+
+## 2026-03-29 | History hostu DNS kaydi eklendi
+
+Ne yaptik:
+- `history.semanger.com` icin `A` kaydi DNS zonuna eklendi
+- kayit `89.252.182.73` staging sunucusuna yonlendirildi
+
+Neden yaptik:
+- ortak hafiza, history ve timeline katmanini ana staging atolyeden ayri bir host kimligiyle acmak
+
+Sonuc:
+- `history.semanger.com` artik DNS seviyesinde staging sunucusuna dusuyor
+- sonraki adim history hostunu tarayicidan dogrulamak ve gerekirse SSL'yi tamamlamak
+
+## 2026-03-29 | History journal belgesel timeline katmanina donusturuldu
+
+Ne yaptik:
+- journal ekraninin Blade yapisi history odakli belgesel akisa gore yeniden kuruldu
+- hero istatistikleri, storyboard kartlari ve documentary timeline kartlari eklendi
+- decisions, definitions ve experiments panelleri sag yigin halinde yeniden duzenlendi
+
+Neden yaptik:
+- ortak hafiza katmanini duz markdown panellerden daha anlatili ve sunumsal bir tarihce yuzeyine donusturmek
+
+Sonuc:
+- history platformu artik timeline, karar izi ve deneyleri daha guclu bir belgesel diliyle gosterecek seviyeye yaklasti
+
+## 2026-03-29 | History timeline navigasyonu ve kategori filtresi eklendi
+
+Ne yaptik:
+- timeline kayitlari icin kurulus, semantik, arayuz, altyapi ve history kategorileri tanimlandi
+- history sayfasina filtre pill'leri ve one cikan timeline kartlari eklendi
+- timeline kartlarina kategori etiketleri ve anchor navigasyonu kazandirildi
+
+Neden yaptik:
+- history katmanini sadece okunur bir markdown panelinden cikartip gezilebilir bir belgesel-timeline arayuzune donusturmek
+
+Sonuc:
+- kullanici artik timeline akisinda kategoriye gore odaklanabilecek ve one cikan kayitlardan dogrudan ilgili bolume atlayabilecek
+
+## 2026-03-29 | History sayfasinda overflow, arama, yil filtresi ve sunum modu eklendi
+
+Ne yaptik:
+- journal sayfasinda global overflow sorununu gideren ayri body sinifi tanimlandi
+- timeline icin arama kutusu ve yil secici eklendi
+- featured kartlar ve timeline kayitlari ortak filtre mantigina baglandi
+- tek tusla yan panelleri gizleyen bir sunum modu eklendi
+
+Neden yaptik:
+- history sayfasinda anchor ve scroll davranisini duzeltmek
+- timeline icinde daha rahat gezinme ve sunum yapabilme imkani kazandirmak
+
+Sonuc:
+- history katmani artik daha akici kayiyor, arama/yil filtresiyle gezilebiliyor ve sunum moduna alinabiliyor
+
+## 2026-03-29 | History kayitlarina ID hiyerarsisi ve detay dosyalari eklendi
+
+Ne yaptik:
+- Ayni gun icindeki history kayitlarina SUH-YYYYMMDD-XX biciminde kayit kimlikleri tanimlandi
+- Her kayit icin ayri details markdown dosyalari uretildi
+- History sayfasina kayit bazli Detaylar acilir penceresi eklendi
+
+Neden yaptik:
+- Ayni tarihteki birden fazla kaydi hiyerarsik ve okunur hale getirmek
+- Her kayda bagli konusma, yapilan is ve sonuc bilgisini ayri dosya katmaninda tutmak
+
+Sonuc:
+- History timeline artik hem kayit kimligi hem de dosya tabanli detay acilimi olan bir arastirma arayuzune donustu

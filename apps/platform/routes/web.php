@@ -37,6 +37,16 @@ Route::get('/semantic-universe/journal', function (Request $request) {
     $isUnlocked = $request->session()->get('semantic_universe_journal_unlocked', false);
     $passwordError = $request->session()->pull('semantic_universe_journal_error');
     $journalPath = resource_path('semantic-universe-journal');
+    $detailPath = $journalPath . DIRECTORY_SEPARATOR . 'details';
+
+    $timelineCategories = [
+        'all' => 'Tum Akis',
+        'foundation' => 'Kurulus',
+        'semantic' => 'Semantik',
+        'interface' => 'Arayuz',
+        'infrastructure' => 'Altyapi',
+        'history' => 'History',
+    ];
 
     $markdownToHtml = function (string $markdown): string {
         $lines = preg_split("/\r\n|\n|\r/", $markdown);
@@ -53,8 +63,6 @@ Route::get('/semantic-universe/journal', function (Request $request) {
                 }
                 continue;
             }
-
-            $escaped = e($trimmed);
 
             if (str_starts_with($trimmed, '### ')) {
                 if ($inList) {
@@ -97,7 +105,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
                 $inList = false;
             }
 
-            $html .= '<p>' . $escaped . '</p>';
+            $html .= '<p>' . e($trimmed) . '</p>';
         }
 
         if ($inList) {
@@ -164,8 +172,6 @@ Route::get('/semantic-universe/journal', function (Request $request) {
             if (str_starts_with($trimmed, '## ')) {
                 if ($current) {
                     $current['category'] = $classifyTimelineCategory($current['title'], $current['actions'], $current['why'], $current['result']);
-                    $current['anchor'] = 'timeline-' . count($entries);
-                    $current['year'] = preg_match('/^\d{4}/', $current['date'], $matches) ? $matches[0] : 'Bilinmiyor';
                     $entries[] = $current;
                 }
 
@@ -213,12 +219,52 @@ Route::get('/semantic-universe/journal', function (Request $request) {
 
         if ($current) {
             $current['category'] = $classifyTimelineCategory($current['title'], $current['actions'], $current['why'], $current['result']);
-            $current['anchor'] = 'timeline-' . count($entries);
-            $current['year'] = preg_match('/^\d{4}/', $current['date'], $matches) ? $matches[0] : 'Bilinmiyor';
             $entries[] = $current;
         }
 
         return $entries;
+    };
+
+    $buildGeneratedDetailMarkdown = function (array $entry, array $timelineCategories): string {
+        $lines = [
+            '# ' . $entry['record_id'] . ' | ' . $entry['title'],
+            '',
+            'Tarih: ' . $entry['date'],
+            'Gun ici sira: ' . $entry['sequence'],
+            'Kategori: ' . ($timelineCategories[$entry['category']] ?? 'Akis'),
+            '',
+            '## Neler konusuldu',
+        ];
+
+        $discussion = array_merge($entry['actions'], $entry['why']);
+        foreach ($discussion ?: ['Bu kayit icin ayri konusma notu henuz eklenmedi.'] as $item) {
+            $lines[] = '- ' . $item;
+        }
+
+        $lines[] = '';
+        $lines[] = '## Neler yapildi';
+        foreach ($entry['actions'] ?: ['Yapilan is adimlari daha sonra genisletilecek.'] as $item) {
+            $lines[] = '- ' . $item;
+        }
+
+        $lines[] = '';
+        $lines[] = '## Neden yapildi';
+        foreach ($entry['why'] ?: ['Gerekce notu daha sonra genisletilecek.'] as $item) {
+            $lines[] = '- ' . $item;
+        }
+
+        $lines[] = '';
+        $lines[] = '## Sonuc';
+        foreach ($entry['result'] ?: ['Sonuc notu daha sonra zenginlestirilecek.'] as $item) {
+            $lines[] = '- ' . $item;
+        }
+
+        $lines[] = '';
+        $lines[] = '## Arsiv notu';
+        $lines[] = '- Bu detay dosyasi history katmani icin otomatik olusturuldu.';
+        $lines[] = '- Sonraki turda bu kayda iliskili konusma parcaciklari ve karar baglantilari eklenebilir.';
+
+        return implode("\n", $lines);
     };
 
     $rawTimeline = File::exists($journalPath . DIRECTORY_SEPARATOR . 'timeline.md')
@@ -235,16 +281,33 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         : '';
 
     $timelineEntries = $parseTimelineEntries($rawTimeline);
-    $timelineCategories = [
-        'all' => 'Tum Akis',
-        'foundation' => 'Kurulus',
-        'semantic' => 'Semantik',
-        'interface' => 'Arayuz',
-        'infrastructure' => 'Altyapi',
-        'history' => 'History',
-    ];
     $timelineCounts = ['all' => count($timelineEntries)];
     $timelineYears = [];
+    $dailyCounters = [];
+
+    foreach ($timelineEntries as &$entry) {
+        $dateKey = preg_match('/^\d{4}-\d{2}-\d{2}$/', $entry['date']) ? $entry['date'] : '0000-00-00';
+        $dailyCounters[$dateKey] = ($dailyCounters[$dateKey] ?? 0) + 1;
+        $sequence = $dailyCounters[$dateKey];
+        $compactDate = str_replace('-', '', $dateKey);
+        $recordId = 'SUH-' . $compactDate . '-' . str_pad((string) $sequence, 2, '0', STR_PAD_LEFT);
+        $detailFileName = $recordId . '.md';
+        $detailFilePath = $detailPath . DIRECTORY_SEPARATOR . $detailFileName;
+
+        $entry['sequence'] = $sequence;
+        $entry['record_id'] = $recordId;
+        $entry['anchor'] = 'timeline-' . strtolower(str_replace([' ', '.'], '-', $recordId));
+        $entry['year'] = preg_match('/^\d{4}/', $entry['date'], $matches) ? $matches[0] : 'Bilinmiyor';
+        $entry['detail_file'] = $detailFileName;
+
+        $detailMarkdown = File::exists($detailFilePath)
+            ? File::get($detailFilePath)
+            : $buildGeneratedDetailMarkdown($entry, $timelineCategories);
+
+        $entry['detail_html'] = $markdownToHtml($detailMarkdown);
+        $timelineYears[$entry['year']] = $entry['year'];
+    }
+    unset($entry);
 
     foreach ($timelineCategories as $key => $label) {
         if ($key === 'all') {
@@ -252,10 +315,6 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         }
 
         $timelineCounts[$key] = count(array_filter($timelineEntries, fn (array $entry) => $entry['category'] === $key));
-    }
-
-    foreach ($timelineEntries as $entry) {
-        $timelineYears[$entry['year']] = $entry['year'];
     }
 
     krsort($timelineYears);

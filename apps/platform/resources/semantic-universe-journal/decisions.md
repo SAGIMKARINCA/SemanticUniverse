@@ -96,3 +96,14 @@ Karar:
 Neden:
 - ortak hafizayi hem korunur hem de gorunur yapmak
 - sonradan belgesel/timeline sunum katmanina zemin hazirlamak
+
+## D-012 | History ayri hosttan sunulacak
+
+Karar:
+- journal/history katmani `history.semanger.com` uzerinden ayri bir host olarak sunulacak
+
+Neden:
+- staging atolyeyi calisma alani olarak korurken tarihce ve belgesel katmanina ayri bir kimlik vermek
+
+Sonuc:
+- staging sunucuda history hostu icin ayri Nginx vhost'u hazirlandi; kalan is DNS A kaydinin `89.252.182.73`e yonlenmesi

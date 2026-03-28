@@ -132,3 +132,36 @@ Ne denendi:
 Sonuc:
 - local shell artik Laravel icinde calisacak hale getirildi
 - sonraki adim GitHub'a push ve staging'de `git pull`
+
+## E-010 | History hostu icin CWP + staging otomasyon deneyi
+
+Amac:
+- `history.semanger.com` hostunu journal/timeline katmanina yonlendirmek
+
+Ne denendi:
+- CWP kullanici panelinde HTTP oturumu acip DNS editor'e otomatik erisim denendi
+- staging sunucuda Posh-SSH ile Nginx vhost yazimi, symlink, reload ve host-header testleri yapildi
+- staging uygulamasi GitHub'dan cekilip journal route'lari ve izinler senkronize edildi
+
+Sonuc:
+- CWP DNS editor otomasyonu kararsiz davrandi ve kayit ekleme tam otomatik tamamlanamadi
+- buna karsilik staging sunucuda history hostu basariyla hazirlandi; host-header testinde `history.semanger.com/semantic-universe/journal` 200 donmeye basladi
+
+## E-011 | History DNS kaydinin manuel tamamlanmasi
+
+Amac:
+- `history.semanger.com` hostunu staging journal katmanina gercek DNS kaydiyla baglamak
+
+Ne denendi:
+- CWP DNS zone ekraninda `history.semanger.com` icin `A` kaydi manuel olarak eklendi
+- hedef IP olarak `89.252.182.73` kullanildi
+
+Sonuc:
+- otomasyonla takilan son adim manuel tamamlandi
+- artik dogrulama ve yayilim suresi kontrolu kaldi
+
+## History kayit kimligi deneyi
+
+- Timeline kayitlari icin gun ici sira temelli SUH-YYYYMMDD-XX kimlik semasi denendi
+- Her kimlik icin ayri markdown detay dosyasi uretilip popup katmanina baglandi
+- Bu yapi daha sonra konusma parcaciklari, karar baglari ve ekran notlariyla zenginlestirilebilir
