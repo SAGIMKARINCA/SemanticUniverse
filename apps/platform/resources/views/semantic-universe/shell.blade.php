@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="utf-8">
@@ -32,7 +32,7 @@
                                 </button>
                                 <div class="su-title-block d-xl-none">
                                     <span class="su-kicker">SemanticUniverse</span>
-                                    <h1 class="su-title">GodMode Local Platform</h1>
+                                    <h1 class="su-title">GodMode Staging Platform</h1>
                                 </div>
                                 <div class="su-menubar-group d-none d-xl-flex">
                                     <button type="button" class="su-menu-item su-menu-item-active" data-top-menu="system">System</button>
@@ -45,20 +45,22 @@
                                 </div>
                                 <div class="su-menubar-brand d-none d-xl-flex">
                                     <span class="su-kicker">SemanticUniverse</span>
-                                    <span class="su-menubar-title">GodMode Local Platform</span>
+                                    <span class="su-menubar-title">GodMode Staging Platform</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-xl-4">
                             <div class="su-topbar-right">
-                                <div class="su-search flex-grow-1">{{ $isGodMode ? 'Global arama' : 'Bos shell gorunumu' }}</div>
-                                @if ($isGodMode)
-                                    <a class="su-chip su-chip-link" href="{{ route('semantic-universe.logout') }}">Cikis</a>
-                                @else
-                                    <a class="su-chip su-chip-link" href="{{ route('semantic-universe.login') }}">God Mode Giris</a>
-                                @endif
-                                <div class="su-chip">Workspace</div>
-                                <div class="su-chip">{{ $isGodMode ? 'Profil: ' . $godModeProfile['name'] : 'Profil' }}</div>
+                                <div class="su-search">{{ $isGodMode ? 'Global arama' : 'Bos shell gorunumu' }}</div>
+                                <div class="su-topbar-actions">
+                                    @if ($isGodMode)
+                                        <a class="su-chip su-chip-link" href="{{ route('semantic-universe.logout') }}">Cikis</a>
+                                    @else
+                                        <a class="su-chip su-chip-link" href="{{ route('semantic-universe.login') }}">God Mode Giris</a>
+                                    @endif
+                                    <div class="su-chip">Workspace</div>
+                                    <div class="su-chip su-chip-profile">{{ $isGodMode ? 'Profil: ' . $godModeProfile['name'] : 'Profil' }}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -131,11 +133,12 @@
                     </aside>
 
                     <main class="su-center">
-                        <section class="su-center-card <?php echo $isGodMode ? '' : 'su-center-card-empty'; ?>">
+                        <section class="su-center-card {{ $isGodMode ? '' : 'su-center-card-empty' }}">
                             <div class="su-orbit su-orbit-a"></div>
                             <div class="su-orbit su-orbit-b"></div>
                             <div class="su-orbit su-orbit-c"></div>
                             @if ($isGodMode)
+                                <div class="su-context-block" data-workspace-context="system">
                                 <div class="su-workhead">
                                     <div>
                                         <span class="su-center-kicker">Evren Modulu</span>
@@ -667,4 +670,7 @@
     </script>
 </body>
 </html>
+
+
+
 
