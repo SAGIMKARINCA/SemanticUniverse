@@ -1,349 +1,349 @@
-# Semantic Universe Timeline
+# Semantic Universe Zaman Çizgisi
 
-Bu dosya, Semantic Universe yolculugunda bugune kadar yapilan ana isleri tarih sirasi ile toplar.
+Bu dosya, Semantic Universe yolculuğunda bugüne kadar yapılan ana işleri tarih sırası ile toplar.
 
-## 2026-03-26 | Ilk belge ve prototip incelemeleri
+## 2026-03-26 | İlk belge ve prototip incelemeleri
 
-Ne yaptik:
-- Hemorrhoid calismasi icin mevcut HTML/PHP/form altyapilari incelendi
-- form yapilari, hasta/protokol/takip akisi ve veri toplama mantigi uzerinde calisildi
+Ne yaptık:
+- Hemorrhoid çalışması için mevcut HTML/PHP/form altyapıları incelendi
+- form yapıları, hasta/protokol/takip akışı ve veri toplama mantığı üzerinde çalışıldı
 
-Neden yaptik:
-- ilk calisan alan olarak tibbi alan uzerinden bir uygulama ve veri akisi kurmak
-- daha buyuk semantik platform dusuncesine bir pilot domain hazirlamak
+Neden yaptık:
+- ilk çalışan alan olarak tıbbî alan üzerinden bir uygulama ve veri akışı kurmak
+- daha büyük semantik platform düşüncesine bir pilot domain hazırlamak
 
-Sonuc:
-- yerelde calisan hasta -> protokol -> klinik form -> takip mantigi kuruldu
+Sonuç:
+- yerelde çalışan hasta -> protokol -> klinik form -> takip mantığı kuruldu
 
 ## 2026-03-26 | Laravel platform zemini kuruldu
 
-Ne yaptik:
-- Laravel tabanli altyapi kuruldu
-- hasta, examination protocol, clinical form ve follow-up yapilari olusturuldu
-- auth, rol/yetki, temel CRUD ve dashboard katmanlari hazirlandi
+Ne yaptık:
+- Laravel tabanlı altyapı kuruldu
+- hasta, examination protocol, clinical form ve follow-up yapıları oluşturuldu
+- auth, rol/yetki, temel CRUD ve dashboard katmanları hazırlandı
 
-Neden yaptik:
-- daha guclu ve buyuyebilir bir platform zemini olusturmak
-- mevcut prototipten cikarak urunsel mimariye gecmek
+Neden yaptık:
+- daha güçlü ve büyüyebilir bir platform zemini oluşturmak
+- mevcut prototipten çıkarak ürünsel mimariye geçmek
 
-Sonuc:
-- calisan bir Laravel cekirdegi olustu
+Sonuç:
+- çalışan bir Laravel çekirdeği oluştu
 
-## 2026-03-26 | Semantic Universe ust yapisi tanimlanmaya baslandi
+## 2026-03-26 | Semantic Universe üst yapısı tanımlanmaya başlandı
 
-Ne yaptik:
-- Semantic Universe ana proje fikri, felsefi ust yapi ve bunun ilk belgeleri olusturuldu
-- mimari, roadmap, workflow ve backlog belgeleri acildi
+Ne yaptık:
+- Semantic Universe ana proje fikri, felsefî üst yapı ve bunun ilk belgeleri oluşturuldu
+- mimari, roadmap, workflow ve backlog belgeleri açıldı
 
-Neden yaptik:
-- Hemorrhoid gibi tekil uygulamalarin ustune oturacagi ana evreni tarif etmek
+Neden yaptık:
+- Hemorrhoid gibi tekil uygulamaların üstüne oturacağı ana evreni tarif etmek
 
-Sonuc:
-- Semantic Universe resmi bir program ve ust sistem olarak adlandirildi
+Sonuç:
+- Semantic Universe resmî bir program ve üst sistem olarak adlandırıldı
 
-## 2026-03-26 | Tarihce ve karar hafizasi kuruldu
+## 2026-03-26 | Tarihçe ve karar hafızası kuruldu
 
-Ne yaptik:
-- history, strategic execution log, decision register, foundation intake gibi belgeler acildi
-- documentary layer ve bilgi kabul katmani olusturuldu
+Ne yaptık:
+- history, strategic execution log, decision register, foundation intake gibi belgeler açıldı
+- documentary layer ve bilgi kabul katmanı oluşturuldu
 
-Neden yaptik:
-- yapilan islerin kaybolmamasi
-- ileride manifesto, timeline, documentary ve etkileÅŸimli tarihce katmani kurabilmek
+Neden yaptık:
+- yapılan işlerin kaybolmaması
+- ileride manifesto, timeline, documentary ve etkileşimli tarihçe katmanı kurabilmek
 
-Sonuc:
-- yazili hafiza ve karar izi olusmaya basladi
+Sonuç:
+- yazılı hafıza ve karar izi oluşmaya başladı
 
-## 2026-03-26 | Semantic Universe local shell kuruldu
+## 2026-03-26 | Semantic Universe yerel kabuğu kuruldu
 
-Ne yaptik:
-- Hemorrhoid alanindan ayri olarak `SemanticUniverse` local platformu acildi
-- `http://localhost/SemanticUniverse/` adresinde calisan ayri shell yapisi kuruldu
+Ne yaptık:
+- Hemorrhoid alanından ayrı olarak `SemanticUniverse` local platformu açıldı
+- `http://localhost/SemanticUniverse/` adresinde çalışan ayrı shell yapısı kuruldu
 
-Neden yaptik:
-- public uygulama ile super admin/god mode tabanli ana platformu ayirmak
-- semantik evrenin framework ve shell mantigini gorsel olarak gorebilmek
+Neden yaptık:
+- public uygulama ile süper admin/god mode tabanlı ana platformu ayırmak
+- semantik evrenin framework ve shell mantığını görsel olarak görebilmek
 
-Sonuc:
-- ayri local SemanticUniverse kabugu elde edildi
+Sonuç:
+- ayrı local SemanticUniverse kabuğu elde edildi
 
-## 2026-03-26 | Semantic Universe shell tasarimi gelistirildi
+## 2026-03-26 | Semantic Universe kabuk tasarımı geliştirildi
 
-Ne yaptik:
-- top bar, ribbon, left tree nav, center workspace, right context panel, bottom dock yapisi kuruldu
-- Outlook + Teams karisimi bir ana platform dili hedeflendi
-- responsive/Bootstrap tabanli bir shell uretilmeye calisildi
+Ne yaptık:
+- top bar, ribbon, left tree nav, center workspace, right context panel, bottom dock yapısı kuruldu
+- Outlook + Teams karışımı bir ana platform dili hedeflendi
+- responsive/Bootstrap tabanlı bir shell üretilmeye çalışıldı
 
-Neden yaptik:
-- kullanicinin semantik sistemi gorsel olarak yonlendirebilecegi bir framework ekrani olusturmak
+Neden yaptık:
+- kullanıcının semantik sistemi görsel olarak yönlendirebileceği bir framework ekranı oluşturmak
 
-Sonuc:
-- temel shell yapisi ortaya cikti
+Sonuç:
+- temel shell yapısı ortaya çıktı
 
-## 2026-03-26 | System > Kaynaklar > Kaynak Tanimla akisi baslatildi
+## 2026-03-26 | Sistem > Kaynaklar > Kaynak Tanımla akışı başlatıldı
 
-Ne yaptik:
-- ilk ana menu olarak `System`
-- onun altinda `Kaynaklar`
-- onun altinda `Kaynak Tanimla`
-yapisi kuruldu
+Ne yaptık:
+- ilk ana menü olarak `System`
+- onun altında `Kaynaklar`
+- onun altında `Kaynak Tanımla`
+yapısı kuruldu
 
-Neden yaptik:
-- kullaniciya gore evreni var etmenin ilk adimi kaynaklari var etmekti
+Neden yaptık:
+- kullanıcıya göre evreni var etmenin ilk adımı kaynakları var etmekti
 
-Sonuc:
-- ilk semantik veri giris ekraninin iskeleti kuruldu
+Sonuç:
+- ilk semantik veri giriş ekranının iskeleti kuruldu
 
-## 2026-03-26 | God Mode mantigi kuruldu
+## 2026-03-26 | Tanrı Modu mantığı kuruldu
 
-Ne yaptik:
-- God Mode giris/cikis mantigi eklendi
-- giris yapildiginda super admin icerigi goren, cikis yaptiginda bos shell gosteren yapi kuruldu
+Ne yaptık:
+- Tanrı Modu giriş/çıkış mantığı eklendi
+- giriş yapıldığında süper admin içeriği gören, çıkış yapıldığında boş shell gösteren yapı kuruldu
 - GodMode profil bilgisi shell'e eklendi
 
-Neden yaptik:
-- public gorunum ile yetkili super admin calisma alanini ayirmak
+Neden yaptık:
+- public görünüm ile yetkili süper admin çalışma alanını ayırmak
 
-Sonuc:
-- kontrol edilen shell modu olustu
+Sonuç:
+- kontrol edilen shell modu oluştu
 
-## 2026-03-26 | Kullanici semantik felsefeyi aktarmaya basladi
+## 2026-03-26 | Kullanıcı semantik felsefeyi aktarmaya başladı
 
-Ne yaptik:
-- kullanicinin tibbi, cerrahi, biliÅŸim, sistem muhendisligi ve yonetim bilimi arka plani kayda alindi
+Ne yaptık:
+- kullanıcının tıbbî, cerrahî, bilişim, sistem mühendisliği ve yönetim bilimi arka planı kayda alındı
 - `nesne / olay`
-- `nesneden kaynaga gecis`
-- `varlik + fonksiyon + aktivite + hedef`
-- `insan / tasinir / tasinmaz / zaman`
-- `temel / ture / turetilmis / fonksiyonel`
-ayrimlari kaydedildi
+- `nesneden kaynağa geçiş`
+- `varlık + fonksiyon + aktivite + hedef`
+- `insan / taşınır / taşınmaz / zaman`
+- `temel / türe / türetilmiş / fonksiyonel`
+ayrımları kaydedildi
 
-Neden yaptik:
-- Semantic Universe'un kurucu ontolojisini kaybetmeden yazili hafizaya gecirmek
+Neden yaptık:
+- Semantic Universe'un kurucu ontolojisini kaybetmeden yazılı hafızaya geçirmek
 
-Sonuc:
-- ilk semantik cekirdek yazili hale geldi
+Sonuç:
+- ilk semantik çekirdek yazılı hale geldi
 
-## 2026-03-26 | Proses felsefesi kayda alindi
+## 2026-03-26 | Proses felsefesi kayda alındı
 
-Ne yaptik:
-- olay evreninin proseslerle aciklanmasi
-- proseslerin 4 ana sinifa ayrilmasi
-- varlik ve yonetim
-- ana is
+Ne yaptık:
+- olay evreninin proseslerle açıklanması
+- proseslerin 4 ana sınıfa ayrılması
+- varlık ve yönetim
+- ana iş
 - destek hizmet
-- olcme degerleme ve gelisme
-siniflari yazildi
+- ölçme değerleme ve gelişme
+sınıfları yazıldı
 
-Neden yaptik:
-- olay/proses semantigini kaynak semantigi ile birlikte kurmak
+Neden yaptık:
+- olay/proses semantiğini kaynak semantiği ile birlikte kurmak
 
-Sonuc:
-- kaynak + proses tabanli ana kurgu ortaya cikti
+Sonuç:
+- kaynak + proses tabanlı ana kurgu ortaya çıktı
 
-## 2026-03-27 | SemanticUniverse resmi GitHub reposu acildi
+## 2026-03-27 | SemanticUniverse resmî GitHub reposu açıldı
 
-Ne yaptik:
-- `https://github.com/SAGIMKARINCA/SemanticUniverse` reposu acildi
-- `C:\Projects\semantic-universe` klasoru bu repoya baglandi
+Ne yaptık:
+- `https://github.com/SAGIMKARINCA/SemanticUniverse` reposu açıldı
+- `C:\Projects\semantic-universe` klasörü bu repoya bağlandı
 - ilk foundation commitleri ve CI iskeleti eklendi
 
-Neden yaptik:
-- local calismayi resmi surumlu merkez haline getirmek
+Neden yaptık:
+- local çalışmayı resmî sürümlü merkez haline getirmek
 
-Sonuc:
+Sonuç:
 - GitHub resmi kaynak oldu
 
-## 2026-03-27 | Canliya gecis ve PostgreSQL yonu netlesti
+## 2026-03-27 | Canlıya geçiş ve PostgreSQL yönü netleşti
 
-Ne yaptik:
-- canliya gecis stratejisi cikartildi
+Ne yaptık:
+- canlıya geçiş stratejisi çıkartıldı
 - staging -> production modeli kabul edildi
-- PostgreSQL ana veri tabani yonu olarak onerildi
-- live platform migration planlari olusturuldu
+- PostgreSQL ana veri tabanı yönü olarak önerildi
+- live platform migration planları oluşturuldu
 
-Neden yaptik:
-- Semantic Universe'u SaaS ve POA buyumesine uygun hale getirmek
+Neden yaptık:
+- Semantic Universe'u SaaS ve POA büyümesine uygun hale getirmek
 
-Sonuc:
-- canli mimariye gecis icin plan ve kararlar olustu
+Sonuç:
+- canlı mimariye geçiş için plan ve kararlar oluştu
 
-## 2026-03-27 | ZEN / Xen Orchestra uzerinde yeni Ubuntu VM denemesi baslatildi
+## 2026-03-27 | ZEN / Xen Orchestra üzerinde yeni Ubuntu VM denemesi başlatıldı
 
-Ne yaptik:
-- ZEN panel erisimi dogrulandi
-- Xen Orchestra icinde yeni Ubuntu 24.04 VM acma denemeleri yapildi
-- network ve boot sorunlari goruldu
-- ISO import timeout problemi ile karsilasildi
+Ne yaptık:
+- ZEN panel erişimi doğrulandı
+- Xen Orchestra içinde yeni Ubuntu 24.04 VM açma denemeleri yapıldı
+- network ve boot sorunları görüldü
+- ISO import timeout problemi ile karşılaşıldı
 
-Neden yaptik:
-- staging icin yeni Ubuntu tabanli temiz bir ortam acmak
+Neden yaptık:
+- staging için yeni Ubuntu tabanlı temiz bir ortam açmak
 
-Sonuc:
-- hypervisor/ISO katmaninda zaman kaybi oldugu, once audit ve duzgun ISO stratejisi gerektigi anlasildi
+Sonuç:
+- hypervisor/ISO katmanında zaman kaybı olduğu, önce audit ve düzgün ISO stratejisi gerektiği anlaşıldı
 
-## 2026-03-28 | ZEN Server audit ve optimizasyon fazi baslatildi
+## 2026-03-28 | ZEN Server audit ve optimizasyon fazı baslatildi
 
-Ne yaptik:
-- ZEN Server icin audit checklist cikarildi
-- VM'ler icin ilk siniflandirma taslagi olusturuldu
+Ne yaptık:
+- ZEN Server için audit checklist çıkarıldı
+- VM'ler için ilk sınıflandırma taslağı oluşturuldu
 
-Neden yaptik:
-- storage/network/VM duzenini anlamadan agresif degisiklik yapmamak
+Neden yaptık:
+- storage/network/VM düzenini anlamadan agresif değişiklik yapmamak
 
-Sonuc:
-- guvenli optimizasyon cercevesi olustu
+Sonuç:
+- güvenli optimizasyon çerçevesi oluştu
 
-## 2026-03-28 | Ortak Hafiza Katmani istendi
+## 2026-03-28 | Ortak Hafıza Katmanı istendi
 
-Ne yaptik:
-- `semantic-universe-journal` klasoru olusturuldu
-- `timeline.md`, `decisions.md`, `definitions.md`, `experiments.md` dosyalari acildi
+Ne yaptık:
+- `semantic-universe-journal` klasörü oluşturuldu
+- `timeline.md`, `decisions.md`, `definitions.md`, `experiments.md` dosyaları açıldı
 
-Neden yaptik:
-- tum konusmalarin, kararlarin, tanimlarin ve denemelerin ortak hafizada tutulmasi
-- gelecekte bunu timeline / documentary / web katmanina donusturebilmek
+Neden yaptık:
+- tüm konuşmaların, kararların, tanımların ve denemelerin ortak hafızada tutulması
+- gelecekte bunu timeline / documentary / web katmanına dönüştürebilmek
 
-Sonuc:
-- resmi ortak hafiza katmaninin ilk cekirdegi acildi
+Sonuç:
+- resmî ortak hafıza katmanının ilk çekirdeği açıldı
 
-## 2026-03-28 | Calisan Ubuntu staging sunucusu kuruldu
+## 2026-03-28 | Çalışan Ubuntu staging sunucusu kuruldu
 
-Ne yaptik:
-- yeni Ubuntu sunucusu `89.252.182.73` adresinde ayaÄŸa kaldirildi
-- SSH/SFTP erisimi dogrulandi
+Ne yaptık:
+- yeni Ubuntu sunucusu `89.252.182.73` adresinde ayağa kaldırıldı
+- SSH/SFTP erişimi doğrulandı
 - `nginx`, `postgresql`, `redis-server`, `php 8.3`, `composer` kuruldu
-- `semanticuniverse_staging` PostgreSQL veritabani ve `semanticuser` kullanicisi olusturuldu
-- `SemanticUniverse` GitHub reposu `/var/www/semantic-universe` altina clone edildi
-- repo icinde `apps/platform` Laravel uygulamasi kuruldu
-- `.env` PostgreSQL'e baglandi ve migration'lar calistirildi
+- `semanticuniverse_staging` PostgreSQL veritabanı ve `semanticuser` kullanıcısı oluşturuldu
+- `SemanticUniverse` GitHub reposu `/var/www/semantic-universe` altına clone edildi
+- repo içinde `apps/platform` Laravel uygulaması kuruldu
+- `.env` PostgreSQL'e bağlandı ve migration'lar çalıştırıldı
 
-Neden yaptik:
-- local calismadan cikarak internetten erisilebilir resmi staging ortami kurmak
+Neden yaptık:
+- local çalışmadan çıkarak internetten erişilebilir resmî staging ortamı kurmak
 
-Sonuc:
-- `staging.semanger.com` uzerinde calisan bir Laravel staging ortami elde edildi
+Sonuç:
+- `staging.semanger.com` üzerinde çalışan bir Laravel staging ortamı elde edildi
 
-## 2026-03-28 | SemanticUniverse shell Laravel uygulamasina tasinmaya baslandi
+## 2026-03-28 | SemanticUniverse shell Laravel uygulamasına taşınmaya başlandı
 
-Ne yaptik:
-- `C:\Projects\semantic-universe\apps\platform` altinda Laravel app olusturuldu
-- `local-platform/index.php` mantigi Laravel route + Blade gorunume tasinacak sekilde port script'i yazildi
-- `routes/web.php` icine `semantic-universe`, `godmode-login`, `logout` route'lari eklendi
-- `resources/views/semantic-universe/shell.blade.php` ve `public/semantic-universe.css` uretilip Laravel app'e tasindi
-- route cache temizlenerek yeni route'lar dogrulandi
+Ne yaptık:
+- `C:\Projects\semantic-universe\apps\platform` altında Laravel app oluşturuldu
+- `local-platform/index.php` mantığı Laravel route + Blade görünüme taşınacak şekilde port script'i yazıldı
+- `routes/web.php` içine `semantic-universe`, `godmode-login`, `logout` route'ları eklendi
+- `resources/views/semantic-universe/shell.blade.php` ve `public/semantic-universe.css` üretilip Laravel app'e taşındı
+- route cache temizlenerek yeni route'lar doğrulandı
 
-Neden yaptik:
-- ayri bir lokal PHP shell yerine ayni SemanticUniverse reposu icinde resmi Laravel platform katmanina gecmek
+Neden yaptık:
+- ayrı bir lokal PHP shell yerine aynı SemanticUniverse reposu içinde resmî Laravel platform katmanına geçmek
 
-Sonuc:
-- local shell artik Laravel icinde yasayacak hale getirildi ve staging'e gonderilmeye hazirlandi
+Sonuç:
+- local shell artık Laravel içinde yaşayacak hale getirildi ve staging'e gönderilmeye hazırlandı
 
-## 2026-03-28 | Sifreli journal web katmani kuruldu
+## 2026-03-28 | Şifreli journal web katmanı kuruldu
 
-Ne yaptik:
-- semantic-universe-journal klasorundeki timeline, decisions, definitions ve experiments dosyalari resmi ortak hafiza katmani olarak teyit edildi
-- bu dosyalar Laravel staging uygulamasina kopyalandi
-- sifre ile acilan bir history/timeline journal sayfasi tasarlandi
+Ne yaptık:
+- semantic-universe-journal klasöründeki timeline, decisions, definitions ve experiments dosyaları resmi ortak hafıza katmani olarak teyit edildi
+- bu dosyalar Laravel staging uygulamasina kopyalandı
+- şifre ile açılan bir history/timeline journal sayfası tasarlandı
 
-Neden yaptik:
-- ortak hafizayi sadece dosya sistemi icinde degil, web tabanli korunur bir alanda da gorebilmek
-- ileride belgesel / timeline sunum katmanina gecis zemini olusturmak
+Neden yaptık:
+- ortak hafızayı sadece dosya sistemi içinde değil, web tabanlı korunur bir alanda da görebilmek
+- ileride belgesel / timeline sunum katmanına geçiş zemini oluşturmak
 
-Sonuc:
-- staging ortami icin sifre korumali journal arayuzu hazirlandi
+Sonuç:
+- staging ortamı için şifre korumalı journal arayüzü hazırlandı
 
-## 2026-03-28 | history hostu staging sunucuda hazirlandi
+## 2026-03-28 | Tarihçe hostu staging sunucuda hazırlandı
 
-Ne yaptik:
-- `history.semanger.com` icin staging sunucuda ayri Nginx vhost tanimi olusturuldu
-- kok istekleri `semantic-universe/journal` alanina yonlendirecek host akisi kuruldu
-- staging sunucuda `git pull`, `composer install`, `optimize:clear` ve Nginx/PHP-FPM yenilemeleri yapildi
+Ne yaptık:
+- `history.semanger.com` için staging sunucuda ayrı Nginx vhost tanımı oluşturuldu
+- kök istekleri `semantic-universe/journal` alanına yönlendirecek host akışı kuruldu
+- staging sunucuda `git pull`, `composer install`, `optimize:clear` ve Nginx/PHP-FPM yenilemeleri yapıldı
 
-Neden yaptik:
-- ortak hafizayi ana atolyeden ayri, belgesel/tarihce odakli bir host kimligiyle sunmak
+Neden yaptık:
+- ortak hafızayı ana atölyeden ayrı, belgesel/tarihçe odaklı bir host kimliğiyle sunmak
 
-Sonuc:
-- sunucu tarafi hazirlandi; `history.semanger.com` DNS kaydi `89.252.182.73`e yonlendirildiginde sifreli journal alani dogrudan acilabilecek
+Sonuç:
+- sunucu tarafı hazırlandı; `history.semanger.com` DNS kaydı `89.252.182.73`e yönlendirildiğinde şifreli journal alanı doğrudan açılabilecek
 
-## 2026-03-29 | Staging shell yerlesim ve preset davranis hatalari duzeltildi
+## 2026-03-29 | Staging shell yerleşim ve preset davranış hataları düzeltildi
 
-Ne yaptik:
-- ust bar sag aksiyon alaninin tasma riskini azaltan grid duzeltmeleri yapildi
-- alt dock grid oranlari daha dengeli hale getirildi
-- app rail alt etiketi icin bosluk duzeltildi
-- preset secimlerinde aktif ust menu bilgisinin korunmasi saglandi
+Ne yaptık:
+- üst bar sağ aksiyon alanının taşma riskini azaltan grid düzeltmeleri yapıldı
+- alt dock grid oranları daha dengeli hale getirildi
+- app rail alt etiketi için boşluk düzeltildi
+- preset seçimlerinde aktif üst menü bilgisinin korunması sağlandı
 
-Neden yaptik:
-- staging shell'de gorunen ilk yerlesim ve durum yonetimi hatalarini temizlemek
+Neden yaptık:
+- staging shell'de görünen ilk yerleşim ve durum yönetimi hatalarını temizlemek
 
-Sonuc:
-- shell daha kararli bir yerlesime kavustu ve preset degisiminde aktif menu durumu korunur hale geldi
+Sonuç:
+- shell daha kararlı bir yerleşime kavuştu ve preset değişiminde aktif menü durumu korunur hale geldi
 
-## 2026-03-29 | History hostu DNS kaydi eklendi
+## 2026-03-29 | Tarihçe hostu DNS kaydı eklendi
 
-Ne yaptik:
-- `history.semanger.com` icin `A` kaydi DNS zonuna eklendi
-- kayit `89.252.182.73` staging sunucusuna yonlendirildi
+Ne yaptık:
+- `history.semanger.com` için `A` kaydı DNS zonuna eklendi
+- kayıt `89.252.182.73` staging sunucusuna yönlendirildi
 
-Neden yaptik:
-- ortak hafiza, history ve timeline katmanini ana staging atolyeden ayri bir host kimligiyle acmak
+Neden yaptık:
+- ortak hafıza, history ve timeline katmanını ana staging atölyeden ayrı bir host kimliğiyle açmak
 
-Sonuc:
-- `history.semanger.com` artik DNS seviyesinde staging sunucusuna dusuyor
-- sonraki adim history hostunu tarayicidan dogrulamak ve gerekirse SSL'yi tamamlamak
+Sonuç:
+- `history.semanger.com` artık DNS seviyesinde staging sunucusuna düşüyor
+- sonraki adım history hostunu tarayıcıdan doğrulamak ve gerekirse SSL'yi tamamlamak
 
-## 2026-03-29 | History journal belgesel timeline katmanina donusturuldu
+## 2026-03-29 | History journal belgesel timeline katmanına dönüştürüldü
 
-Ne yaptik:
-- journal ekraninin Blade yapisi history odakli belgesel akisa gore yeniden kuruldu
-- hero istatistikleri, storyboard kartlari ve documentary timeline kartlari eklendi
-- decisions, definitions ve experiments panelleri sag yigin halinde yeniden duzenlendi
+Ne yaptık:
+- journal ekranının Blade yapısı history odaklı belgesel akışa göre yeniden kuruldu
+- hero istatistikleri, storyboard kartları ve documentary timeline kartları eklendi
+- decisions, definitions ve experiments panelleri sağ yığın halinde yeniden düzenlendi
 
-Neden yaptik:
-- ortak hafiza katmanini duz markdown panellerden daha anlatili ve sunumsal bir tarihce yuzeyine donusturmek
+Neden yaptık:
+- ortak hafıza katmanını düz markdown panellerden daha anlatılı ve sunumsal bir tarihçe yüzeyine dönüştürmek
 
-Sonuc:
-- history platformu artik timeline, karar izi ve deneyleri daha guclu bir belgesel diliyle gosterecek seviyeye yaklasti
+Sonuç:
+- history platformu artık timeline, karar izi ve deneyleri daha güçlü bir belgesel diliyle gösterecek seviyeye yaklaştı
 
 ## 2026-03-29 | History timeline navigasyonu ve kategori filtresi eklendi
 
-Ne yaptik:
-- timeline kayitlari icin kurulus, semantik, arayuz, altyapi ve history kategorileri tanimlandi
-- history sayfasina filtre pill'leri ve one cikan timeline kartlari eklendi
-- timeline kartlarina kategori etiketleri ve anchor navigasyonu kazandirildi
+Ne yaptık:
+- timeline kayıtları için kuruluş, semantik, arayüz, altyapı ve history kategorileri tanımlandı
+- history sayfasına filtre pill'leri ve öne çıkan timeline kartları eklendi
+- timeline kartlarına kategori etiketleri ve anchor navigasyonu kazandırıldı
 
-Neden yaptik:
-- history katmanini sadece okunur bir markdown panelinden cikartip gezilebilir bir belgesel-timeline arayuzune donusturmek
+Neden yaptık:
+- history katmanını sadece okunur bir markdown panelinden çıkartıp gezilebilir bir belgesel-timeline arayüzüne dönüştürmek
 
-Sonuc:
-- kullanici artik timeline akisinda kategoriye gore odaklanabilecek ve one cikan kayitlardan dogrudan ilgili bolume atlayabilecek
+Sonuç:
+- kullanıcı artık timeline akışında kategoriye göre odaklanabilecek ve öne çıkan kayıtlardan doğrudan ilgili bölüme atlayabilecek
 
-## 2026-03-29 | History sayfasinda overflow, arama, yil filtresi ve sunum modu eklendi
+## 2026-03-29 | History sayfasında overflow, arama, yıl filtresi ve sunum modu eklendi
 
-Ne yaptik:
-- journal sayfasinda global overflow sorununu gideren ayri body sinifi tanimlandi
-- timeline icin arama kutusu ve yil secici eklendi
-- featured kartlar ve timeline kayitlari ortak filtre mantigina baglandi
-- tek tusla yan panelleri gizleyen bir sunum modu eklendi
+Ne yaptık:
+- journal sayfasında global overflow sorununu gideren ayrı body sınıfı tanımlandı
+- timeline için arama kutusu ve yıl seçici eklendi
+- featüred kartlar ve timeline kayıtları ortak filtre mantığına bağlandı
+- tek tuşla yan panelleri gizleyen bir sunum modu eklendi
 
-Neden yaptik:
-- history sayfasinda anchor ve scroll davranisini duzeltmek
-- timeline icinde daha rahat gezinme ve sunum yapabilme imkani kazandirmak
+Neden yaptık:
+- history sayfasında anchor ve scroll davranışını düzeltmek
+- timeline içinde daha rahat gezinme ve sunum yapabilme imkanı kazandırmak
 
-Sonuc:
-- history katmani artik daha akici kayiyor, arama/yil filtresiyle gezilebiliyor ve sunum moduna alinabiliyor
+Sonuç:
+- history katmanı artık daha akıcı kayıyor, arama/yıl filtresiyle gezilebiliyor ve sunum moduna alınabiliyor
 
-## 2026-03-29 | History kayitlarina ID hiyerarsisi ve detay dosyalari eklendi
+## 2026-03-29 | History kayıtlarına ID hiyerarşisi ve detay dosyaları eklendi
 
-Ne yaptik:
-- Ayni gun icindeki history kayitlarina SUH-YYYYMMDD-XX biciminde kayit kimlikleri tanimlandi
-- Her kayit icin ayri details markdown dosyalari uretildi
-- History sayfasina kayit bazli Detaylar acilir penceresi eklendi
+Ne yaptık:
+- Aynı gün içindeki history kayıtlarına SUH-YYYYMMDD-XX biçiminde kayıt kimlikleri tanımlandı
+- Her kayıt için ayrı details markdown dosyaları üretildi
+- History sayfasına kayıt bazlı Detaylar açılır penceresi eklendi
 
-Neden yaptik:
-- Ayni tarihteki birden fazla kaydi hiyerarsik ve okunur hale getirmek
-- Her kayda bagli konusma, yapilan is ve sonuc bilgisini ayri dosya katmaninda tutmak
+Neden yaptık:
+- Aynı tarihteki birden fazla kaydı hiyerarşik ve okunur hale getirmek
+- Her kayda bağlı konuşma, yapılan iş ve sonuç bilgisini ayrı dosya katmanında tutmak
 
-Sonuc:
-- History timeline artik hem kayit kimligi hem de dosya tabanli detay acilimi olan bir arastirma arayuzune donustu
+Sonuç:
+- History timeline artık hem kayıt kimliği hem de dosya tabanlı detay açılımı olan bir araştırma arayüzüne dönüştü

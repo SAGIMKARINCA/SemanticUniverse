@@ -1,25 +1,25 @@
 # Semantic Universe Experiments
 
-Bu dosya, bugune kadar denenen, calisan veya takilan deneylerin kaydidir.
+Bu dosya, bugune kadar denenen, çalışan veya takilan deneylerin kaydıdir.
 
 ## E-001 | Hemorrhoid pilot domain deneyi
 
 Amac:
-- hasta / protokol / form / takip tabanli pilot domain uretmek
+- hasta / protokol / form / takip tabanlı pilot domain uretmek
 
 Ne denendi:
 - HTML form
 - PHP webapp
-- Laravel tabanli domain model
+- Laravel tabanlı domain model
 
-Sonuc:
-- pilot domain mantigi calistirildi
-- ama Semantic Universe'ten ayri bir uygulama olarak tutulmasi gerektigi netlesti
+Sonuç:
+- pilot domain mantığı calistirildi
+- ama Semantic Universe'ten ayrı bir uygulama olarak tutulmasi gerektigi netleşti
 
 ## E-002 | Semantic Universe local shell deneyi
 
 Amac:
-- semantik evrenin ana framework/shell yapisini gorsel olarak denemek
+- semantik evrenin ana framework/shell yapısıni görsel olarak denemek
 
 Ne denendi:
 - top bar
@@ -29,8 +29,8 @@ Ne denendi:
 - right context panel
 - bottom dock
 
-Sonuc:
-- calisan local shell kuruldu
+Sonuç:
+- çalışan local shell kuruldu
 
 ## E-003 | God Mode shell deneyi
 
@@ -38,29 +38,29 @@ Amac:
 - public shell ile super admin shell'i ayirmak
 
 Ne denendi:
-- session tabanli giris/cikis
-- bos shell ve dolu shell ayrimi
+- session tabanlı giriş/çıkış
+- boş shell ve dolu shell ayrımi
 
-Sonuc:
+Sonuç:
 - temel mantik calisti
 
-## E-004 | Tema ve frame davranisi paneli
+## E-004 | Tema ve frame davranışi paneli
 
 Amac:
-- her frame icin tema ve davranis tercihleri uretmek
+- her frame için tema ve davranış tercihleri uretmek
 
 Ne denendi:
 - tema secimi
-- frame davranisi
-- Ayarlar ribbon ve panel mantigi
+- frame davranışi
+- Ayarlar ribbon ve panel mantığı
 
-Sonuc:
-- ilk calisan ayarlar mantigi ortaya cikti
+Sonuç:
+- ilk çalışan ayarlar mantığı ortaya cikti
 
-## E-005 | GitHub merkezli SemanticUniverse repoya gecis
+## E-005 | GitHub merkezli SemanticUniverse repoya geçiş
 
 Amac:
-- local calismayi resmi Git tabanina almak
+- local çalışmayi resmi Git tabanina almak
 
 Ne denendi:
 - repo init
@@ -68,13 +68,13 @@ Ne denendi:
 - ilk foundation commitleri
 - basit CI workflow
 
-Sonuc:
+Sonuç:
 - resmi repo aktif hale geldi
 
-## E-006 | ZEN / Xen uzerinde Ubuntu staging VM denemesi
+## E-006 | ZEN / Xen üzerinde Ubuntu staging VM denemesi
 
 Amac:
-- staging icin temiz Ubuntu 24.04 VM acmak
+- staging için temiz Ubuntu 24.04 VM acmak
 
 Ne denendi:
 - yeni VM olusturma
@@ -83,29 +83,29 @@ Ne denendi:
 
 Sorunlar:
 - bootable device yok
-- ISO repository icinde Ubuntu ISO yok
+- ISO repository içinde Ubuntu ISO yok
 - XO import timeout hatasi
 - storage / yer sorunu ihtimali
 
-Sonuc:
+Sonuç:
 - hypervisor katmaninda ek audit ve duzgun ISO stratejisi gerektigi anlasildi
 
-## E-007 | ZEN Server audit fazi
+## E-007 | ZEN Server audit fazı
 
 Amac:
 - mevcut sanal ortamda neyin kritik, neyin test, neyin aday oldugunu anlamak
 
 Ne denendi:
-- VM listesi siniflandirildi
-- audit checklist acildi
+- VM listesi sınıflandirildi
+- audit checklist açıldı
 
-Sonuc:
+Sonuç:
 - agresif silme yerine kontrollu audit yaklasimi benimsendi
 
-## E-008 | Ubuntu staging uzerinde Laravel + PostgreSQL kurulum deneyi
+## E-008 | Ubuntu staging üzerinde Laravel + PostgreSQL kurulum deneyi
 
 Amac:
-- SemanticUniverse icin internetten erisilebilir resmi bir staging omurgasi kurmak
+- SemanticUniverse için internetten erişilebilir resmi bir staging omurgasi kurmak
 
 Ne denendi:
 - Ubuntu sunucu kurulumu
@@ -114,54 +114,54 @@ Ne denendi:
 - Laravel app kurulumu ve PostgreSQL baglantisi
 - Nginx vhost + DNS ile `staging.semanger.com`
 
-Sonuc:
-- calisan staging ortami ortaya cikti
-- ilk acilan sayfa varsayilan Laravel karsilama ekrani oldu
+Sonuç:
+- çalışan staging ortamı ortaya cikti
+- ilk açılan sayfa varsayilan Laravel karsilama ekranı oldu
 
-## E-009 | Local shell'in Laravel Blade gorunume port edilmesi
+## E-009 | Local shell'in Laravel Blade görünüme port edilmesi
 
 Amac:
 - daha once `local-platform/index.php` olarak duran SemanticUniverse shell'ini resmi Laravel katmanina almak
 
 Ne denendi:
 - source shell'den Blade'e donusum
-- session tabanli GodMode route'lari
+- session tabanlı GodMode route'lari
 - mevcut stil dosyasinin Laravel public alanina alinmasi
 - route cache temizligi ve route dogrulama
 
-Sonuc:
-- local shell artik Laravel icinde calisacak hale getirildi
-- sonraki adim GitHub'a push ve staging'de `git pull`
+Sonuç:
+- local shell artık Laravel içinde calisacak hale getirildi
+- sonraki adım GitHub'a push ve staging'de `git pull`
 
-## E-010 | History hostu icin CWP + staging otomasyon deneyi
+## E-010 | Tarihçe hostu için CWP + staging otomasyon deneyi
 
 Amac:
 - `history.semanger.com` hostunu journal/timeline katmanina yonlendirmek
 
 Ne denendi:
-- CWP kullanici panelinde HTTP oturumu acip DNS editor'e otomatik erisim denendi
-- staging sunucuda Posh-SSH ile Nginx vhost yazimi, symlink, reload ve host-header testleri yapildi
+- CWP kullanıcı panelinde HTTP oturumu acip DNS editor'e otomatik erisim denendi
+- staging sunucuda Posh-SSH ile Nginx vhost yazimi, symlink, reload ve host-header testleri yapıldi
 - staging uygulamasi GitHub'dan cekilip journal route'lari ve izinler senkronize edildi
 
-Sonuc:
-- CWP DNS editor otomasyonu kararsiz davrandi ve kayit ekleme tam otomatik tamamlanamadi
-- buna karsilik staging sunucuda history hostu basariyla hazirlandi; host-header testinde `history.semanger.com/semantic-universe/journal` 200 donmeye basladi
+Sonuç:
+- CWP DNS editor otomasyonu kararsiz davrandi ve kayıt ekleme tam otomatik tamamlanamadi
+- buna karsilik staging sunucuda history hostu basariyla hazırlandı; host-header testinde `history.semanger.com/semantic-universe/journal` 200 donmeye basladi
 
-## E-011 | History DNS kaydinin manuel tamamlanmasi
+## E-011 | History DNS kaydınin manuel tamamlanmasi
 
 Amac:
-- `history.semanger.com` hostunu staging journal katmanina gercek DNS kaydiyla baglamak
+- `history.semanger.com` hostunu staging journal katmanina gercek DNS kaydıyla baglamak
 
 Ne denendi:
-- CWP DNS zone ekraninda `history.semanger.com` icin `A` kaydi manuel olarak eklendi
+- CWP DNS zone ekranında `history.semanger.com` için `A` kaydı manuel olarak eklendi
 - hedef IP olarak `89.252.182.73` kullanildi
 
-Sonuc:
-- otomasyonla takilan son adim manuel tamamlandi
-- artik dogrulama ve yayilim suresi kontrolu kaldi
+Sonuç:
+- otomasyonla takilan son adım manuel tamamlandi
+- artık dogrulama ve yayilim suresi kontrolu kaldi
 
-## History kayit kimligi deneyi
+## History kayıt kimligi deneyi
 
-- Timeline kayitlari icin gun ici sira temelli SUH-YYYYMMDD-XX kimlik semasi denendi
-- Her kimlik icin ayri markdown detay dosyasi uretilip popup katmanina baglandi
-- Bu yapi daha sonra konusma parcaciklari, karar baglari ve ekran notlariyla zenginlestirilebilir
+- Timeline kayıtlari için gun ici sira temelli SUH-YYYYMMDD-XX kimlik semasi denendi
+- Her kimlik için ayrı markdown detay dosyasi uretilip popup katmanina baglandi
+- Bu yapı daha sonra konuşma parcaciklari, karar baglari ve ekran notlariyla zenginlestirilebilir

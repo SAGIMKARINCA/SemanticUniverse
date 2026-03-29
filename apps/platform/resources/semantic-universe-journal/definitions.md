@@ -1,73 +1,73 @@
 # Semantic Universe Definitions
 
-Bu dosya, bugune kadar kullanicidan alinan ana tanimlarin kisa ve islenebilir ozetidir.
+Bu dosya, bugune kadar kullanıcıdan alinan ana tanımlarin kisa ve islenebilir ozetidir.
 
 ## Semantic Universe
 
-Tanim:
-- tum alt urunleri, kaynaklari, karar modellerini ve yazilim projelerini tasiyan ana ust yapi
+Tanım:
+- tum alt urunleri, kaynakları, karar modellerini ve yazilim projelerini tasiyan ana ust yapı
 
 ## DEPE
 
-Tanim:
+Tanım:
 - `Digital Enterprise Precess Execution`
-- kullanicinin gelistirdigi ikinci temel felsefe
-- ayrintili tanimi daha sonra genisletilecek
+- kullanıcınin gelistirdigi ikinci temel felsefe
+- ayrıntili tanımi daha sonra genisletilecek
 
 ## Nesne
 
-Tanim:
+Tanım:
 - evrenin iki temel kumesinden biri
 
 ## Olay
 
-Tanim:
+Tanım:
 - evrenin iki temel kumesinden biri
 - prosesler/surecler ile aciklanir
 
 ## Kaynak
 
-Tanim:
+Tanım:
 - bir nesnenin:
-  - varlik bilgisi
+  - varlık bilgisi
   - fonksiyon bilgisi
   - aktivite bilgisi
   - hedef bilgisi
-birlikte tanimlandiginda nesneden kaynaga gecis olur
+birlikte tanımlandiginda nesneden kaynağa geçiş olur
 
-## Kaynak Siniflari
+## Kaynak Sınıfları
 
 - insan
-- tasinir
-- tasinmaz
+- taşınır
+- taşınmaz
 - zaman
 
 ## Kaynak Katmanlari
 
 - temel
-- ture
-- turetilmis
+- türe
+- türetilmiş
 - fonksiyonel
 
 ## Proses
 
-Tanim:
+Tanım:
 - olay evreninin aciklanma bicimi
-- yalniz sonuca degil, enerji/eylem akisina da dayanan surec mantigi
+- yalniz sonuca değil, enerji/eylem akisina da dayanan surec mantığı
 
-## Proses Siniflari
+## Proses Sınıfları
 
-- varlik ve yonetim prosesi
-- ana is prosesi
+- varlık ve yönetim prosesi
+- ana iş prosesi
 - destek hizmet prosesi
-- olcme degerleme ve gelisme prosesi
+- ölçme değerleme ve gelişme prosesi
 
 ## God Mode
 
-Tanim:
-- super admin ve kurucu yonetim alanini gosteren shell modu
+Tanım:
+- super admin ve kurucu yönetim alanini gösteren shell modu
 
 ## System Ana Yuklenicisi
 
-Tanim:
-- Semantic Universe'un Laravel platform zemini uzerindeki ilk teknik rolu
+Tanım:
+- Semantic Universe'un Laravel platform zemini üzerindeki ilk teknik rolu

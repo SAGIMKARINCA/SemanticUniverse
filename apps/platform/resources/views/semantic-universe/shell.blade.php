@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SemanticEvren</title>
+    <title>SemanticUniverse</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('semantic-universe.css') }}">
 </head>
@@ -18,7 +18,7 @@
                 <div class="su-rail-item">A</div>
                 <div class="su-rail-item">G</div>
             </div>
-            <div class="su-rail-label">Ana Moduller</div>
+            <div class="su-rail-label">Ana Modüller</div>
         </aside>
 
         <div class="su-main">
@@ -27,39 +27,39 @@
                     <div class="row g-3 align-items-center">
                         <div class="col-12 col-xl-7">
                             <div class="su-topbar-merged">
-                                <button class="btn su-mobile-toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#suSistemMenuyu Ac" aria-controls="suSistemMenuyu Ac">
-                                    Menuyu Ac
+                                <button class="btn su-mobile-toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#suSystemMenu" aria-controls="suSystemMenu">
+                                    Menü
                                 </button>
                                 <div class="su-title-block d-xl-none">
-                                    <span class="su-kicker">SemanticEvren</span>
-                                    <h1 class="su-title">TanrÄ± Modu GeliÅŸtirme Platformu</h1>
+                                    <span class="su-kicker">SemanticUniverse</span>
+                                    <h1 class="su-title">Tanrı Modu Geliştirme Platformu</h1>
                                 </div>
                                 <div class="su-menubar-group d-none d-xl-flex">
                                     <button type="button" class="su-menu-item su-menu-item-active" data-top-menu="system">Sistem</button>
                                     <button type="button" class="su-menu-item" data-top-menu="ayarlar">Ayarlar</button>
-                                    <button type="button" class="su-menu-item" data-top-menu="governance">Yonetisim</button>
+                                    <button type="button" class="su-menu-item" data-top-menu="governance">Yönetişim</button>
                                     <button type="button" class="su-menu-item su-menu-item-highlight" data-top-menu="evren">Evren</button>
                                     <button type="button" class="su-menu-item" data-top-menu="resources">Kaynaklar</button>
                                     <button type="button" class="su-menu-item" data-top-menu="projects">Projeler</button>
                                     <button type="button" class="su-menu-item" data-top-menu="applications">Uygulamalar</button>
                                 </div>
                                 <div class="su-menubar-brand d-none d-xl-flex">
-                                    <span class="su-kicker">SemanticEvren</span>
-                                    <span class="su-menubar-title">TanrÄ± Modu GeliÅŸtirme Platformu</span>
+                                    <span class="su-kicker">SemanticUniverse</span>
+                                    <span class="su-menubar-title">Tanrı Modu Geliştirme Platformu</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-xl-4">
                             <div class="su-topbar-right">
-                                <div class="su-search">{{ $isGodMode ? 'Genel arama' : 'Bos kabuk gorunumu' }}</div>
-                                <div class="su-topbar-actions" aria-label="Tanri Modu ust islemleri">
-                                    <a class="su-chip su-chip-link" href="{{ route('semantic-universe.journal') }}">TarihÃ§e</a>
+                                <div class="su-search">{{ $isGodMode ? 'Genel arama' : 'Boş kabuk görünümü' }}</div>
+                                <div class="su-topbar-actions" aria-label="Tanrı Modu üst işlemleri">
+                                    <a class="su-chip su-chip-link" href="{{ route('semantic-universe.journal') }}">Tarihçe</a>
                                     @if ($isGodMode)
-                                        <a class="su-chip su-chip-link" href="{{ route('semantic-universe.logout') }}">Ã‡Ä±kÄ±ÅŸ</a>
+                                        <a class="su-chip su-chip-link" href="{{ route('semantic-universe.logout') }}">Çıkış</a>
                                     @else
-                                        <a class="su-chip su-chip-link" href="{{ route('semantic-universe.login') }}">Tanri Modu Girisi</a>
+                                        <a class="su-chip su-chip-link" href="{{ route('semantic-universe.login') }}">Tanrı Modu Girişi</a>
                                     @endif
-                                    <div class="su-chip">Ã‡alÄ±ÅŸma alanÄ±</div>
+                                    <div class="su-chip">Çalışma Alanı</div>
                                     <div class="su-chip su-chip-profile">{{ $isGodMode ? 'Profil: ' . $godModeProfile['name'] : 'Profil' }}</div>
                                 </div>
                             </div>
@@ -78,26 +78,26 @@
                                         <span class="su-ribbon-label su-ribbon-label-active">Kaynaklar</span>
                                         <span class="su-ribbon-label">Roller</span>
                                         <span class="su-ribbon-label">Yetkiler</span>
-                                        <span class="su-ribbon-label">Moduller</span>
-                                        <span class="su-ribbon-label">Audit</span>
+                                        <span class="su-ribbon-label">Modüller</span>
+                                        <span class="su-ribbon-label">Denetim</span>
                                     </div>
                                     <div class="su-ribbon-context is-hidden" data-ribbon-context="ayarlar">
                                         <button type="button" class="su-ribbon-label su-ribbon-label-active su-ribbon-button" data-open-settings-panel>
-                                            Tema standartlarÄ± ve Ã§erÃ§eve davranÄ±ÅŸlarÄ±
+                                            Tema standartları ve çerçeve davranışları
                                         </button>
-                                        <span class="su-ribbon-label">Menuyu Ac davranislari</span>
-                                        <span class="su-ribbon-label">YerleÅŸim standartlarÄ±</span>
-                                        <span class="su-ribbon-label">KullanÄ±cÄ± tercihleri</span>
+                                        <span class="su-ribbon-label">Menü davranışları</span>
+                                        <span class="su-ribbon-label">Yerleşim standartları</span>
+                                        <span class="su-ribbon-label">Kullanıcı tercihleri</span>
                                     </div>
                                 @else
                                     <div class="su-ribbon-context" data-ribbon-context="system">
-                                        <span class="su-ribbon-label">Bos ribbon alani</span>
+                                        <span class="su-ribbon-label">Boş şerit alanı</span>
                                     </div>
                                 @endif
                             </div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="su-ribbon-badge">{{ $isGodMode ? 'Ãœst yÃ¶netici' : 'Genel kabuk' }}</div>
+                            <div class="su-ribbon-badge">{{ $isGodMode ? 'Üst Yönetici' : 'Genel Kabuk' }}</div>
                         </div>
                     </div>
                 </div>
@@ -108,27 +108,27 @@
                     <aside class="su-leftnav d-none d-lg-block">
                         @if ($isGodMode)
                             <div class="su-panel-title">Sistem</div>
-                            <div class="su-panel-copy">KaynaklarÄ± var etme menÃ¼sÃ¼</div>
+                            <div class="su-panel-copy">Kaynakları var etme menüsü</div>
                             <div class="su-nav-tree">
                                 <div class="su-nav-item">Kaynaklar</div>
-                                <div class="su-nav-subitem su-nav-subitem-active">Kaynak TanÄ±mla</div>
+                                <div class="su-nav-subitem su-nav-subitem-active">Kaynak Tanımla</div>
                                 <div class="su-nav-subitem">Kaynak Listesi</div>
-                                <div class="su-nav-subitem">Kaynak SÄ±nÄ±flarÄ±</div>
-                                <div class="su-nav-subitem">Kaynak KatmanlarÄ±</div>
+                                <div class="su-nav-subitem">Kaynak Sınıfları</div>
+                                <div class="su-nav-subitem">Kaynak Katmanları</div>
                                 <div class="su-nav-group is-hidden" data-settings-tree>
                                     <div class="su-nav-group-title">Ayarlar</div>
                                     <button type="button" class="su-nav-subitem su-nav-subitem-link" data-open-settings-panel>
-                                        Tema standartlarÄ± ve Ã§erÃ§eve davranÄ±ÅŸlarÄ±
+                                        Tema standartları ve çerçeve davranışları
                                     </button>
-                                    <div class="su-nav-subitem">Menuyu Ac davranislari</div>
-                                    <div class="su-nav-subitem">YerleÅŸim standartlarÄ±</div>
-                                    <div class="su-nav-subitem">KullanÄ±cÄ± tercihleri</div>
+                                    <div class="su-nav-subitem">Menü davranışları</div>
+                                    <div class="su-nav-subitem">Yerleşim standartları</div>
+                                    <div class="su-nav-subitem">Kullanıcı tercihleri</div>
                                 </div>
                             </div>
                         @else
                             <div class="su-empty-frame">
-                                <div class="su-empty-title">Sol Ã‡erÃ§eve Bos</div>
-                                <div class="su-empty-copy">Tanri Modu girisi yapildiginda burada sistem ve ayarlar menuleri gorunecek.</div>
+                                <div class="su-empty-title">Sol Çerçeve Boş</div>
+                                <div class="su-empty-copy">Tanrı Modu girişi yapıldığında burada sistem ve ayarlar menüleri görünecek.</div>
                             </div>
                         @endif
                     </aside>
@@ -142,24 +142,24 @@
                                 <div class="su-context-block" data-workspace-context="system">
                                 <div class="su-workhead">
                                     <div>
-                                        <span class="su-center-kicker">Evren ModÃ¼lÃ¼</span>
-                                        <h2 class="su-center-title">Kaynak TanÄ±mla</h2>
+                                        <span class="su-center-kicker">Evren Modülü</span>
+                                        <h2 class="su-center-title">Kaynak Tanımla</h2>
                                         <p class="su-center-copy">
-                                            Nesneden kaynaÄŸa geÃ§iÅŸ mantÄ±ÄŸÄ±nÄ± kuran ilk semantik tanÄ±m ekranÄ±.
-                                            Ä°lk sÃ¼rÃ¼mde varlÄ±k, fonksiyon, aktivite ve hedef katmanlarÄ± gÃ¶rÃ¼nÃ¼r hale getirildi.
+                                            Nesneden kaynağa geçiş mantığını kuran ilk semantik tanım ekranı.
+                                            İlk sürümde varlık, fonksiyon, aktivite ve hedef katmanları görünür hale getirildi.
                                         </p>
                                     </div>
                                     <div class="su-center-tags">
                                         <span class="su-tag">Sistem</span>
                                         <span class="su-tag">Kaynaklar</span>
-                                        <span class="su-tag">Kaynak TanÄ±mla</span>
+                                        <span class="su-tag">Kaynak Tanımla</span>
                                     </div>
                                 </div>
                                 <form class="su-resource-form">
                                 <section class="su-form-block">
                                     <div class="su-form-block-head">
-                                        <h3>1. Kimlik ve Siniflama</h3>
-                                        <p>Kaynak adayÄ±nÄ±n temel tanÄ±mÄ± ve ilk sÄ±nÄ±flandÄ±rma katmanÄ±.</p>
+                                        <h3>1. Kimlik ve Sınıflama</h3>
+                                        <p>Kaynak adayının temel tanımı ve ilk sınıflandırma katmanı.</p>
                                     </div>
 
                                     <div class="su-form-grid">
@@ -168,24 +168,24 @@
                                             <input type="text" placeholder="ORN: INS-0001">
                                         </label>
                                         <label class="su-field">
-                                            <span>Kaynak AdÄ±</span>
+                                            <span>Kaynak Adı</span>
                                             <input type="text" placeholder="Orn: Genel Cerrah">
                                         </label>
                                         <label class="su-field">
-                                            <span>Nesne TÃ¼rÃ¼</span>
+                                            <span>Nesne Türü</span>
                                             <select>
-                                                <option>Insan</option>
-                                                <option>TaÅŸÄ±nÄ±r</option>
-                                                <option>TaÅŸÄ±nmaz</option>
+                                                <option>İnsan</option>
+                                                <option>Taşınır</option>
+                                                <option>Taşınmaz</option>
                                                 <option>Zaman</option>
                                             </select>
                                         </label>
                                         <label class="su-field">
-                                            <span>Kaynak KatmanÄ±</span>
+                                            <span>Kaynak Katmanı</span>
                                             <select>
                                                 <option>Temel Kaynak</option>
-                                                <option>TÃ¼re Kaynak</option>
-                                                <option>TÃ¼retilmiÅŸ Kaynak</option>
+                                                <option>Türe Kaynak</option>
+                                                <option>Türetilmiş Kaynak</option>
                                                 <option>Fonksiyonel Kaynak</option>
                                             </select>
                                         </label>
@@ -194,18 +194,18 @@
 
                                 <section class="su-form-block">
                                     <div class="su-form-block-head">
-                                        <h3>2. VarlÄ±k Bilgisi</h3>
-                                        <p>Bu nesnenin varlÄ±k aÃ§Ä±sÄ±ndan nasÄ±l tanÄ±mlandÄ±ÄŸÄ±.</p>
+                                        <h3>2. Varlık Bilgisi</h3>
+                                        <p>Bu nesnenin varlık açısından nasıl tanımlandığı.</p>
                                     </div>
 
                                     <div class="su-form-grid">
                                         <label class="su-field su-field-wide">
-                                            <span>VarlÄ±k TanÄ±mÄ±</span>
-                                            <textarea rows="4" placeholder="KaynaÄŸÄ±n varlÄ±k tanÄ±mÄ±nÄ± yazÄ±nÄ±z."></textarea>
+                                            <span>Varlık Tanımı</span>
+                                            <textarea rows="4" placeholder="Kaynağın varlık tanımını yazınız."></textarea>
                                         </label>
                                         <label class="su-field">
-                                            <span>BaÄŸlÄ± Ãœst SÄ±nÄ±f</span>
-                                            <input type="text" placeholder="Orn: Klinik Insan Kaynagi">
+                                            <span>Bağlı Üst Sınıf</span>
+                                            <input type="text" placeholder="Örn: Klinik İnsan Kaynağı">
                                         </label>
                                         <label class="su-field">
                                             <span>Durum</span>
@@ -221,25 +221,25 @@
                                 <section class="su-form-block">
                                     <div class="su-form-block-head">
                                         <h3>3. Fonksiyon Bilgisi</h3>
-                                        <p>KaynaÄŸÄ±n ne iÅŸe yaradÄ±ÄŸÄ± ve hangi iÅŸle ilgili olduÄŸu.</p>
+                                        <p>Kaynağın ne işe yaradığı ve hangi işle ilgili olduğu.</p>
                                     </div>
 
                                     <div class="su-form-grid">
                                         <label class="su-field su-field-wide">
-                                            <span>Fonksiyon TanÄ±mÄ±</span>
-                                            <textarea rows="4" placeholder="Bu kaynaÄŸÄ±n temel fonksiyonunu yazÄ±nÄ±z."></textarea>
+                                            <span>Fonksiyon Tanımı</span>
+                                            <textarea rows="4" placeholder="Bu kaynağın temel fonksiyonunu yazınız."></textarea>
                                         </label>
                                         <label class="su-field">
                                             <span>Fonksiyon Grubu</span>
-                                            <input type="text" placeholder="Ã–rn: Cerrahi Hizmet">
+                                            <input type="text" placeholder="Örn: Cerrahi Hizmet">
                                         </label>
                                         <label class="su-field">
-                                            <span>Ä°ÅŸlev DÃ¼zeyi</span>
+                                            <span>İşlev Düzeyi</span>
                                             <select>
                                                 <option>Ana</option>
                                                 <option>Destek</option>
-                                                <option>Ã–lÃ§me-DeÄŸerlendirme</option>
-                                                <option>YÃ¶netim</option>
+                                                <option>Ölçme-Değerlendirme</option>
+                                                <option>Yönetim</option>
                                             </select>
                                         </label>
                                     </div>
@@ -248,26 +248,26 @@
                                 <section class="su-form-block">
                                     <div class="su-form-block-head">
                                         <h3>4. Aktivite Bilgisi</h3>
-                                        <p>KaynaÄŸÄ±n hangi aktivitelerde yer alacaÄŸÄ±nÄ± tanÄ±mlayan alanlar.</p>
+                                        <p>Kaynağın hangi aktivitelerde yer alacağını tanımlayan alanlar.</p>
                                     </div>
 
                                     <div class="su-form-grid">
                                         <label class="su-field su-field-wide">
-                                            <span>Aktivite TanÄ±mÄ±</span>
-                                            <textarea rows="4" placeholder="Bu kaynaÄŸÄ±n katÄ±ldÄ±ÄŸÄ± aktiviteleri tanÄ±mlayÄ±nÄ±z."></textarea>
+                                            <span>Aktivite Tanımı</span>
+                                            <textarea rows="4" placeholder="Bu kaynağın katıldığı aktiviteleri tanımlayınız."></textarea>
                                         </label>
                                         <label class="su-field">
-                                            <span>Proses BaÄŸlantÄ±sÄ±</span>
+                                            <span>Proses Bağlantısı</span>
                                             <select>
-                                                <option>Varlik ve YÃ¶netim Prosesi</option>
-                                                <option>Ana Ä°ÅŸ Prosesi</option>
+                                                <option>Varlık ve Yönetim Prosesi</option>
+                                                <option>Ana İş Prosesi</option>
                                                 <option>Destek Hizmet Prosesi</option>
-                                                <option>Ã–lÃ§me DeÄŸerlendirme ve GeliÅŸme Prosesi</option>
+                                                <option>Ölçme Değerlendirme ve Gelişme Prosesi</option>
                                             </select>
                                         </label>
                                         <label class="su-field">
-                                            <span>Aktivite DÃ¼zeyi</span>
-                                            <input type="text" placeholder="Orn: Operatif, Idari, Destek">
+                                            <span>Aktivite Düzeyi</span>
+                                            <input type="text" placeholder="Örn: Operatif, İdari, Destek">
                                         </label>
                                     </div>
                                 </section>
@@ -275,37 +275,37 @@
                                 <section class="su-form-block">
                                     <div class="su-form-block-head">
                                         <h3>5. Hedef Bilgisi</h3>
-                                        <p>Nesnenin kaynak olma amacÄ± ve yÃ¶neldiÄŸi hedefler.</p>
+                                        <p>Nesnenin kaynak olma amacı ve yöneldiği hedefler.</p>
                                     </div>
 
                                     <div class="su-form-grid">
                                         <label class="su-field su-field-wide">
-                                            <span>Hedef TanÄ±mÄ±</span>
-                                            <textarea rows="4" placeholder="Bu kaynaÄŸÄ±n hedef bilgisini yazÄ±nÄ±z."></textarea>
+                                            <span>Hedef Tanımı</span>
+                                            <textarea rows="4" placeholder="Bu kaynağın hedef bilgisini yazınız."></textarea>
                                         </label>
                                         <label class="su-field">
                                             <span>Birincil Hedef</span>
-                                            <input type="text" placeholder="Orn: Hasta bakÄ±mÄ±">
+                                            <input type="text" placeholder="Örn: Hasta bakımı">
                                         </label>
                                         <label class="su-field">
-                                            <span>Etki AlanÄ±</span>
-                                            <input type="text" placeholder="Orn: Klinik, EÄŸitim, AraÅŸtÄ±rma">
+                                            <span>Etki Alanı</span>
+                                            <input type="text" placeholder="Örn: Klinik, Eğitim, Araştırma">
                                         </label>
                                     </div>
                                 </section>
 
                                 <div class="su-form-actions">
-                                    <button type="button" class="su-btn su-btn-primary">Kaynak TaslaÄŸÄ± OluÅŸtur</button>
-                                    <button type="button" class="su-btn su-btn-secondary">KurallarÄ± Sonra Doldur</button>
+                                    <button type="button" class="su-btn su-btn-primary">Kaynak Taslağı Oluştur</button>
+                                    <button type="button" class="su-btn su-btn-secondary">Kuralları Sonra Doldur</button>
                                 </div>
                                 </form>
                             @else
                                 <div class="su-empty-center">
-                                    <span class="su-center-kicker">Genel / BoÅŸ Kabuk</span>
-                                    <h2 class="su-center-title">Orta Ã‡erÃ§eve BoÅŸ</h2>
+                                    <span class="su-center-kicker">Genel / Boş Kabuk</span>
+                                    <h2 class="su-center-title">Orta Çerçeve Boş</h2>
                                     <p class="su-center-copy">
-                                        TanrÄ± Modu giriÅŸi yapÄ±ldÄ±ÄŸÄ±nda sistem ve yÃ¶netim ekranlarÄ± burada aktif hale gelir.
-                                        Ã‡Ä±kÄ±ÅŸ yapildiginda merkez alan bos bir kabuk olarak kalir.
+                                        Tanrı Modu girişi yapıldığında sistem ve yönetim ekranları burada aktif hale gelir.
+                                        Çıkış yapıldığında merkez alan boş bir kabuk olarak kalır.
                                     </p>
                                 </div>
                             @endif
@@ -315,29 +315,29 @@
                     <aside class="su-rightpanel d-none d-xl-block">
                         @if ($isGodMode)
                             <div class="su-profile-card">
-                                <div class="su-profile-kicker">TanrÄ± Modu Profili</div>
+                                <div class="su-profile-kicker">Tanrı Modu Profili</div>
                                 <div class="su-profile-name">{{ $godModeProfile['name'] }}</div>
                                 <div class="su-profile-meta">{{ $godModeProfile['role'] }}</div>
                                 <div class="su-profile-meta">{{ $godModeProfile['scope'] }}</div>
                             </div>
-                            <div class="su-panel-title">SaÄŸ baÄŸlam paneli</div>
-                            <div class="su-panel-copy">Detay, not, iliÅŸkili kayÄ±t, hÄ±zlÄ± iÅŸlem</div>
+                            <div class="su-panel-title">Sağ Bağlam Paneli</div>
+                            <div class="su-panel-copy">Detay, not, ilişkili kayıt, hızlı işlem</div>
                             <div class="su-right-box">
-                                Ä°lk odak:
-                                <strong>KaynaklarÄ± var etmek</strong>
+                                İlk odak:
+                                <strong>Kaynakları var etmek</strong>
                             </div>
                             <div class="su-right-note">
-                                Kaynak olma koÅŸulu:
-                                <strong>VarlÄ±k + Fonksiyon + Aktivite + Hedef</strong>
+                                Kaynak olma koşulu:
+                                <strong>Varlık + Fonksiyon + Aktivite + Hedef</strong>
                             </div>
                             <div class="su-right-note">
-                                Genel alan daha sonra ayrÄ± olarak tasarlanacak.
-                                Bu gÃ¶rÃ¼nÃ¼m TanrÄ± Modu Ã¼st yÃ¶netici kabuÄŸu iÃ§indir.
+                                Genel alan daha sonra ayrı olarak tasarlanacak.
+                                Bu görünüm Tanrı Modu üst yönetici kabuğu içindir.
                             </div>
                         @else
                             <div class="su-empty-frame">
-                                <div class="su-empty-title">SaÄŸ Panel BoÅŸ</div>
-                                <div class="su-empty-copy">TanrÄ± Modu girisinden sonra baglamsal detay ve hizli islem kutulari burada gorunecek.</div>
+                                <div class="su-empty-title">Sağ Panel Boş</div>
+                                <div class="su-empty-copy">Tanrı Modu girişinden sonra bağlamsal detay ve hızlı işlem kutuları burada görünecek.</div>
                             </div>
                         @endif
                     </aside>
@@ -348,7 +348,7 @@
                 <div class="container-fluid px-0">
                     <div class="row g-3 align-items-center">
                         <div class="col-12 col-xl-4">
-                            <div class="su-bottom-left">Stratejik Bilgiler, Roller, Degiskenler Menuyu Acsu</div>
+                            <div class="su-bottom-left">Stratejik Bilgiler, Roller, Değişkenler Menüsü</div>
                         </div>
                         <div class="col-12 col-xl-4">
                             <div class="su-bottom-dock">
@@ -360,7 +360,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-xl-3">
-                            <div class="su-bottom-right text-xl-end">{{ request()->getHost() }} / SemanticEvren</div>
+                            <div class="su-bottom-right text-xl-end">{{ request()->getHost() }} / SemanticUniverse</div>
                         </div>
                     </div>
                 </div>
@@ -368,19 +368,19 @@
         </div>
     </div>
 
-    <div class="offcanvas offcanvas-start su-offcanvas" tabindex="-1" id="suSistemMenuyu Ac" aria-labelledby="suSistemMenuyu AcLabel">
+    <div class="offcanvas offcanvas-start su-offcanvas" tabindex="-1" id="suSystemMenu" aria-labelledby="suSystemMenuLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="suSistemMenuyu AcLabel">Sistem Menuyu Acsu</h5>
+            <h5 class="offcanvas-title" id="suSystemMenuLabel">Sistem Menüsü</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Kapat"></button>
         </div>
         <div class="offcanvas-body">
-            <div class="su-panel-copy">KaynaklarÄ± var etme menÃ¼sÃ¼</div>
+            <div class="su-panel-copy">Kaynakları var etme menüsü</div>
             <div class="su-nav-tree">
                 <div class="su-nav-item">Kaynaklar</div>
-                <div class="su-nav-subitem su-nav-subitem-active">Kaynak TanÄ±mla</div>
+                <div class="su-nav-subitem su-nav-subitem-active">Kaynak Tanımla</div>
                 <div class="su-nav-subitem">Kaynak Listesi</div>
-                <div class="su-nav-subitem">Kaynak SÄ±nÄ±flarÄ±</div>
-                <div class="su-nav-subitem">Kaynak KatmanlarÄ±</div>
+                <div class="su-nav-subitem">Kaynak Sınıfları</div>
+                <div class="su-nav-subitem">Kaynak Katmanları</div>
             </div>
         </div>
     </div>
@@ -389,77 +389,77 @@
         <div class="offcanvas-header">
             <div>
                 <h5 class="offcanvas-title" id="suSettingsPanelLabel">Ayarlar Paneli</h5>
-                <div class="su-settings-subtitle">Tema standartlarÄ± ve Ã§erÃ§eve davranÄ±ÅŸlarÄ±</div>
+                <div class="su-settings-subtitle">Tema standartları ve çerçeve davranışları</div>
             </div>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Kapat"></button>
         </div>
         <div class="offcanvas-body">
             <section class="su-settings-section">
-                <div class="su-settings-title">Tema StandardÄ±</div>
-                <p class="su-settings-copy">TÃ¼m kabuk iÃ§in kullanÄ±lacak gÃ¶rÃ¼nÃ¼mÃ¼ seÃ§. Bu tercih yerel olarak saklanÄ±r.</p>
+                <div class="su-settings-title">Tema Standardı</div>
+                <p class="su-settings-copy">Tum shell icin kullanilacak gorunumu sec. Bu tercih local olarak saklanir.</p>
                 <label class="su-pref-label" for="themePreset">Aktif Tema</label>
                 <select id="themePreset" class="su-pref-select" data-theme-select>
-                    <option value="theme-universe">Evren Classic</option>
-                    <option value="theme-atlas">Atlas AÃ§Ä±k</option>
-                    <option value="theme-orbit">YÃ¶rÃ¼nge Gece</option>
+                    <option value="theme-universe">Universe Classic</option>
+                    <option value="theme-atlas">Atlas Light</option>
+                    <option value="theme-orbit">Orbit Night</option>
                 </select>
             </section>
 
             <section class="su-settings-section">
-                <div class="su-settings-title">Ã‡erÃ§eve DavranÄ±ÅŸlarÄ±</div>
-                <p class="su-settings-copy">Her Ã§erÃ§eve iÃ§in gÃ¶rÃ¼nÃ¼rlÃ¼k ve kaydÄ±rma davranÄ±ÅŸÄ±nÄ± ayrÄ± ayrÄ± seÃ§.</p>
+                <div class="su-settings-title">Frame Davranislari</div>
+                <p class="su-settings-copy">Her çerçeve için görünürlük ve kaydırma davranışını ayrı ayrı seç.</p>
 
                 <div class="su-settings-grid">
                     <label class="su-pref-field">
-                        <span>Ãœst MenÃ¼yu Ac</span>
+                        <span>Üst Menü</span>
                         <select class="su-pref-select" data-frame-mode="topbar">
                             <option value="fixed">Sabit</option>
-                            <option value="scroll">KaydÄ±r</option>
+                            <option value="scroll">Kaydırılabilir</option>
                             <option value="hidden">Gizli</option>
                         </select>
                     </label>
 
                     <label class="su-pref-field">
-                        <span>Åerit</span>
+                        <span>Ribbon</span>
                         <select class="su-pref-select" data-frame-mode="ribbon">
                             <option value="fixed">Sabit</option>
-                            <option value="scroll">KaydÄ±r</option>
+                            <option value="scroll">Kaydırılabilir</option>
                             <option value="hidden">Gizli</option>
                         </select>
                     </label>
 
                     <label class="su-pref-field">
-                        <span>Sol Ã‡erÃ§eve</span>
+                        <span>Sol Çerçeve</span>
                         <select class="su-pref-select" data-frame-mode="leftnav">
                             <option value="fixed">Sabit</option>
-                            <option value="scroll">KaydÄ±r</option>
+                            <option value="scroll">Kaydırılabilir</option>
                             <option value="hidden">Gizli</option>
                         </select>
                     </label>
 
                     <label class="su-pref-field">
-                        <span>Orta Ã‡erÃ§eve</span>
+                        <span>Orta Çerçeve</span>
                         <select class="su-pref-select" data-frame-mode="center">
-                            <option value="scroll">KaydÄ±r</option>
+                            <option value="scroll">Kaydırılabilir</option>
                             <option value="fixed">Sabit</option>
                             <option value="hidden">Gizli</option>
                         </select>
                     </label>
 
                     <label class="su-pref-field">
-                        <span>SaÄŸ Panel</span>
+                        <span>Sağ Panel</span>
                         <select class="su-pref-select" data-frame-mode="rightpanel">
                             <option value="fixed">Sabit</option>
-                            <option value="scroll">KaydÄ±r</option>
+                            <option value="scroll">Kaydırılabilir</option>
                             <option value="hidden">Gizli</option>
                         </select>
                     </label>
 
                     <label class="su-pref-field">
-                        <span>Alt Bar / RÄ±htÄ±m</span>
+                        <span>Alt Bar / Dock</span>
                         <select class="su-pref-select" data-frame-mode="bottombar">
                             <option value="fixed">Sabit</option>
-                            <option value="scroll">KaydÄ±r</option>
+                            <option value="scroll">Kaydırılabilir</option>
                             <option value="hidden">Gizli</option>
                         </select>
                     </label>
@@ -467,11 +467,11 @@
             </section>
 
             <section class="su-settings-section">
-                <div class="su-settings-title">HazÄ±r KullanÄ±mlar</div>
+                <div class="su-settings-title">Hazır Hazır Ayarlar</div>
                 <div class="su-preset-list">
-                    <button type="button" class="su-preset-button" data-preset="desktop">MasaÃ¼stÃ¼ Ã‡alÄ±ÅŸmasÄ±</button>
-                    <button type="button" class="su-preset-button" data-preset="focus">OdaklanmÄ±ÅŸ Orta Alan</button>
-                    <button type="button" class="su-preset-button" data-preset="review">Ä°nceleme GÃ¶rÃ¼nÃ¼mÃ¼</button>
+                    <button type="button" class="su-preset-button" data-preset="desktop">Masaüstü Çalışma</button>
+                    <button type="button" class="su-preset-button" data-preset="focus">Odaklanmış Orta Alan</button>
+                    <button type="button" class="su-preset-button" data-preset="review">İnceleme Modu</button>
                 </div>
             </section>
         </div>
@@ -498,7 +498,7 @@
 
             const defaults = {
                 theme: 'theme-universe',
-                topMenu: 'system',
+                topMenü: 'system',
                 frames: {
                     topbar: 'fixed',
                     ribbon: 'fixed',
@@ -516,7 +516,7 @@
                     const parsed = JSON.parse(raw);
                     return {
                         theme: parsed.theme || defaults.theme,
-                        topMenu: parsed.topMenu || defaults.topMenu,
+                        topMenü: parsed.topMenü || defaults.topMenü,
                         frames: Object.assign({}, defaults.frames, parsed.frames || {})
                     };
                 } catch (error) {
@@ -554,16 +554,16 @@
 
             function applyAll(settings) {
                 applyTheme(settings.theme);
-                applyTopMenuyu Ac(settings.topMenu);
+                applyTopMenü(settings.topMenü);
                 Object.entries(settings.frames).forEach(function ([name, mode]) {
                     applyFrameMode(name, mode);
                 });
                 saveSettings(settings);
             }
 
-            function applyTopMenuyu Ac(menuName) {
+            function applyTopMenü(menuName) {
                 document.querySelectorAll('[data-top-menu]').forEach(function (button) {
-                    button.classList.toggle('su-menu-item-active', button.dataset.topMenu === menuName);
+                    button.classList.toggle('su-menu-item-active', button.dataset.topMenü === menuName);
                     button.classList.toggle('su-menu-item-settings-active', false);
                 });
 
@@ -606,7 +606,7 @@
 
             document.querySelectorAll('[data-top-menu]').forEach(function (button) {
                 button.addEventListener('click', function () {
-                    settings.topMenu = this.dataset.topMenu;
+                    settings.topMenü = this.dataset.topMenü;
                     applyAll(settings);
                 });
             });
@@ -625,7 +625,7 @@
                     if (preset === 'desktop') {
                         settings = {
                             theme: settings.theme,
-                            topMenu: settings.topMenu || 'system',
+                            topMenü: settings.topMenü || 'system',
                             frames: {
                                 topbar: 'fixed',
                                 ribbon: 'fixed',
@@ -640,7 +640,7 @@
                     if (preset === 'focus') {
                         settings = {
                             theme: settings.theme,
-                            topMenu: settings.topMenu || 'system',
+                            topMenü: settings.topMenü || 'system',
                             frames: {
                                 topbar: 'fixed',
                                 ribbon: 'fixed',
@@ -655,7 +655,7 @@
                     if (preset === 'review') {
                         settings = {
                             theme: settings.theme,
-                            topMenu: settings.topMenu || 'system',
+                            topMenü: settings.topMenü || 'system',
                             frames: {
                                 topbar: 'fixed',
                                 ribbon: 'scroll',

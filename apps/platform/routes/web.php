@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -10,9 +10,9 @@ Route::get('/SemanticUniverse', fn () => redirect('/semantic-universe'));
 Route::get('/semantic-universe', function (Request $request) {
     $isGodMode = $request->session()->get('semantic_universe_mode') === 'godmode';
     $godModeProfile = [
-        'name' => 'TanrÄ± Modu Ãœst YÃ¶netici',
-        'role' => 'System Ana Yukleyicisi',
-        'scope' => 'SemanticUniverse Ã‡ekirdeÄŸi',
+        'name' => 'Tanrı Modu Üst Yöneticisi',
+        'role' => 'Sistem Ana Yükleyicisi',
+        'scope' => 'SemanticUniverse Çekirdeği',
     ];
 
     return view('semantic-universe.shell', [
@@ -40,16 +40,15 @@ Route::get('/semantic-universe/journal', function (Request $request) {
     $detailPath = $journalPath . DIRECTORY_SEPARATOR . 'details';
 
     $timelineCategories = [
-        'all' => 'TÃ¼m AkÄ±ÅŸ',
-        'foundation' => 'KuruluÅŸ',
+        'all' => 'Tüm Akış',
+        'foundation' => 'Kuruluş',
         'semantic' => 'Semantik',
-        'interface' => 'ArayÃ¼z',
-        'infrastructure' => 'AltyapÄ±',
-        'history' => 'TarihÃ§e',
+        'interface' => 'Arayüz',
+        'infrastructure' => 'Altyapı',
+        'history' => 'Tarihçe',
     ];
 
     $markdownToHtml = function (string $markdown): string {
-        $markdown = preg_replace('/^\xEF\xBB\xBF/u', '', $markdown) ?? $markdown;
         $lines = preg_split("/\r\n|\n|\r/", $markdown);
         $html = '';
         $inList = false;
@@ -119,7 +118,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
     $classifyTimelineCategory = function (string $title, array $actions, array $why, array $result): string {
         $haystack = mb_strtolower(trim($title . ' ' . implode(' ', $actions) . ' ' . implode(' ', $why) . ' ' . implode(' ', $result)));
 
-        if (str_contains($haystack, 'history') || str_contains($haystack, 'journal') || str_contains($haystack, 'belgesel') || str_contains($haystack, 'tarihce')) {
+        if (str_contains($haystack, 'history') || str_contains($haystack, 'journal') || str_contains($haystack, 'belgesel')) {
             return 'history';
         }
 
@@ -141,11 +140,9 @@ Route::get('/semantic-universe/journal', function (Request $request) {
             str_contains($haystack, 'shell') ||
             str_contains($haystack, 'layout') ||
             str_contains($haystack, 'menu') ||
-            str_contains($haystack, 'gorunum') ||
+            str_contains($haystack, 'gorunum') || str_contains($haystack, 'görünüm') || str_contains($haystack, 'görünüm') || str_contains($haystack, 'görünüm') || str_contains($haystack, 'görünüm') || str_contains($haystack, 'görünüm') || str_contains($haystack, 'görünüm') ||
             str_contains($haystack, 'journal web') ||
-            str_contains($haystack, 'tarihÃ§e web') ||
-            str_contains($haystack, 'timeline katmani') ||
-            str_contains($haystack, 'zaman Ã§izgisi katmanÄ±')
+            str_contains($haystack, 'timeline katmani') || str_contains($haystack, 'timeline katmanı') || str_contains($haystack, 'timeline katmanı') || str_contains($haystack, 'timeline katmanı') || str_contains($haystack, 'timeline katmanı') || str_contains($haystack, 'timeline katmanı') || str_contains($haystack, 'timeline katmanı')
         ) {
             return 'interface';
         }
@@ -153,8 +150,8 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         if (
             str_contains($haystack, 'kaynak') ||
             str_contains($haystack, 'semantik') ||
-            str_contains($haystack, 'tanim') ||
-            str_contains($haystack, 'cekirdek') ||
+            str_contains($haystack, 'tanim') || str_contains($haystack, 'tanım') || str_contains($haystack, 'tanım') || str_contains($haystack, 'tanım') || str_contains($haystack, 'tanım') || str_contains($haystack, 'tanım') || str_contains($haystack, 'tanım') ||
+            str_contains($haystack, 'cekirdek') || str_contains($haystack, 'çekirdek') || str_contains($haystack, 'çekirdek') || str_contains($haystack, 'çekirdek') || str_contains($haystack, 'çekirdek') || str_contains($haystack, 'çekirdek') || str_contains($haystack, 'çekirdek') ||
             str_contains($haystack, 'determinant')
         ) {
             return 'semantic';
@@ -195,17 +192,17 @@ Route::get('/semantic-universe/journal', function (Request $request) {
                 continue;
             }
 
-            if ($trimmed === 'Ne yaptik:') {
+            if ($trimmed === 'Ne yaptik:' || $trimmed === 'Ne yaptık:') {
                 $currentListLabel = 'actions';
                 continue;
             }
 
-            if ($trimmed === 'Neden yaptik:') {
+            if ($trimmed === 'Neden yaptik:' || $trimmed === 'Neden yaptık:') {
                 $currentListLabel = 'why';
                 continue;
             }
 
-            if ($trimmed === 'Sonuc:') {
+            if ($trimmed === 'Sonuc:' || $trimmed === 'Sonuç:') {
                 $currentListLabel = 'result';
                 continue;
             }
@@ -233,38 +230,38 @@ Route::get('/semantic-universe/journal', function (Request $request) {
             '# ' . $entry['record_id'] . ' | ' . $entry['title'],
             '',
             'Tarih: ' . $entry['date'],
-            'GÃ¼n iÃ§i sÄ±ra: ' . $entry['sequence'],
-            'Kategori: ' . ($timelineCategories[$entry['category']] ?? 'AkÄ±ÅŸ'),
+            'Gün içi sıra: ' . $entry['sequence'],
+            'Kategori: ' . ($timelineCategories[$entry['category']] ?? 'Akış'),
             '',
-            '## Neler konusuldu',
+            '## Neler konuşuldu',
         ];
 
         $discussion = array_merge($entry['actions'], $entry['why']);
-        foreach ($discussion ?: ['Bu kayit icin ayri konusma notu henuz eklenmedi.'] as $item) {
+        foreach ($discussion ?: ['Bu kayıt için ayrı konuşma notu henüz eklenmedi.'] as $item) {
             $lines[] = '- ' . $item;
         }
 
         $lines[] = '';
-        $lines[] = '## Neler yapildi';
-        foreach ($entry['actions'] ?: ['Yapilan is adimlari daha sonra genisletilecek.'] as $item) {
+        $lines[] = '## Neler yapıldı';
+        foreach ($entry['actions'] ?: ['Yapılan iş adımları daha sonra genişletilecek.'] as $item) {
             $lines[] = '- ' . $item;
         }
 
         $lines[] = '';
-        $lines[] = '## Neden yapildi';
-        foreach ($entry['why'] ?: ['Gerekce notu daha sonra genisletilecek.'] as $item) {
+        $lines[] = '## Neden yapıldı';
+        foreach ($entry['why'] ?: ['Gerekçe notu daha sonra genişletilecek.'] as $item) {
             $lines[] = '- ' . $item;
         }
 
         $lines[] = '';
-        $lines[] = '## Sonuc';
-        foreach ($entry['result'] ?: ['Sonuc notu daha sonra zenginlestirilecek.'] as $item) {
+        $lines[] = '## Sonuç';
+        foreach ($entry['result'] ?: ['Sonuç notu daha sonra zenginleştirilecek.'] as $item) {
             $lines[] = '- ' . $item;
         }
 
         $lines[] = '';
-        $lines[] = '## Arsiv notu';
-        $lines[] = '- Bu detay dosyasi tarihce katmani icin otomatik olusturuldu.';
+        $lines[] = '## Arşiv notu';
+        $lines[] = '- Bu detay dosyasi history katmani icin otomatik olusturuldu.';
         $lines[] = '- Sonraki turda bu kayda iliskili konusma parcaciklari ve karar baglantilari eklenebilir.';
 
         return implode("\n", $lines);
@@ -327,7 +324,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
     return view('semantic-universe.journal', [
         'isUnlocked' => $isUnlocked,
         'passwordError' => $passwordError,
-        'journalPasswordHint' => env('SEMANTIC_UNIVERSE_JOURNAL_HINT', 'Kurucu ÅŸifre gerektirir'),
+        'journalPasswordHint' => env('SEMANTIC_UNIVERSE_JOURNAL_HINT', 'Kurucu şifre gerektirir'),
         'timelineEntries' => $timelineEntries,
         'timelineCategories' => $timelineCategories,
         'timelineCounts' => $timelineCounts,
@@ -336,7 +333,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         'decisionsHtml' => $markdownToHtml($rawDecisions),
         'definitionsHtml' => $markdownToHtml($rawDefinitions),
         'experimentsHtml' => $markdownToHtml($rawExperiments),
-        'ruleText' => 'Her yaptÄ±ÄŸÄ±n iÅŸi timeline.md, decisions.md, definitions.md ve experiments.md dosyalarÄ±na yaz.',
+        'ruleText' => 'Her yaptığın işi timeline.md, decisions.md, definitions.md ve experiments.md dosyalarına yaz.',
     ]);
 })->name('semantic-universe.journal');
 
@@ -351,7 +348,7 @@ Route::post('/semantic-universe/journal/unlock', function (Request $request) {
     }
 
     $request->session()->forget('semantic_universe_journal_unlocked');
-    $request->session()->put('semantic_universe_journal_error', 'GeÃ§ersiz ÅŸifre.');
+    $request->session()->put('semantic_universe_journal_error', 'Geçersiz şifre.');
 
     return redirect()->route('semantic-universe.journal');
 })->name('semantic-universe.journal.unlock');
