@@ -1,167 +1,174 @@
-# Semantic Universe Experiments
+# Semantic Universe Deneyler Kaydı
 
-Bu dosya, bugune kadar denenen, çalışan veya takilan deneylerin kaydıdir.
+Bu dosya, bugüne kadar denenen, çalışan veya takılan deneylerin kaydını tutar.
 
-## E-001 | Hemorrhoid pilot domain deneyi
+## E-001 | Hemorrhoid pilot alan deneyi
 
-Amac:
-- hasta / protokol / form / takip tabanlı pilot domain uretmek
+Amaç:
+- Hasta/protokol/form/takip tabanlı pilot alan üretmek.
 
 Ne denendi:
-- HTML form
-- PHP webapp
-- Laravel tabanlı domain model
+- HTML form yapısı.
+- PHP web uygulaması.
+- Laravel tabanlı alan modeli.
 
 Sonuç:
-- pilot domain mantığı calistirildi
-- ama Semantic Universe'ten ayrı bir uygulama olarak tutulmasi gerektigi netleşti
+- Pilot alan mantığı çalıştırıldı.
+- Ancak bunun Semantic Universe'ten ayrı bir uygulama olarak tutulması gerektiği netleşti.
 
-## E-002 | Semantic Universe local shell deneyi
+## E-002 | Semantic Universe yerel kabuk deneyi
 
-Amac:
-- semantik evrenin ana framework/shell yapısıni görsel olarak denemek
+Amaç:
+- Semantik evrenin ana çerçeve/kabuk yapısını görsel olarak denemek.
 
 Ne denendi:
-- top bar
-- ribbon
-- left tree nav
-- center workspace
-- right context panel
-- bottom dock
+- Üst bar.
+- Şerit.
+- Sol ağaç menü.
+- Orta çalışma alanı.
+- Sağ bağlam paneli.
+- Alt dock.
 
 Sonuç:
-- çalışan local shell kuruldu
+- Çalışan yerel kabuk kuruldu.
 
-## E-003 | God Mode shell deneyi
+## E-003 | Tanrı Modu kabuk deneyi
 
-Amac:
-- public shell ile super admin shell'i ayirmak
+Amaç:
+- Genel kabuk ile süper admin kabuğunu ayırmak.
 
 Ne denendi:
-- session tabanlı giriş/çıkış
-- boş shell ve dolu shell ayrımi
+- Session tabanlı giriş/çıkış.
+- Boş kabuk ve dolu kabuk ayrımı.
 
 Sonuç:
-- temel mantik calisti
+- Temel mantık çalıştı.
 
-## E-004 | Tema ve frame davranışi paneli
+## E-004 | Tema ve çerçeve davranışı paneli
 
-Amac:
-- her frame için tema ve davranış tercihleri uretmek
+Amaç:
+- Her çerçeve için tema ve davranış tercihleri üretmek.
 
 Ne denendi:
-- tema secimi
-- frame davranışi
-- Ayarlar ribbon ve panel mantığı
+- Tema seçimi.
+- Çerçeve davranışı.
+- Ayarlar ribbon ve panel mantığı.
 
 Sonuç:
-- ilk çalışan ayarlar mantığı ortaya cikti
+- İlk çalışan ayarlar mantığı ortaya çıktı.
 
-## E-005 | GitHub merkezli SemanticUniverse repoya geçiş
+## E-005 | GitHub merkezli SemanticUniverse repo geçişi
 
-Amac:
-- local çalışmayi resmi Git tabanina almak
+Amaç:
+- Yerel çalışmayı resmî Git tabanına almak.
 
 Ne denendi:
-- repo init
-- remote baglama
-- ilk foundation commitleri
-- basit CI workflow
+- Repo init.
+- Remote bağlama.
+- İlk foundation commit'leri.
+- Basit CI iş akışı.
 
 Sonuç:
-- resmi repo aktif hale geldi
+- Resmî repo aktif hâle geldi.
 
-## E-006 | ZEN / Xen üzerinde Ubuntu staging VM denemesi
+## E-006 | ZEN/Xen üzerinde Ubuntu staging VM denemesi
 
-Amac:
-- staging için temiz Ubuntu 24.04 VM acmak
+Amaç:
+- Staging için temiz Ubuntu 24.04 VM açmak.
 
 Ne denendi:
-- yeni VM olusturma
-- public network secimi
-- ISO import
+- Yeni VM oluşturma.
+- Public network seçimi.
+- ISO import.
 
 Sorunlar:
-- bootable device yok
-- ISO repository içinde Ubuntu ISO yok
-- XO import timeout hatasi
-- storage / yer sorunu ihtimali
+- Bootable device yoktu.
+- ISO repository içinde Ubuntu ISO yoktu.
+- XO import timeout hatası görüldü.
+- Storage/yer sorunu ihtimali oluştu.
 
 Sonuç:
-- hypervisor katmaninda ek audit ve duzgun ISO stratejisi gerektigi anlasildi
+- Hypervisor katmanında ek audit ve düzgün ISO stratejisi gerektiği anlaşıldı.
 
 ## E-007 | ZEN Server audit fazı
 
-Amac:
-- mevcut sanal ortamda neyin kritik, neyin test, neyin aday oldugunu anlamak
+Amaç:
+- Mevcut sanal ortamda neyin kritik, neyin test, neyin aday olduğunu anlamak.
 
 Ne denendi:
-- VM listesi sınıflandirildi
-- audit checklist açıldı
+- VM listesi sınıflandırıldı.
+- Audit checklist açıldı.
 
 Sonuç:
-- agresif silme yerine kontrollu audit yaklasimi benimsendi
+- Agresif silme yerine kontrollü audit yaklaşımı benimsendi.
 
 ## E-008 | Ubuntu staging üzerinde Laravel + PostgreSQL kurulum deneyi
 
-Amac:
-- SemanticUniverse için internetten erişilebilir resmi bir staging omurgasi kurmak
+Amaç:
+- SemanticUniverse için internetten erişilebilir resmî bir staging omurgası kurmak.
 
 Ne denendi:
-- Ubuntu sunucu kurulumu
-- SSH/SFTP erisimi
-- `nginx`, `postgresql`, `redis-server`, `php`, `composer`
-- Laravel app kurulumu ve PostgreSQL baglantisi
-- Nginx vhost + DNS ile `staging.semanger.com`
+- Ubuntu sunucu kurulumu.
+- SSH/SFTP erişimi.
+- `nginx`, `postgresql`, `redis-server`, `php`, `composer`.
+- Laravel uygulaması kurulumu ve PostgreSQL bağlantısı.
+- Nginx vhost + DNS ile `staging.semanger.com`.
 
 Sonuç:
-- çalışan staging ortamı ortaya cikti
-- ilk açılan sayfa varsayilan Laravel karsilama ekranı oldu
+- Çalışan staging ortamı ortaya çıktı.
+- İlk açılan sayfa varsayılan Laravel karşılama ekranı oldu.
 
-## E-009 | Local shell'in Laravel Blade görünüme port edilmesi
+## E-009 | Yerel kabuğun Laravel Blade görünümüne taşınması
 
-Amac:
-- daha once `local-platform/index.php` olarak duran SemanticUniverse shell'ini resmi Laravel katmanina almak
+Amaç:
+- Daha önce `local-platform/index.php` olarak duran SemanticUniverse kabuğunu resmî Laravel katmanına almak.
 
 Ne denendi:
-- source shell'den Blade'e donusum
-- session tabanlı GodMode route'lari
-- mevcut stil dosyasinin Laravel public alanina alinmasi
-- route cache temizligi ve route dogrulama
+- Kaynak kabuktan Blade'e dönüşüm.
+- Session tabanlı Tanrı Modu rotaları.
+- Mevcut stil dosyasının Laravel public dizinine alınması.
+- Rota önbelleği temizliği ve rota doğrulama.
 
 Sonuç:
-- local shell artık Laravel içinde calisacak hale getirildi
-- sonraki adım GitHub'a push ve staging'de `git pull`
+- Yerel kabuk artık Laravel içinde çalışacak hâle getirildi.
+- Sonraki adım GitHub'a push ve staging'de `git pull` oldu.
 
 ## E-010 | Tarihçe hostu için CWP + staging otomasyon deneyi
 
-Amac:
-- `history.semanger.com` hostunu journal/timeline katmanina yonlendirmek
+Amaç:
+- `tarihçe.semanger.com` hostunu tarihçe/zaman çizgisi katmanına yönlendirmek.
 
 Ne denendi:
-- CWP kullanıcı panelinde HTTP oturumu acip DNS editor'e otomatik erisim denendi
-- staging sunucuda Posh-SSH ile Nginx vhost yazimi, symlink, reload ve host-header testleri yapıldi
-- staging uygulamasi GitHub'dan cekilip journal route'lari ve izinler senkronize edildi
+- CWP kullanıcı panelinde HTTP oturumu açıp DNS editörüne otomatik erişim.
+- Staging sunucuda Posh-SSH ile Nginx vhost yazımı, symlink, reload ve host başlığı testleri.
+- Staging uygulamasını GitHub'dan çekip tarihçe rotaları ve izinleri senkronize etmek.
 
 Sonuç:
-- CWP DNS editor otomasyonu kararsiz davrandi ve kayıt ekleme tam otomatik tamamlanamadi
-- buna karsilik staging sunucuda history hostu basariyla hazırlandı; host-header testinde `history.semanger.com/semantic-universe/journal` 200 donmeye basladi
+- CWP DNS editör otomasyonu kararsız davrandı ve kayıt ekleme tam otomatik tamamlanamadı.
+- Buna karşılık staging sunucuda tarihçe hostu başarıyla hazırlandı; host başlığı testinde `tarihçe.semanger.com/semantic-universe/tarihçe` 200 dönmeye başladı.
 
-## E-011 | History DNS kaydınin manuel tamamlanmasi
+## E-011 | Tarihçe DNS kaydının manuel tamamlanması
 
-Amac:
-- `history.semanger.com` hostunu staging journal katmanina gercek DNS kaydıyla baglamak
+Amaç:
+- `tarihçe.semanger.com` hostunu staging tarihçe katmanına gerçek DNS kaydıyla bağlamak.
 
 Ne denendi:
-- CWP DNS zone ekranında `history.semanger.com` için `A` kaydı manuel olarak eklendi
-- hedef IP olarak `89.252.182.73` kullanildi
+- CWP DNS zone ekranında `tarihçe.semanger.com` için `A` kaydı manuel olarak eklendi.
+- Hedef IP olarak `89.252.182.73` kullanıldı.
 
 Sonuç:
-- otomasyonla takilan son adım manuel tamamlandi
-- artık dogrulama ve yayilim suresi kontrolu kaldi
+- Otomasyonla takılan son adım manuel tamamlandı.
+- Artık doğrulama ve yayılım süresi kontrolü kaldı.
 
-## History kayıt kimligi deneyi
+## E-012 | Ortak hafıza yazım standardı düzeltme deneyi
 
-- Timeline kayıtlari için gun ici sira temelli SUH-YYYYMMDD-XX kimlik semasi denendi
-- Her kimlik için ayrı markdown detay dosyasi uretilip popup katmanina baglandi
-- Bu yapı daha sonra konuşma parcaciklari, karar baglari ve ekran notlariyla zenginlestirilebilir
+Amaç:
+- Ortak hafıza dosyalarındaki küçük harf, imla ve noktalama bozulmalarını temizlemek.
+
+Ne denendi:
+- Zaman çizgisi, kararlar, tanımlar ve deney içerikleri Türkçe yazım standardına göre yeniden düzenlendi.
+- Detay dosyaları aynı standartla yeniden üretildi.
+- Yazım standardı karar ve tanım katmanlarına işlendi.
+
+Sonuç:
+- Tarihçe görünümündeki metinler daha okunur, tutarlı ve kurumsal bir yazım düzenine kavuştu.

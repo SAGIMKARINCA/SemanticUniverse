@@ -333,7 +333,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         'decisionsHtml' => $markdownToHtml($rawDecisions),
         'definitionsHtml' => $markdownToHtml($rawDefinitions),
         'experimentsHtml' => $markdownToHtml($rawExperiments),
-        'ruleText' => 'Her yaptığın işi timeline.md, decisions.md, definitions.md ve experiments.md dosyalarına yaz.',
+        'ruleText' => 'Her yaptığın işi timeline.md, decisions.md, definitions.md ve experiments.md dosyalarına yaz. Tüm kayıtları Türkçe imla, büyük harf ve noktalama kurallarına uygun tut.',
     ]);
 })->name('semantic-universe.journal');
 

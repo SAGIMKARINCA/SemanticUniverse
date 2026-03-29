@@ -47,7 +47,7 @@
                 <section class="su-journal-lock-card">
                     <span class="su-kicker">Korumalı Alan</span>
                     <h2>Tarihçe Atölyesi Kilitli</h2>
-                    <p>Bu katman timeline, decisions, definitions ve experiments kayıtlarını korur.</p>
+                    <p>Bu katman zaman çizgisi, kararlar, tanımlar ve deneyler kayıtlarını korur.</p>
                     <p class="su-journal-hint">{{ $journalPasswordHint }}</p>
 
                     @if ($passwordError)

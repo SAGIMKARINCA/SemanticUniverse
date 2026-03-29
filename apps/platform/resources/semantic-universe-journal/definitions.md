@@ -1,73 +1,76 @@
-# Semantic Universe Definitions
+# Semantic Universe Tanımlar Kaydı
 
-Bu dosya, bugune kadar kullanıcıdan alinan ana tanımlarin kisa ve islenebilir ozetidir.
+Bu dosya, bugüne kadar kullanıcıdan alınan ana tanımların kısa ve işlenebilir özetini tutar.
 
 ## Semantic Universe
 
 Tanım:
-- tum alt urunleri, kaynakları, karar modellerini ve yazilim projelerini tasiyan ana ust yapı
+- Tüm alt ürünleri, kaynakları, karar modellerini ve yazılım projelerini taşıyan ana üst yapı.
 
 ## DEPE
 
 Tanım:
-- `Digital Enterprise Precess Execution`
-- kullanıcınin gelistirdigi ikinci temel felsefe
-- ayrıntili tanımi daha sonra genisletilecek
+- `Digital Enterprise Precess Execution`.
+- Kullanıcının geliştirdiği ikinci temel felsefedir.
+- Ayrıntılı tanımı daha sonra genişletilecektir.
 
 ## Nesne
 
 Tanım:
-- evrenin iki temel kumesinden biri
+- Evrenin iki temel kümesinden biridir.
 
 ## Olay
 
 Tanım:
-- evrenin iki temel kumesinden biri
-- prosesler/surecler ile aciklanir
+- Evrenin iki temel kümesinden biridir.
+- Prosesler/süreçler ile açıklanır.
 
 ## Kaynak
 
 Tanım:
-- bir nesnenin:
-  - varlık bilgisi
-  - fonksiyon bilgisi
-  - aktivite bilgisi
-  - hedef bilgisi
-birlikte tanımlandiginda nesneden kaynağa geçiş olur
+- Bir nesnenin varlık bilgisi, fonksiyon bilgisi, aktivite bilgisi ve hedef bilgisi birlikte tanımlandığında nesneden kaynağa geçiş gerçekleşir.
 
-## Kaynak Sınıfları
+## Kaynak sınıfları
 
-- insan
-- taşınır
-- taşınmaz
-- zaman
+- İnsan.
+- Taşınır.
+- Taşınmaz.
+- Zaman.
 
-## Kaynak Katmanlari
+## Kaynak katmanları
 
-- temel
-- türe
-- türetilmiş
-- fonksiyonel
+- Temel.
+- Türe.
+- Türetilmiş.
+- Fonksiyonel.
 
 ## Proses
 
 Tanım:
-- olay evreninin aciklanma bicimi
-- yalniz sonuca değil, enerji/eylem akisina da dayanan surec mantığı
+- Olay evreninin açıklanma biçimidir.
+- Yalnız sonuca değil, enerjiye, eyleme ve akışa dayanan süreç mantığıdır.
 
-## Proses Sınıfları
+## Proses sınıfları
 
-- varlık ve yönetim prosesi
-- ana iş prosesi
-- destek hizmet prosesi
-- ölçme değerleme ve gelişme prosesi
+- Varlık ve yönetim prosesi.
+- Ana iş prosesi.
+- Destek hizmet prosesi.
+- Ölçme, değerlendirme ve gelişme prosesi.
 
-## God Mode
-
-Tanım:
-- super admin ve kurucu yönetim alanini gösteren shell modu
-
-## System Ana Yuklenicisi
+## Tanrı Modu
 
 Tanım:
-- Semantic Universe'un Laravel platform zemini üzerindeki ilk teknik rolu
+- Süper admin ve kurucu yönetim alanını gösteren kabuk modudur.
+
+## Sistem Ana Yükleyicisi
+
+Tanım:
+- Semantic Universe'un Laravel platform zemini üzerindeki ilk teknik rolüdür.
+
+## Ortak hafıza yazım standardı
+
+Tanım:
+- Ortak hafıza kayıtlarında kullanıcıya görünen bütün metinler Türkçe karakterlerle, büyük/küçük harf kurallarına uygun ve doğru noktalamayla yazılır.
+- Maddeler ve cümleler büyük harfle başlar; anlamına uygun biçimde nokta, iki nokta veya soru işareti ile biter.
+- Kullanıcıya görünen bütün dosyalar UTF-8 olarak saklanır; bozuk karakter içeren hiçbir metin yayına alınmaz.
+- Kullanıcıya görünen teknik ifadelerde zorunlu olmadıkça Türkçe karşılığı tercih edilir.

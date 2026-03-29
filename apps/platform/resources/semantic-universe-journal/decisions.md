@@ -1,109 +1,121 @@
-# Semantic Universe Decisions
+# Semantic Universe Kararlar Kaydı
 
-Bu dosya, bugune kadar alinan ana kararlarin kisa kaydıdir.
+Bu dosya, bugüne kadar alınan ana kararların kısa kaydını tutar.
 
-## D-001 | Semantic Universe ana ust sistemdir
-
-Karar:
-- Semantic Universe, tekil bir uygulama değil; tum alt urunleri ve sistemleri tasiyan ana ust sistemdir.
-
-Neden:
-- kullanıcınin butun urunlerini ve standartlarini tek cati altında toplamak için
-
-## D-002 | Laravel zemin, Semantic Universe ust sistem
+## D-001 | Semantic Universe ana üst sistemdir
 
 Karar:
-- Laravel bir framework/platform zemini olarak ele alinacak
-- Semantic Universe bu zemin üzerinde kurulan `System Ana Yuklenicisi` olacak
+- Semantic Universe, tekil bir uygulama değildir; tüm alt ürünleri ve sistemleri taşıyan ana üst sistemdir.
 
 Neden:
-- framework ile ust sistemi kavramsal olarak karistirmamak
+- Kullanıcının bütün ürünlerini ve standartlarını tek çatı altında toplamak için.
 
-## D-003 | Yazilim yasam dongusunda Spiral model kullanilacak
+## D-002 | Laravel zemin, Semantic Universe üst sistem
 
 Karar:
-- gelisim, test ve yayin akışında Spiral model esas alinacak
+- Laravel, bir çerçeve/platform zemini olarak ele alınacaktır.
+- Semantic Universe, bu zemin üzerinde kurulan `Sistem Ana Yükleyicisi` olacaktır.
 
 Neden:
-- büyük, riskli ve felsefi derinligi olan bu sistem dogrusal ilerlemiyor
+- Çerçeve ile üst sistemi kavramsal olarak karıştırmamak için.
 
-## D-004 | Once staging, sonra production
+## D-003 | Yazılım yaşam döngüsünde Spiral model kullanılacak
 
 Karar:
-- local -> GitHub -> staging -> production sirasi izlenecek
+- Gelişim, test ve yayın akışında Spiral model esas alınacaktır.
 
 Neden:
-- risk azaltmak
-- AI araclariyla paylasimli test yapmak
+- Büyük, riskli ve felsefî derinliği olan bu sistem doğrusal ilerlemiyor.
 
-## D-005 | PostgreSQL ana veri tabani yonu olacak
+## D-004 | Önce staging, sonra production
 
 Karar:
-- Semantic Universe için ana veri tabani yonu PostgreSQL
+- Yerel -> GitHub -> staging -> production sırası izlenecektir.
 
 Neden:
-- jsonb
-- event/state/rule metadata
-- yari-yapısal veri tasima kolayligi
+- Riski azaltmak için.
+- Yapay zekâ araçlarıyla paylaşımlı test yapmak için.
 
-## D-006 | God Mode ayrı, public alan ayrı
+## D-005 | PostgreSQL ana veri tabanı yönü olacak
 
 Karar:
-- God Mode super admin çalışma alanlari public shell'den ayrılacak
+- Semantic Universe için ana veri tabanı yönü PostgreSQL olacaktır.
 
 Neden:
-- super admin operasyonlari ile public deneyimi karistirmamak
+- JSONB desteği sağlar.
+- Event/state/rule metadata yapıları için uygundur.
+- Yarı-yapısal veri taşıma kolaylığı sunar.
 
-## D-007 | Once kaynaklar var edilecek
+## D-006 | Tanrı Modu ayrı, genel alan ayrı
 
 Karar:
-- evreni kurmanin ilk pratik adımi `Kaynaklar`
+- Tanrı Modu süper admin çalışma alanları genel kabuktan ayrılacaktır.
 
 Neden:
-- kullanıcınin semantik felsefesine gore evren once kaynakları var ederek kurulur
+- Süper admin operasyonları ile genel kullanıcı deneyimini karıştırmamak için.
 
-## D-008 | Ortak hafıza katmani zorunlu
+## D-007 | Önce kaynaklar var edilecek
 
 Karar:
-- tum isler `timeline`, `decisions`, `definitions`, `experiments` katmanlarina yazilacak
+- Evreni kurmanın ilk pratik adımı `Kaynaklar` katmanıdır.
 
 Neden:
-- yapılanlar kaybolmasin
-- documentary/timeline web katmani sonradan uretilebilsin
+- Kullanıcının semantik felsefesine göre evren önce kaynakları var ederek kurulur.
 
-## D-009 | Staging alan adi `staging.semanger.com` olacak
+## D-008 | Ortak hafıza katmanı zorunlu
 
 Karar:
-- internetten erişilebilir ilk resmi test ortamı `staging.semanger.com` altında calisacak
+- Tüm işler `zaman çizgisi.md`, `decisions.md`, `definitions.md` ve `experiments.md` dosyalarına yazılacaktır.
 
 Neden:
-- production/public alani ile gelistirme ve test alanini ayirmak
+- Yapılanlar kaybolmasın diye.
+- Belgesel/zaman çizgisi web katmanı sonradan üretilebilsin diye.
 
-## D-010 | SemanticUniverse shell'i resmi olarak Laravel içine tasinacak
+## D-009 | Staging alan adı `staging.semanger.com` olacak
 
 Karar:
-- `local-platform` artık gecici prototip kaynak olarak kalacak
-- resmi çalışan shell Laravel app içindeki route/view/public asset yapısında yurutulecek
+- İnternetten erişilebilir ilk resmî test ortamı `staging.semanger.com` altında çalışacaktır.
 
 Neden:
-- GitHub, staging ve ileride production hattinda ayni uygulama omurgasini kullanmak
+- Production/genel alan ile geliştirme ve test alanını ayırmak için.
 
-## D-011 | Journal web katmani şifreli gosterilecek
+## D-010 | SemanticUniverse kabuğu resmî olarak Laravel içine taşınacak
 
 Karar:
-- timeline, decisions, definitions ve experiments kayıtlari staging üzerinde şifre korumali bir journal sayfasında gosterilecek
+- `local-platform` artık geçici prototip kaynağı olarak kalacaktır.
+- Resmî çalışan kabuk, Laravel uygulaması içindeki rota/görünüm/public dizin yapısında yürütülecektir.
 
 Neden:
-- ortak hafızayı hem korunur hem de görünür yapmak
-- sonradan belgesel/timeline sunum katmanina zemin hazırlamak
+- GitHub, staging ve ileride production hattında aynı uygulama omurgasını kullanmak için.
 
-## D-012 | History ayrı hosttan sunulacak
+## D-011 | Tarihçe web katmanı şifreli gösterilecek
 
 Karar:
-- journal/history katmani `history.semanger.com` üzerinden ayrı bir host olarak sunulacak
+- Zaman çizgisi, kararlar, tanımlar ve deney kayıtları staging üzerinde şifre korumalı bir tarihçe sayfasında gösterilecektir.
 
 Neden:
-- staging atölyeyi çalışma alani olarak korurken tarihçe ve belgesel katmanina ayrı bir kimlik vermek
+- Ortak hafızayı hem korunur hem de görünür kılmak için.
+- Sonradan belgesel/zaman çizgisi sunum katmanına zemin hazırlamak için.
+
+## D-012 | Tarihçe ayrı hosttan sunulacak
+
+Karar:
+- Tarihçe/tarihçe katmanı `tarihçe.semanger.com` üzerinden ayrı bir host olarak sunulacaktır.
+
+Neden:
+- Staging atölyeyi çalışma alanı olarak korurken tarihçe ve belgesel katmanına ayrı bir kimlik vermek için.
 
 Sonuç:
-- staging sunucuda history hostu için ayrı Nginx vhost'u hazırlandı; kalan is DNS A kaydınin `89.252.182.73`e yonlenmesi
+- Staging sunucuda tarihçe hostu için ayrı Nginx vhost'u hazırlanmıştır; DNS kaydı da `89.252.182.73` adresine yönlendirilmiştir.
+
+## D-013 | Ortak hafıza yazım standardı zorunlu
+
+Karar:
+- Ortak hafıza kayıtlarında kullanıcıya görünen tüm metinler Türkçe karakterlerle, büyük/küçük harf kurallarına uygun ve doğru noktalamayla yazılacaktır.
+- Her cümle büyük harfle başlayacak ve uygun bir noktalama işaretiyle bitecektir.
+- Kullanıcıya görünen bütün dosyalar UTF-8 olarak saklanacak; bozuk karakter içeren hiçbir metin yayına alınmayacaktır.
+
+Neden:
+- Tarihçe, karar ve deney kayıtlarının okunabilirliğini korumak için.
+- Aynı tür yazım ve imla hatalarının tekrar etmesini önlemek için.
+- Kullanıcıya görünen teknik ifadelerde zorunlu olmadıkça Türkçe karşılığı tercih edilecektir.
