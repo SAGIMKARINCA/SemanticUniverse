@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 return [
     'semantic-universe-determinants-v1-1' => [
@@ -156,3 +156,4 @@ return [
         'status_note' => null,
     ],
 ];
+

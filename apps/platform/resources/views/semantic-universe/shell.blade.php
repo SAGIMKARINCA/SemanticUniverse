@@ -39,7 +39,7 @@
                                     <button type="button" class="su-menu-item" data-top-menu="ayarlar">Ayarlar</button>
                                     <button type="button" class="su-menu-item" data-top-menu="governance">Yönetişim</button>
                                     <button type="button" class="su-menu-item su-menu-item-highlight" data-top-menu="evren">Evren</button>
-                                    <button type="button" class="su-menu-item" data-top-menu="resources">Kaynaklar</button>
+                                    <a class="su-menu-item su-menu-item-link" href="{{ route('semantic-universe.sources') }}">Kaynaklar</a>
                                     <button type="button" class="su-menu-item" data-top-menu="projects">Projeler</button>
                                     <button type="button" class="su-menu-item" data-top-menu="applications">Uygulamalar</button>
                                 </div>
@@ -49,10 +49,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-xl-4">
+                        <div class="col-12 col-xl-5">
                             <div class="su-topbar-right">
                                 <div class="su-search">{{ $isGodMode ? 'Genel arama' : 'Boş kabuk görünümü' }}</div>
                                 <div class="su-topbar-actions" aria-label="Tanrı Modu üst işlemleri">
+                                    <a class="su-chip su-chip-link" href="{{ route('semantic-universe.sources') }}">Kaynaklar</a>
                                     <a class="su-chip su-chip-link" href="{{ route('semantic-universe.journal') }}">Tarihçe</a>
                                     @if ($isGodMode)
                                         <a class="su-chip su-chip-link" href="{{ route('semantic-universe.logout') }}">Çıkış</a>
@@ -396,7 +397,7 @@
         <div class="offcanvas-body">
             <section class="su-settings-section">
                 <div class="su-settings-title">Tema Standardı</div>
-                <p class="su-settings-copy">Tum shell icin kullanilacak gorunumu sec. Bu tercih local olarak saklanir.</p>
+                <p class="su-settings-copy">Tüm kabuk için kullanılacak görünümü seç. Bu tercih yerel olarak saklanır.</p>
                 <label class="su-pref-label" for="themePreset">Aktif Tema</label>
                 <select id="themePreset" class="su-pref-select" data-theme-select>
                     <option value="theme-universe">Universe Classic</option>
@@ -406,7 +407,7 @@
             </section>
 
             <section class="su-settings-section">
-                <div class="su-settings-title">Frame Davranislari</div>
+                <div class="su-settings-title">Çerçeve Davranışları</div>
                 <p class="su-settings-copy">Her çerçeve için görünürlük ve kaydırma davranışını ayrı ayrı seç.</p>
 
                 <div class="su-settings-grid">
@@ -467,7 +468,7 @@
             </section>
 
             <section class="su-settings-section">
-                <div class="su-settings-title">Hazır Hazır Ayarlar</div>
+                <div class="su-settings-title">Hazır Yerleşimler</div>
                 <div class="su-preset-list">
                     <button type="button" class="su-preset-button" data-preset="desktop">Masaüstü Çalışma</button>
                     <button type="button" class="su-preset-button" data-preset="focus">Odaklanmış Orta Alan</button>
@@ -498,7 +499,7 @@
 
             const defaults = {
                 theme: 'theme-universe',
-                topMenü: 'system',
+                topMenu: 'system',
                 frames: {
                     topbar: 'fixed',
                     ribbon: 'fixed',
@@ -516,7 +517,7 @@
                     const parsed = JSON.parse(raw);
                     return {
                         theme: parsed.theme || defaults.theme,
-                        topMenü: parsed.topMenü || defaults.topMenü,
+                        topMenu: parsed.topMenu || defaults.topMenu,
                         frames: Object.assign({}, defaults.frames, parsed.frames || {})
                     };
                 } catch (error) {
@@ -554,16 +555,16 @@
 
             function applyAll(settings) {
                 applyTheme(settings.theme);
-                applyTopMenü(settings.topMenü);
+                applyTopMenu(settings.topMenu);
                 Object.entries(settings.frames).forEach(function ([name, mode]) {
                     applyFrameMode(name, mode);
                 });
                 saveSettings(settings);
             }
 
-            function applyTopMenü(menuName) {
+            function applyTopMenu(menuName) {
                 document.querySelectorAll('[data-top-menu]').forEach(function (button) {
-                    button.classList.toggle('su-menu-item-active', button.dataset.topMenü === menuName);
+                    button.classList.toggle('su-menu-item-active', button.dataset.topMenu === menuName);
                     button.classList.toggle('su-menu-item-settings-active', false);
                 });
 
@@ -589,11 +590,13 @@
             }
 
             if (openSettingsButtons.length) {
-                openSettingsButtons.forEach(function (openSettingsButton) { openSettingsButton.addEventListener('click', function () {
-                    const panel = document.getElementById('suSettingsPanel');
-                    if (!panel) return;
-                    const offcanvas = bootstrap.Offcanvas.getOrCreateInstance(panel);
-                    offcanvas.show();
+                openSettingsButtons.forEach(function (openSettingsButton) {
+                    openSettingsButton.addEventListener('click', function () {
+                        const panel = document.getElementById('suSettingsPanel');
+                        if (!panel) return;
+                        const offcanvas = bootstrap.Offcanvas.getOrCreateInstance(panel);
+                        offcanvas.show();
+                    });
                 });
             }
 
@@ -606,7 +609,7 @@
 
             document.querySelectorAll('[data-top-menu]').forEach(function (button) {
                 button.addEventListener('click', function () {
-                    settings.topMenü = this.dataset.topMenü;
+                    settings.topMenu = this.dataset.topMenu;
                     applyAll(settings);
                 });
             });
@@ -625,7 +628,7 @@
                     if (preset === 'desktop') {
                         settings = {
                             theme: settings.theme,
-                            topMenü: settings.topMenü || 'system',
+                            topMenu: settings.topMenu || 'system',
                             frames: {
                                 topbar: 'fixed',
                                 ribbon: 'fixed',
@@ -640,7 +643,7 @@
                     if (preset === 'focus') {
                         settings = {
                             theme: settings.theme,
-                            topMenü: settings.topMenü || 'system',
+                            topMenu: settings.topMenu || 'system',
                             frames: {
                                 topbar: 'fixed',
                                 ribbon: 'fixed',
@@ -655,7 +658,7 @@
                     if (preset === 'review') {
                         settings = {
                             theme: settings.theme,
-                            topMenü: settings.topMenü || 'system',
+                            topMenu: settings.topMenu || 'system',
                             frames: {
                                 topbar: 'fixed',
                                 ribbon: 'scroll',
@@ -674,6 +677,7 @@
     </script>
 </body>
 </html>
+
 
 
 

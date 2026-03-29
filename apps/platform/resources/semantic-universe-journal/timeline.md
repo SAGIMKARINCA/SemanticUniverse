@@ -399,3 +399,20 @@ Neden yaptık:
 
 Sonuç:
 - Journal içinde indirilebilir kaynak doküman kataloğu oluştu.
+
+## 2026-03-29 | Kaynaklar sayfası kart bazlı arşiv görünümüne dönüştürüldü
+
+Ne yaptık:
+- Journal içindeki kaynak özet alanı ayrıştırılmış kart yapısına dönüştürüldü.
+- Ayrı bir `Kaynaklar` sayfası oluşturuldu.
+- Bu sayfaya kategori filtresi, durum filtresi ve arama alanı eklendi.
+- Kaynak kartlarının yerleşimi, başlıkları ve açıklamaları bloklar halinde yeniden düzenlendi.
+
+Neden yaptık:
+- Hangi dokümanın hangi blokta yer aldığını daha açık göstermek için.
+- Kaynak arşivini tek bakışta okunur ve gezilebilir hale getirmek için.
+- History/journal katmanındaki kaynakları ayrı bir araştırma yüzeyi olarak sunmak için.
+
+Sonuç:
+- Kaynak dokümanlar artık ayrıştırılmış kartlar halinde görülebiliyor.
+- Kaynak arşivi için ayrı sayfa, arama ve filtreleme desteği oluştu.

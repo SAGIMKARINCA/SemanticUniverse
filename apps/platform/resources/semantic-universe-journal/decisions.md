@@ -150,3 +150,14 @@ Karar:
 Neden:
 - Gelecek planlama ve ürün kararlarında kullanılan kurucu kaynakların kaybolmamasını sağlamak için.
 - Journal katmanını metin notlarının ötesinde, açılabilir ve indirilebilir bir bilgi arşivine dönüştürmek için.
+
+## D-017 | Görünür metinler yayın öncesi Türkçe ve UTF-8 kalite kapısından geçer
+
+Karar:
+- Kullanıcıya görünen tüm sayfa, kart, buton, açılır pencere ve detail metinleri yayına alınmadan önce Türkçe yazım, noktalama ve UTF-8 görünüm kontrolünden geçirilir.
+- Bozuk karakter, küçük harfle başlayan madde, eksik noktalama veya karışık Türkçe-İngilizce etiket tespit edilirse yayın öncesi düzeltilir.
+- Yeni eklenen kaynak, tarihçe ve detail sayfaları da aynı kalite kapısına tabidir.
+
+Neden:
+- Görünür arayüzü kurumsal, okunur ve güvenilir tutmak için.
+- Daha önce yaşanan encoding ve yazım bozulmalarının tekrar yayına çıkmasını önlemek için.

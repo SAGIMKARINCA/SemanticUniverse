@@ -3,9 +3,45 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 Route::get('/', fn () => redirect('/semantic-universe'));
 Route::get('/SemanticUniverse', fn () => redirect('/semantic-universe'));
+
+$buildJournalSourceCards = function (): array {
+    $sourcesManifestPath = resource_path('semantic-universe-journal/sources.php');
+    $journalSources = File::exists($sourcesManifestPath) ? require $sourcesManifestPath : [];
+    $journalSourceCards = [];
+
+    foreach ($journalSources as $sourceId => $sourceMeta) {
+        $sourcePath = $sourceMeta['path'] ?? null;
+        $available = is_string($sourcePath) && $sourcePath !== '' && File::exists($sourcePath);
+        $category = $sourceMeta['category'] ?? 'Kaynak Doküman';
+        $roles = $sourceMeta['roles'] ?? [];
+        $title = $sourceMeta['title'] ?? $sourceId;
+        $summary = $sourceMeta['summary'] ?? '';
+        $statusKey = $available ? 'available' : 'pending';
+
+        $journalSourceCards[] = [
+            'id' => $sourceId,
+            'title' => $title,
+            'category' => $category,
+            'category_key' => Str::slug($category),
+            'summary' => $summary,
+            'roles' => $roles,
+            'original_path' => $sourceMeta['original_path'] ?? '',
+            'available' => $available,
+            'download_url' => $available ? route('semantic-universe.journal.source', ['source' => $sourceId]) : null,
+            'status_note' => $sourceMeta['status_note'] ?? null,
+            'status_key' => $statusKey,
+            'status_label' => $available ? 'İndirilebilir' : 'Beklemede',
+            'file_label' => strtoupper(pathinfo($title, PATHINFO_EXTENSION) ?: 'DOSYA'),
+            'search_text' => mb_strtolower(trim($title . ' ' . $summary . ' ' . implode(' ', $roles) . ' ' . $category . ' ' . ($sourceMeta['original_path'] ?? ''))),
+        ];
+    }
+
+    return $journalSourceCards;
+};
 
 Route::get('/semantic-universe', function (Request $request) {
     $isGodMode = $request->session()->get('semantic_universe_mode') === 'godmode';
@@ -33,13 +69,11 @@ Route::get('/semantic-universe/logout', function (Request $request) {
     return redirect()->route('semantic-universe.home');
 })->name('semantic-universe.logout');
 
-Route::get('/semantic-universe/journal', function (Request $request) {
+Route::get('/semantic-universe/journal', function (Request $request) use ($buildJournalSourceCards) {
     $isUnlocked = $request->session()->get('semantic_universe_journal_unlocked', false);
     $passwordError = $request->session()->pull('semantic_universe_journal_error');
     $journalPath = resource_path('semantic-universe-journal');
     $detailPath = $journalPath . DIRECTORY_SEPARATOR . 'details';
-    $sourcesManifestPath = $journalPath . DIRECTORY_SEPARATOR . 'sources.php';
-    $journalSources = File::exists($sourcesManifestPath) ? require $sourcesManifestPath : [];
 
     $timelineCategories = [
         'all' => 'Tüm Akış',
@@ -341,22 +375,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
 
     $featuredEntries = array_slice(array_reverse($timelineEntries), 0, 3);
 
-    $journalSourceCards = [];
-    foreach ($journalSources as $sourceId => $sourceMeta) {
-        $sourcePath = $sourceMeta['path'] ?? null;
-        $available = is_string($sourcePath) && $sourcePath !== '' && File::exists($sourcePath);
-        $journalSourceCards[] = [
-            'id' => $sourceId,
-            'title' => $sourceMeta['title'] ?? $sourceId,
-            'category' => $sourceMeta['category'] ?? 'Kaynak Doküman',
-            'summary' => $sourceMeta['summary'] ?? '',
-            'roles' => $sourceMeta['roles'] ?? [],
-            'original_path' => $sourceMeta['original_path'] ?? '',
-            'available' => $available,
-            'download_url' => $available ? route('semantic-universe.journal.source', ['source' => $sourceId]) : null,
-            'status_note' => $sourceMeta['status_note'] ?? null,
-        ];
-    }
+    $journalSourceCards = $buildJournalSourceCards();
     return view('semantic-universe.journal', [
         'isUnlocked' => $isUnlocked,
         'passwordError' => $passwordError,
@@ -367,12 +386,37 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         'timelineYears' => $timelineYears,
         'featuredEntries' => $featuredEntries,
         'journalSources' => $journalSourceCards,
+        'featuredSources' => array_slice($journalSourceCards, 0, 4),
         'decisionsHtml' => $markdownToHtml($rawDecisions),
         'definitionsHtml' => $markdownToHtml($rawDefinitions),
         'experimentsHtml' => $markdownToHtml($rawExperiments),
         'ruleText' => 'Her yaptığın işi timeline.md, decisions.md, definitions.md ve experiments.md dosyalarına yaz. Kullanıcının verdiği dosya, eğitici metin ve tanımlayıcı kaynakları ilgili detay kayıtlarında İlgili Kaynaklar başlığı altında zorunlu olarak işle. Sunucu arşivine yüklenen kaynakları detail içinde tıklanabilir bağlantı ile göster. Tüm kayıtları Türkçe imla, büyük harf ve noktalama kurallarına uygun tut.',
     ]);
 })->name('semantic-universe.journal');
+
+Route::get('/semantic-universe/kaynaklar', function (Request $request) use ($buildJournalSourceCards) {
+    if (! $request->session()->get('semantic_universe_journal_unlocked', false)) {
+        return redirect()->route('semantic-universe.journal');
+    }
+
+    $sources = $buildJournalSourceCards();
+    $categoryLabels = ['all' => 'Tümü'];
+    $categoryCounts = ['all' => count($sources)];
+
+    foreach ($sources as $source) {
+        $key = $source['category_key'];
+        $categoryLabels[$key] = $source['category'];
+        $categoryCounts[$key] = ($categoryCounts[$key] ?? 0) + 1;
+    }
+
+    return view('semantic-universe.sources', [
+        'sources' => $sources,
+        'categoryLabels' => $categoryLabels,
+        'categoryCounts' => $categoryCounts,
+        'availableCount' => count(array_filter($sources, fn (array $source) => $source['status_key'] === 'available')),
+        'pendingCount' => count(array_filter($sources, fn (array $source) => $source['status_key'] === 'pending')),
+    ]);
+})->name('semantic-universe.sources');
 
 Route::get('/semantic-universe/journal/source/{source}', function (Request $request, string $source) {
     if (! $request->session()->get('semantic_universe_journal_unlocked', false)) {
@@ -415,3 +459,4 @@ Route::post('/semantic-universe/journal/lock', function (Request $request) {
 
     return redirect()->route('semantic-universe.journal');
 })->name('semantic-universe.journal.lock');
+

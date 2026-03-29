@@ -221,21 +221,20 @@
                     </section>
 
                     <section class="su-journal-side-stack">
-                        <section class="su-journal-panel">
-                            <div class="su-form-block-head">
-                                <h3>Kaynak Dokümanlar</h3>
-                                <p>İlkeler, değerler, stratejik yöntemler ve yol haritaları için kullanılacak arşiv kaynakları.</p>
+                        <section class="su-journal-panel su-journal-sources-panel">
+                            <div class="su-journal-panel-head">
+                                <div class="su-form-block-head">
+                                    <h3>Kaynak Dokümanlar</h3>
+                                    <p>Kurucu dokümanları ve yöntem setlerini buradan izler, ayrıntılı arşive kaynaklar sayfasından geçeriz.</p>
+                                </div>
+                                <a class="su-journal-panel-link" href="{{ route('semantic-universe.sources') }}">Kaynaklar Sayfası</a>
                             </div>
-                            <div class="su-source-library">
-                                @foreach ($journalSources as $source)
-                                    <article class="su-source-card">
+                            <div class="su-source-library su-source-library-compact">
+                                @foreach ($featuredSources as $source)
+                                    <article class="su-source-card su-source-card-compact su-source-card-status-{{ $source['status_key'] }}">
                                         <div class="su-source-card-top">
                                             <span class="su-source-category">{{ $source['category'] }}</span>
-                                            @if ($source['available'] && $source['download_url'])
-                                                <a class="su-source-link" href="{{ $source['download_url'] }}" target="_blank" rel="noopener">İndir</a>
-                                            @else
-                                                <span class="su-source-status">Beklemede</span>
-                                            @endif
+                                            <span class="su-source-file-pill">{{ $source['file_label'] }}</span>
                                         </div>
                                         <h4>{{ $source['title'] }}</h4>
                                         <p>{{ $source['summary'] }}</p>
@@ -246,9 +245,13 @@
                                                 @endforeach
                                             </ul>
                                         @endif
-                                        <div class="su-source-meta">
-                                            <span>Kaynak yolu</span>
-                                            <code>{{ $source['original_path'] }}</code>
+                                        <div class="su-source-card-actions">
+                                            @if ($source['available'] && $source['download_url'])
+                                                <a class="su-source-link" href="{{ $source['download_url'] }}" target="_blank" rel="noopener">İndir</a>
+                                            @else
+                                                <span class="su-source-status">Beklemede</span>
+                                            @endif
+                                            <a class="su-source-secondary-link" href="{{ route('semantic-universe.sources') }}">Arşivde Aç</a>
                                         </div>
                                         @if (! empty($source['status_note']))
                                             <small class="su-source-note">{{ $source['status_note'] }}</small>
@@ -405,3 +408,4 @@
     @endif
 </body>
 </html>
+
