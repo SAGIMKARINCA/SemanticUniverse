@@ -3,36 +3,36 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SemanticUniverse Tarihce</title>
+    <title>SemanticUniverse TarihÃƒÂ§e</title>
     <link rel="stylesheet" href="{{ asset('semantic-universe.css') }}">
 </head>
 <body class="su-page-journal">
     <div class="su-journal-shell su-journal-documentary">
         <header class="su-journal-header su-journal-hero">
             <div class="su-journal-hero-copy">
-                <span class="su-kicker">SemanticUniverse Tarihcesi</span>
-                <h1>Evrenin Dogus Belgeseli</h1>
+                <span class="su-kicker">SemanticUniverse TarihÃƒÂ§esi</span>
+                <h1>Evrenin DoÃ„Å¸uÃ…Å¸ Belgeseli</h1>
                 <p>
-                    Bu alan sadece kayit tutmaz. Burada SemanticUniverse atolyemizin tarihini, karar izlerini,
-                    tanimlarini ve deneylerini zaman boyunca izleriz.
+                    Bu alan sadece kayÃ„Â±t tutmaz. Burada SemanticUniverse atolyemizin tarihini, karar izlerini,
+                    tanÄ±mlarÄ±nÄ± ve deneylerini zaman boyunca izleriz.
                 </p>
                 <div class="su-journal-hero-stats">
                     <div class="su-journal-stat">
                         <span class="su-journal-stat-value">{{ count($timelineEntries) }}</span>
-                        <span class="su-journal-stat-label">Zaman cizgisi kaydi</span>
+                        <span class="su-journal-stat-label">Zaman ÃƒÂ§izgisi kaydÃ„Â±</span>
                     </div>
                     <div class="su-journal-stat">
                         <span class="su-journal-stat-value">{{ count($timelineEntries) }}</span>
-                        <span class="su-journal-stat-label">Kayit kimligi</span>
+                        <span class="su-journal-stat-label">KayÃ„Â±t kimliÃ„Å¸i</span>
                     </div>
                     <div class="su-journal-stat">
-                        <span class="su-journal-stat-value">Canli</span>
-                        <span class="su-journal-stat-label">Atolye durumu</span>
+                        <span class="su-journal-stat-value">CanlÃ„Â±</span>
+                        <span class="su-journal-stat-label">AtÃƒÂ¶lye durumu</span>
                     </div>
                 </div>
             </div>
             <div class="su-journal-header-actions">
-                <a class="su-chip su-chip-link" href="{{ route('semantic-universe.home') }}">Atolyeye don</a>
+                <a class="su-chip su-chip-link" href="{{ route('semantic-universe.home') }}">AtÃƒÂ¶lyeye dÃƒÂ¶n</a>
                 @if ($isUnlocked)
                     <form method="POST" action="{{ route('semantic-universe.journal.lock') }}">
                         @csrf
@@ -45,9 +45,9 @@
         @if (! $isUnlocked)
             <main class="su-journal-lock">
                 <section class="su-journal-lock-card">
-                    <span class="su-kicker">Korumali Alan</span>
-                    <h2>Tarihce Atolyesi Kilitli</h2>
-                    <p>Bu katman zaman cizgisi, kararlar, tanimlar ve deney kayitlarini korur.</p>
+                    <span class="su-kicker">KorumalÃ„Â± Alan</span>
+                    <h2>TarihÃƒÂ§e AtÃƒÂ¶lyesi Kilitli</h2>
+                    <p>Bu katman zaman ÃƒÂ§izgisi, kararlar, tanÃ„Â±mlar ve deney kayÃ„Â±tlarÃ„Â±nÃ„Â± korur.</p>
                     <p class="su-journal-hint">{{ $journalPasswordHint }}</p>
 
                     @if ($passwordError)
@@ -57,41 +57,41 @@
                     <form method="POST" action="{{ route('semantic-universe.journal.unlock') }}" class="su-journal-form">
                         @csrf
                         <label class="su-field">
-                            <span>Tarihce Sifresi</span>
+                            <span>TarihÃƒÂ§e Ã…Âifresi</span>
                             <input type="password" name="password" autocomplete="current-password" required>
                         </label>
-                        <button type="submit" class="su-btn su-btn-primary">Tarihce Katmanini Ac</button>
+                        <button type="submit" class="su-btn su-btn-primary">TarihÃƒÂ§e KatmanÃ„Â±nÃ„Â± AÃƒÂ§</button>
                     </form>
                 </section>
             </main>
         @else
             <main class="su-journal-main">
                 <section class="su-journal-rule su-journal-rule-banner">
-                    <span class="su-kicker">Calisma Kurali</span>
+                    <span class="su-kicker">Ãƒâ€¡alÃ„Â±Ã…Å¸ma KuralÃ„Â±</span>
                     <p>{{ $ruleText }}</p>
                 </section>
 
                 <section class="su-journal-storyboard">
                     <article class="su-journal-story-card">
                         <span class="su-kicker">Perde I</span>
-                        <h3>Toprak ve Atolye</h3>
+                        <h3>Toprak ve AtÃƒÂ¶lye</h3>
                         <p>
-                            Yerel prototiplerden canli staging ortamina gecis, SemanticUniverse icin ilk gercek
+                            Yerel prototiplerden canlÃ„Â± staging ortamÃ„Â±na geÃƒÂ§iÃ…Å¸, SemanticUniverse icin ilk gercek
                             yaratici atolye zeminini kurdu.
                         </p>
                     </article>
                     <article class="su-journal-story-card">
                         <span class="su-kicker">Perde II</span>
-                        <h3>Kavram ve Cekirdek</h3>
+                        <h3>Kavram ve Ãƒâ€¡ekirdek</h3>
                         <p>
-                            Kaynak, nesne, olay, proses ve semantik ayrimlar ortak hafiza katmanina aktarildi.
+                            Kaynak, nesne, olay, proses ve semantik ayrÃ„Â±mlar ortak hafÃ„Â±za katmanÃ„Â±na aktarÃ„Â±ldÃ„Â±.
                         </p>
                     </article>
                     <article class="su-journal-story-card">
                         <span class="su-kicker">Perde III</span>
-                        <h3>Canli Belgesel</h3>
+                        <h3>CanlÃ„Â± Belgesel</h3>
                         <p>
-                            Zaman cizgisi ve karar izi, tarihce hostu uzerinden bagimsiz bir anlatim katmanina donusuyor.
+                            Zaman ÃƒÂ§izgisi ve karar izi, tarihÃƒÂ§e hostu ÃƒÂ¼zerinden baÃ„Å¸Ã„Â±msÃ„Â±z bir anlatÃ„Â±m katmanÃ„Â±na dÃƒÂ¶nÃƒÂ¼Ã…Å¸ÃƒÂ¼yor.
                         </p>
                     </article>
                 </section>
@@ -99,8 +99,8 @@
                 <section class="su-journal-nav-band">
                     <div class="su-journal-nav-head">
                         <div>
-                            <span class="su-kicker">Zaman cizgisi Gezintisi</span>
-                            <h3>Akisi kategoriye gore gez</h3>
+                            <span class="su-kicker">Zaman ÃƒÂ§izgisi Gezintisi</span>
+                            <h3>AkÃ„Â±Ã…Å¸Ã„Â± kategoriye gÃƒÂ¶re gez</h3>
                         </div>
                         <div class="su-journal-filter-pills">
                             @foreach ($timelineCategories as $key => $label)
@@ -119,13 +119,13 @@
                     <div class="su-journal-toolbar">
                         <label class="su-journal-toolbar-field">
                             <span>Arama</span>
-                            <input type="search" class="su-journal-search-input" placeholder="Kayitlarda ara..." data-search>
+                            <input type="search" class="su-journal-search-input" placeholder="KayÃ„Â±tlarda ara..." data-search>
                         </label>
 
                         <label class="su-journal-toolbar-field">
-                            <span>Yil</span>
+                            <span>YÃ„Â±l</span>
                             <select class="su-journal-year-select" data-year>
-                                <option value="all">Tum yillar</option>
+                                <option value="all">TÃƒÂ¼m yÃ„Â±llar</option>
                                 @foreach ($timelineYears as $year)
                                     <option value="{{ $year }}">{{ $year }}</option>
                                 @endforeach
@@ -133,7 +133,7 @@
                         </label>
 
                         <button type="button" class="su-journal-mode-toggle" data-presentation-toggle>
-                            Sunum Gorunumu
+                            Sunum GÃƒÂ¶rÃƒÂ¼nÃƒÂ¼mÃƒÂ¼
                         </button>
                     </div>
 
@@ -141,7 +141,7 @@
                         @foreach ($featuredEntries as $entry)
                             <a class="su-journal-featured-card" href="#{{ $entry['anchor'] }}" data-category="{{ $entry['category'] }}" data-year="{{ $entry['year'] }}">
                                 <div class="su-featured-card-top">
-                                    <span class="su-kicker">{{ $timelineCategories[$entry['category']] ?? 'Akis' }}</span>
+                                    <span class="su-kicker">{{ $timelineCategories[$entry['category']] ?? 'AkÃ„Â±Ã…Å¸' }}</span>
                                     <span class="su-record-badge">{{ $entry['record_id'] }}</span>
                                 </div>
                                 <strong>{{ $entry['title'] }}</strong>
@@ -154,8 +154,8 @@
                 <section class="su-journal-grid su-journal-grid-documentary">
                     <section class="su-journal-panel su-journal-timeline">
                         <div class="su-form-block-head">
-                            <h3>Zaman cizgisi</h3>
-                            <p>Evrenin olusum adimlari tarih sirasiyla burada akar.</p>
+                            <h3>Zaman ÃƒÂ§izgisi</h3>
+                            <p>Evrenin oluÃ…Å¸um adÃ„Â±mlarÃ„Â± tarih sÃ„Â±rasÃ„Â±yla burada akar.</p>
                         </div>
 
                         <div class="su-timeline-list su-timeline-list-documentary">
@@ -172,20 +172,20 @@
                                         <div>
                                             <div class="su-timeline-date">{{ $entry['date'] }}</div>
                                             <div class="su-timeline-meta">
-                                                <span class="su-timeline-category">{{ $timelineCategories[$entry['category']] ?? 'Akis' }}</span>
+                                                <span class="su-timeline-category">{{ $timelineCategories[$entry['category']] ?? 'AkÃ„Â±Ã…Å¸' }}</span>
                                             </div>
                                         </div>
                                         <div class="su-timeline-entry-actions">
                                             <span class="su-record-badge">{{ $entry['record_id'] }}</span>
-                                            <span class="su-sequence-badge">Gun ici {{ str_pad((string) $entry['sequence'], 2, '0', STR_PAD_LEFT) }}</span>
-                                            <button type="button" class="su-detail-trigger" data-detail-open="{{ $entry['record_id'] }}">Ayrintilar</button>
+                                            <span class="su-sequence-badge">GÃƒÂ¼n iÃƒÂ§i {{ str_pad((string) $entry['sequence'], 2, '0', STR_PAD_LEFT) }}</span>
+                                            <button type="button" class="su-detail-trigger" data-detail-open="{{ $entry['record_id'] }}">AyrÃ„Â±ntÃ„Â±lar</button>
                                         </div>
                                     </div>
                                     <h4>{{ $entry['title'] }}</h4>
 
                                     @if (! empty($entry['actions']))
                                         <div class="su-timeline-section">
-                                            <strong>Ne yaptik</strong>
+                                            <strong>Ne yaptÃ„Â±k</strong>
                                             <ul>
                                                 @foreach ($entry['actions'] as $item)
                                                     <li>{{ $item }}</li>
@@ -196,7 +196,7 @@
 
                                     @if (! empty($entry['why']))
                                         <div class="su-timeline-section">
-                                            <strong>Neden yaptik</strong>
+                                            <strong>Neden yaptÃ„Â±k</strong>
                                             <ul>
                                                 @foreach ($entry['why'] as $item)
                                                     <li>{{ $item }}</li>
@@ -207,7 +207,7 @@
 
                                     @if (! empty($entry['result']))
                                         <div class="su-timeline-section">
-                                            <strong>Sonuc</strong>
+                                            <strong>SonuÃƒÂ§</strong>
                                             <ul>
                                                 @foreach ($entry['result'] as $item)
                                                     <li>{{ $item }}</li>
@@ -224,15 +224,15 @@
                         <section class="su-journal-panel">
                             <div class="su-form-block-head">
                                 <h3>Kararlar</h3>
-                                <p>Resmi kararlar ve stratejik sabitler.</p>
+                                <p>ResmÃ® kararlar ve stratejik sabitler.</p>
                             </div>
                             <div class="su-markdown-content">{!! $decisionsHtml !!}</div>
                         </section>
 
                         <section class="su-journal-panel">
                             <div class="su-form-block-head">
-                                <h3>Tanimlar</h3>
-                                <p>Semantik cekirdegin bugune kadar alinmis tanimlari.</p>
+                                <h3>TanÃ„Â±mlar</h3>
+                                <p>Semantik ÃƒÂ§ekirdeÃ„Å¸in bugÃƒÂ¼ne kadar alÃ„Â±nmÃ„Â±Ã…Å¸ tanÃ„Â±mlarÃ„Â±.</p>
                             </div>
                             <div class="su-markdown-content">{!! $definitionsHtml !!}</div>
                         </section>
@@ -240,7 +240,7 @@
                         <section class="su-journal-panel">
                             <div class="su-form-block-head">
                                 <h3>Deneyler</h3>
-                                <p>Denenen yollar, takilan yerler ve ogrenmeler.</p>
+                                <p>Denenen yollar, takÃ„Â±lan yerler ve ÃƒÂ¶Ã„Å¸renmeler.</p>
                             </div>
                             <div class="su-markdown-content">{!! $experimentsHtml !!}</div>
                         </section>
@@ -254,9 +254,9 @@
                     <div class="su-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="detail-title-{{ $entry['record_id'] }}">
                         <div class="su-detail-header">
                             <div>
-                                <span class="su-kicker">Kayit detayi</span>
+                                <span class="su-kicker">KayÃ„Â±t detayÃ„Â±</span>
                                 <h3 id="detail-title-{{ $entry['record_id'] }}">{{ $entry['record_id'] }} | {{ $entry['title'] }}</h3>
-                                <p>{{ $entry['date'] }} | Gun ici {{ str_pad((string) $entry['sequence'], 2, '0', STR_PAD_LEFT) }} | {{ $timelineCategories[$entry['category']] ?? 'Akis' }}</p>
+                                <p>{{ $entry['date'] }} | GÃƒÂ¼n iÃƒÂ§i {{ str_pad((string) $entry['sequence'], 2, '0', STR_PAD_LEFT) }} | {{ $timelineCategories[$entry['category']] ?? 'AkÃ„Â±Ã…Å¸' }}</p>
                             </div>
                             <button type="button" class="su-detail-close" data-detail-close>Kapat</button>
                         </div>
