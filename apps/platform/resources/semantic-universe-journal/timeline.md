@@ -356,3 +356,17 @@ Neden yaptık:
 
 Sonuç:
 - Ortak hafıza içeriği tutarlı bir Türkçe yazım düzenine kavuştu.
+
+## 2026-03-29 | Tarihçe detaylarına ilgili kaynak kaydı zorunluluğu eklendi
+
+Ne yaptık:
+- Kullanıcının verdiği dosya, sunum, eğitici açıklama ve tanımlayıcı metinlerin ilgili detay kayıtlarına yazılması için kalıcı kural eklendi.
+- Tarihçe detay üretim şablonuna İlgili Kaynaklar bölümü eklendi.
+- Kurucu determinant belgesi ve semantik açıklamalar ilgili kayıtlara bağlanacak şekilde tarihçe sistemi genişletildi.
+
+Neden yaptık:
+- Tarihçe katmanını yalnızca sonuçları değil, beslendiği kaynakları da koruyan bir hafıza sistemine dönüştürmek.
+- Kullanıcının verdiği dosya ve eğitici metinlerin sonraki turlarda kaybolmasını önlemek.
+
+Sonuç:
+- History katmanında kaynak/dosya referansı artık zorunlu kayıt standardı haline geldi.

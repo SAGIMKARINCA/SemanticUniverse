@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -260,9 +260,13 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         }
 
         $lines[] = '';
+        $lines[] = '## İlgili Kaynaklar';
+        $lines[] = '- Bu kayıt için ilgili dosya, eğitici metin ve referans kaynaklar henüz işlenmedi.';
+        $lines[] = '';
         $lines[] = '## Arşiv notu';
-        $lines[] = '- Bu detay dosyasi history katmani icin otomatik olusturuldu.';
-        $lines[] = '- Sonraki turda bu kayda iliskili konusma parcaciklari ve karar baglantilari eklenebilir.';
+        $lines[] = '- Bu detay dosyası tarihçe katmanı için otomatik oluşturuldu.';
+        $lines[] = '- Sonraki turda bu kayda ilişkili konuşma parçacıkları ve karar bağlantıları eklenebilir.';
+        $lines[] = '- Kullanıcının verdiği dosya, eğitici açıklama ve tanımlayıcı metinler varsa bu kayda İlgili Kaynaklar başlığı altında zorunlu olarak eklenmelidir.';
 
         return implode("\n", $lines);
     };
@@ -333,7 +337,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         'decisionsHtml' => $markdownToHtml($rawDecisions),
         'definitionsHtml' => $markdownToHtml($rawDefinitions),
         'experimentsHtml' => $markdownToHtml($rawExperiments),
-        'ruleText' => 'Her yaptığın işi timeline.md, decisions.md, definitions.md ve experiments.md dosyalarına yaz. Tüm kayıtları Türkçe imla, büyük harf ve noktalama kurallarına uygun tut.',
+        'ruleText' => 'Her yaptığın işi timeline.md, decisions.md, definitions.md ve experiments.md dosyalarına yaz. Kullanıcının verdiği dosya, eğitici metin ve tanımlayıcı kaynakları ilgili detay kayıtlarında İlgili Kaynaklar başlığı altında zorunlu olarak işle. Tüm kayıtları Türkçe imla, büyük harf ve noktalama kurallarına uygun tut.',
     ]);
 })->name('semantic-universe.journal');
 

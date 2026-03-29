@@ -74,3 +74,9 @@ Tanım:
 - Maddeler ve cümleler büyük harfle başlar; anlamına uygun biçimde nokta, iki nokta veya soru işareti ile biter.
 - Kullanıcıya görünen bütün dosyalar UTF-8 olarak saklanır; bozuk karakter içeren hiçbir metin yayına alınmaz.
 - Kullanıcıya görünen teknik ifadelerde zorunlu olmadıkça Türkçe karşılığı tercih edilir.
+
+## İlgili kaynak kaydı
+
+Tanım:
+- Kullanıcının bir görevle ilgili verdiği dosya, sunum, determinant belgesi, eğitici açıklama, tanımlayıcı metin veya referans içerik; ilişkili tarihçe detayında İlgili Kaynaklar başlığı altında dosya yolu ve/veya açıklama ile kaydedilir.
+- Bu kayıt alanı bundan sonraki tüm eylemler için zorunlu kontrol noktasıdır.

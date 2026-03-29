@@ -119,3 +119,13 @@ Neden:
 - Tarihçe, karar ve deney kayıtlarının okunabilirliğini korumak için.
 - Aynı tür yazım ve imla hatalarının tekrar etmesini önlemek için.
 - Kullanıcıya görünen teknik ifadelerde zorunlu olmadıkça Türkçe karşılığı tercih edilecektir.
+
+## D-014 | İlgili kaynak kaydı zorunlu
+
+Karar:
+- Kullanıcının verdiği dosyalar, eğitici açıklamalar, tanımlayıcı metinler ve referans kaynaklar ilgili tarihçe detayına metin ve/veya bağlantı olarak zorunlu biçimde yazılır.
+- Bundan sonraki her eylemde ilgili detail kaydında İlgili Kaynaklar başlığı kontrol edilir ve gerekiyorsa doldurulur.
+
+Neden:
+- Tarihçe katmanını yalnızca sonuç kaydı değil, kaynak izi taşıyan bir araştırma hafızasına dönüştürmek için.
+- Verilen belge, sunum ve eğitici metinlerin sonraki turlarda kaybolmasını önlemek için.
