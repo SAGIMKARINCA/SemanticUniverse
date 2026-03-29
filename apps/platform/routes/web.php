@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -10,9 +10,9 @@ Route::get('/SemanticUniverse', fn () => redirect('/semantic-universe'));
 Route::get('/semantic-universe', function (Request $request) {
     $isGodMode = $request->session()->get('semantic_universe_mode') === 'godmode';
     $godModeProfile = [
-        'name' => 'GodMode Super Admin',
+        'name' => 'Tanri Modu Ust Yonetici',
         'role' => 'System Ana Yukleyicisi',
-        'scope' => 'SemanticUniverse Core',
+        'scope' => 'SemanticUniverse Cekirdegi',
     ];
 
     return view('semantic-universe.shell', [
@@ -45,7 +45,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         'semantic' => 'Semantik',
         'interface' => 'Arayuz',
         'infrastructure' => 'Altyapi',
-        'history' => 'History',
+        'history' => 'Tarihce',
     ];
 
     $markdownToHtml = function (string $markdown): string {
@@ -119,7 +119,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
     $classifyTimelineCategory = function (string $title, array $actions, array $why, array $result): string {
         $haystack = mb_strtolower(trim($title . ' ' . implode(' ', $actions) . ' ' . implode(' ', $why) . ' ' . implode(' ', $result)));
 
-        if (str_contains($haystack, 'history') || str_contains($haystack, 'journal') || str_contains($haystack, 'belgesel')) {
+        if (str_contains($haystack, 'history') || str_contains($haystack, 'journal') || str_contains($haystack, 'belgesel') || str_contains($haystack, 'tarihce')) {
             return 'history';
         }
 
@@ -143,7 +143,9 @@ Route::get('/semantic-universe/journal', function (Request $request) {
             str_contains($haystack, 'menu') ||
             str_contains($haystack, 'gorunum') ||
             str_contains($haystack, 'journal web') ||
-            str_contains($haystack, 'timeline katmani')
+            str_contains($haystack, 'tarihce web') ||
+            str_contains($haystack, 'timeline katmani') ||
+            str_contains($haystack, 'zaman cizgisi katmani')
         ) {
             return 'interface';
         }
@@ -262,7 +264,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
 
         $lines[] = '';
         $lines[] = '## Arsiv notu';
-        $lines[] = '- Bu detay dosyasi history katmani icin otomatik olusturuldu.';
+        $lines[] = '- Bu detay dosyasi tarihce katmani icin otomatik olusturuldu.';
         $lines[] = '- Sonraki turda bu kayda iliskili konusma parcaciklari ve karar baglantilari eklenebilir.';
 
         return implode("\n", $lines);

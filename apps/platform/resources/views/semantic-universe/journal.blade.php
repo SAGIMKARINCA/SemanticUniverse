@@ -1,16 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SemanticUniverse History</title>
+    <title>SemanticUniverse Tarihce</title>
     <link rel="stylesheet" href="{{ asset('semantic-universe.css') }}">
 </head>
 <body class="su-page-journal">
     <div class="su-journal-shell su-journal-documentary">
         <header class="su-journal-header su-journal-hero">
             <div class="su-journal-hero-copy">
-                <span class="su-kicker">SemanticUniverse History</span>
+                <span class="su-kicker">SemanticUniverse Tarihcesi</span>
                 <h1>Evrenin Dogus Belgeseli</h1>
                 <p>
                     Bu alan sadece kayit tutmaz. Burada SemanticUniverse atolyemizin tarihini, karar izlerini,
@@ -19,7 +19,7 @@
                 <div class="su-journal-hero-stats">
                     <div class="su-journal-stat">
                         <span class="su-journal-stat-value">{{ count($timelineEntries) }}</span>
-                        <span class="su-journal-stat-label">Timeline kaydi</span>
+                        <span class="su-journal-stat-label">Zaman cizgisi kaydi</span>
                     </div>
                     <div class="su-journal-stat">
                         <span class="su-journal-stat-value">{{ count($timelineEntries) }}</span>
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="su-journal-header-actions">
-                <a class="su-chip su-chip-link" href="{{ route('semantic-universe.home') }}">Atolyeye Don</a>
+                <a class="su-chip su-chip-link" href="{{ route('semantic-universe.home') }}">Atolyeye don</a>
                 @if ($isUnlocked)
                     <form method="POST" action="{{ route('semantic-universe.journal.lock') }}">
                         @csrf
@@ -46,8 +46,8 @@
             <main class="su-journal-lock">
                 <section class="su-journal-lock-card">
                     <span class="su-kicker">Korumali Alan</span>
-                    <h2>History Atolyesi Kilitli</h2>
-                    <p>Bu katman timeline, decisions, definitions ve experiments kayitlarini korur.</p>
+                    <h2>Tarihce Atolyesi Kilitli</h2>
+                    <p>Bu katman zaman cizgisi, kararlar, tanimlar ve deney kayitlarini korur.</p>
                     <p class="su-journal-hint">{{ $journalPasswordHint }}</p>
 
                     @if ($passwordError)
@@ -57,10 +57,10 @@
                     <form method="POST" action="{{ route('semantic-universe.journal.unlock') }}" class="su-journal-form">
                         @csrf
                         <label class="su-field">
-                            <span>Journal Sifresi</span>
+                            <span>Tarihce Sifresi</span>
                             <input type="password" name="password" autocomplete="current-password" required>
                         </label>
-                        <button type="submit" class="su-btn su-btn-primary">History Katmanini Ac</button>
+                        <button type="submit" class="su-btn su-btn-primary">Tarihce Katmanini Ac</button>
                     </form>
                 </section>
             </main>
@@ -73,7 +73,7 @@
 
                 <section class="su-journal-storyboard">
                     <article class="su-journal-story-card">
-                        <span class="su-kicker">Act I</span>
+                        <span class="su-kicker">Perde I</span>
                         <h3>Toprak ve Atolye</h3>
                         <p>
                             Yerel prototiplerden canli staging ortamina gecis, SemanticUniverse icin ilk gercek
@@ -81,17 +81,17 @@
                         </p>
                     </article>
                     <article class="su-journal-story-card">
-                        <span class="su-kicker">Act II</span>
+                        <span class="su-kicker">Perde II</span>
                         <h3>Kavram ve Cekirdek</h3>
                         <p>
                             Kaynak, nesne, olay, proses ve semantik ayrimlar ortak hafiza katmanina aktarildi.
                         </p>
                     </article>
                     <article class="su-journal-story-card">
-                        <span class="su-kicker">Act III</span>
+                        <span class="su-kicker">Perde III</span>
                         <h3>Canli Belgesel</h3>
                         <p>
-                            Timeline ve karar izi, history hostu uzerinden bagimsiz bir anlatim katmanina donusuyor.
+                            Zaman cizgisi ve karar izi, tarihce hostu uzerinden bagimsiz bir anlatim katmanina donusuyor.
                         </p>
                     </article>
                 </section>
@@ -99,7 +99,7 @@
                 <section class="su-journal-nav-band">
                     <div class="su-journal-nav-head">
                         <div>
-                            <span class="su-kicker">Timeline Navigasyonu</span>
+                            <span class="su-kicker">Zaman cizgisi Gezintisi</span>
                             <h3>Akisi kategoriye gore gez</h3>
                         </div>
                         <div class="su-journal-filter-pills">
@@ -133,7 +133,7 @@
                         </label>
 
                         <button type="button" class="su-journal-mode-toggle" data-presentation-toggle>
-                            Sunum Modu
+                            Sunum Gorunumu
                         </button>
                     </div>
 
@@ -154,7 +154,7 @@
                 <section class="su-journal-grid su-journal-grid-documentary">
                     <section class="su-journal-panel su-journal-timeline">
                         <div class="su-form-block-head">
-                            <h3>Timeline</h3>
+                            <h3>Zaman cizgisi</h3>
                             <p>Evrenin olusum adimlari tarih sirasiyla burada akar.</p>
                         </div>
 
@@ -178,7 +178,7 @@
                                         <div class="su-timeline-entry-actions">
                                             <span class="su-record-badge">{{ $entry['record_id'] }}</span>
                                             <span class="su-sequence-badge">Gun ici {{ str_pad((string) $entry['sequence'], 2, '0', STR_PAD_LEFT) }}</span>
-                                            <button type="button" class="su-detail-trigger" data-detail-open="{{ $entry['record_id'] }}">Detaylar</button>
+                                            <button type="button" class="su-detail-trigger" data-detail-open="{{ $entry['record_id'] }}">Ayrintilar</button>
                                         </div>
                                     </div>
                                     <h4>{{ $entry['title'] }}</h4>
@@ -223,7 +223,7 @@
                     <section class="su-journal-side-stack">
                         <section class="su-journal-panel">
                             <div class="su-form-block-head">
-                                <h3>Decisions</h3>
+                                <h3>Kararlar</h3>
                                 <p>Resmi kararlar ve stratejik sabitler.</p>
                             </div>
                             <div class="su-markdown-content">{!! $decisionsHtml !!}</div>
@@ -231,7 +231,7 @@
 
                         <section class="su-journal-panel">
                             <div class="su-form-block-head">
-                                <h3>Definitions</h3>
+                                <h3>Tanimlar</h3>
                                 <p>Semantik cekirdegin bugune kadar alinmis tanimlari.</p>
                             </div>
                             <div class="su-markdown-content">{!! $definitionsHtml !!}</div>
@@ -239,7 +239,7 @@
 
                         <section class="su-journal-panel">
                             <div class="su-form-block-head">
-                                <h3>Experiments</h3>
+                                <h3>Deneyler</h3>
                                 <p>Denenen yollar, takilan yerler ve ogrenmeler.</p>
                             </div>
                             <div class="su-markdown-content">{!! $experimentsHtml !!}</div>
@@ -254,7 +254,7 @@
                     <div class="su-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="detail-title-{{ $entry['record_id'] }}">
                         <div class="su-detail-header">
                             <div>
-                                <span class="su-kicker">Kayit Detayi</span>
+                                <span class="su-kicker">Kayit detayi</span>
                                 <h3 id="detail-title-{{ $entry['record_id'] }}">{{ $entry['record_id'] }} | {{ $entry['title'] }}</h3>
                                 <p>{{ $entry['date'] }} | Gun ici {{ str_pad((string) $entry['sequence'], 2, '0', STR_PAD_LEFT) }} | {{ $timelineCategories[$entry['category']] ?? 'Akis' }}</p>
                             </div>

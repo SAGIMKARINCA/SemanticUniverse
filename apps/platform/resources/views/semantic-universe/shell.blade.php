@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SemanticUniverse</title>
+    <title>SemanticEvren</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('semantic-universe.css') }}">
 </head>
@@ -27,39 +27,39 @@
                     <div class="row g-3 align-items-center">
                         <div class="col-12 col-xl-7">
                             <div class="su-topbar-merged">
-                                <button class="btn su-mobile-toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#suSystemMenu" aria-controls="suSystemMenu">
-                                    Menu
+                                <button class="btn su-mobile-toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#suSistemMenuyu Ac" aria-controls="suSistemMenuyu Ac">
+                                    Menuyu Ac
                                 </button>
                                 <div class="su-title-block d-xl-none">
-                                    <span class="su-kicker">SemanticUniverse</span>
-                                    <h1 class="su-title">GodMode Staging Platform</h1>
+                                    <span class="su-kicker">SemanticEvren</span>
+                                    <h1 class="su-title">Tanri Modu Gelistirme Platformu</h1>
                                 </div>
                                 <div class="su-menubar-group d-none d-xl-flex">
-                                    <button type="button" class="su-menu-item su-menu-item-active" data-top-menu="system">System</button>
+                                    <button type="button" class="su-menu-item su-menu-item-active" data-top-menu="system">Sistem</button>
                                     <button type="button" class="su-menu-item" data-top-menu="ayarlar">Ayarlar</button>
-                                    <button type="button" class="su-menu-item" data-top-menu="governance">Governance</button>
+                                    <button type="button" class="su-menu-item" data-top-menu="governance">Yonetisim</button>
                                     <button type="button" class="su-menu-item su-menu-item-highlight" data-top-menu="evren">Evren</button>
-                                    <button type="button" class="su-menu-item" data-top-menu="resources">Resources</button>
-                                    <button type="button" class="su-menu-item" data-top-menu="projects">Projects</button>
-                                    <button type="button" class="su-menu-item" data-top-menu="applications">Applications</button>
+                                    <button type="button" class="su-menu-item" data-top-menu="resources">Kaynaklar</button>
+                                    <button type="button" class="su-menu-item" data-top-menu="projects">Projeler</button>
+                                    <button type="button" class="su-menu-item" data-top-menu="applications">Uygulamalar</button>
                                 </div>
                                 <div class="su-menubar-brand d-none d-xl-flex">
-                                    <span class="su-kicker">SemanticUniverse</span>
-                                    <span class="su-menubar-title">GodMode Staging Platform</span>
+                                    <span class="su-kicker">SemanticEvren</span>
+                                    <span class="su-menubar-title">Tanri Modu Gelistirme Platformu</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-xl-4">
                             <div class="su-topbar-right">
-                                <div class="su-search">{{ $isGodMode ? 'Global arama' : 'Bos shell gorunumu' }}</div>
-                                <div class="su-topbar-actions" aria-label="GodMode ust islemleri">
-                                    <a class="su-chip su-chip-link" href="{{ route('semantic-universe.journal') }}">Journal</a>
+                                <div class="su-search">{{ $isGodMode ? 'Genel arama' : 'Bos kabuk gorunumu' }}</div>
+                                <div class="su-topbar-actions" aria-label="Tanri Modu ust islemleri">
+                                    <a class="su-chip su-chip-link" href="{{ route('semantic-universe.journal') }}">Tarihce</a>
                                     @if ($isGodMode)
                                         <a class="su-chip su-chip-link" href="{{ route('semantic-universe.logout') }}">Cikis</a>
                                     @else
-                                        <a class="su-chip su-chip-link" href="{{ route('semantic-universe.login') }}">God Mode Giris</a>
+                                        <a class="su-chip su-chip-link" href="{{ route('semantic-universe.login') }}">Tanri Modu Girisi</a>
                                     @endif
-                                    <div class="su-chip">Workspace</div>
+                                    <div class="su-chip">Calisma alani</div>
                                     <div class="su-chip su-chip-profile">{{ $isGodMode ? 'Profil: ' . $godModeProfile['name'] : 'Profil' }}</div>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                                         <button type="button" class="su-ribbon-label su-ribbon-label-active su-ribbon-button" data-open-settings-panel>
                                             Tema standartlari ve frame davranislari
                                         </button>
-                                        <span class="su-ribbon-label">Menu davranislari</span>
+                                        <span class="su-ribbon-label">Menuyu Ac davranislari</span>
                                         <span class="su-ribbon-label">Yerlesim standartlari</span>
                                         <span class="su-ribbon-label">Kullanici tercihleri</span>
                                     </div>
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="su-ribbon-badge">{{ $isGodMode ? 'Super Admin' : 'Public Shell' }}</div>
+                            <div class="su-ribbon-badge">{{ $isGodMode ? 'Ust yonetici' : 'Genel Kabuk' }}</div>
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                 <div class="su-workspace flex-grow-1">
                     <aside class="su-leftnav d-none d-lg-block">
                         @if ($isGodMode)
-                            <div class="su-panel-title">System</div>
+                            <div class="su-panel-title">Sistem</div>
                             <div class="su-panel-copy">Kaynaklari var etme menusu</div>
                             <div class="su-nav-tree">
                                 <div class="su-nav-item">Kaynaklar</div>
@@ -120,7 +120,7 @@
                                     <button type="button" class="su-nav-subitem su-nav-subitem-link" data-open-settings-panel>
                                         Tema standartlari ve frame davranislari
                                     </button>
-                                    <div class="su-nav-subitem">Menu davranislari</div>
+                                    <div class="su-nav-subitem">Menuyu Ac davranislari</div>
                                     <div class="su-nav-subitem">Yerlesim standartlari</div>
                                     <div class="su-nav-subitem">Kullanici tercihleri</div>
                                 </div>
@@ -128,7 +128,7 @@
                         @else
                             <div class="su-empty-frame">
                                 <div class="su-empty-title">Sol Frame Bos</div>
-                                <div class="su-empty-copy">God Mode girisi yapildiginda burada system ve ayarlar menuleri gorunecek.</div>
+                                <div class="su-empty-copy">Tanri Modu girisi yapildiginda burada sistem ve ayarlar menuleri gorunecek.</div>
                             </div>
                         @endif
                     </aside>
@@ -150,7 +150,7 @@
                                         </p>
                                     </div>
                                     <div class="su-center-tags">
-                                        <span class="su-tag">System</span>
+                                        <span class="su-tag">Sistem</span>
                                         <span class="su-tag">Kaynaklar</span>
                                         <span class="su-tag">Kaynak Tanimla</span>
                                     </div>
@@ -304,7 +304,7 @@
                                     <span class="su-center-kicker">Public / Bos Shell</span>
                                     <h2 class="su-center-title">Orta Frame Bos</h2>
                                     <p class="su-center-copy">
-                                        God Mode girisi yapildiginda system ve yonetim ekranlari burada aktif hale gelir.
+                                        Tanri Modu girisi yapildiginda sistem ve yonetim ekranlari burada aktif hale gelir.
                                         Cikis yapildiginda merkez alan bos bir kabuk olarak kalir.
                                     </p>
                                 </div>
@@ -315,12 +315,12 @@
                     <aside class="su-rightpanel d-none d-xl-block">
                         @if ($isGodMode)
                             <div class="su-profile-card">
-                                <div class="su-profile-kicker">GodMode Profili</div>
+                                <div class="su-profile-kicker">Tanri Modu Profili</div>
                                 <div class="su-profile-name">{{ $godModeProfile['name'] }}</div>
                                 <div class="su-profile-meta">{{ $godModeProfile['role'] }}</div>
                                 <div class="su-profile-meta">{{ $godModeProfile['scope'] }}</div>
                             </div>
-                            <div class="su-panel-title">Right Context Panel</div>
+                            <div class="su-panel-title">Sag baglam paneli</div>
                             <div class="su-panel-copy">Detay, not, iliskili kayit, hizli islem</div>
                             <div class="su-right-box">
                                 Ilk odak:
@@ -332,7 +332,7 @@
                             </div>
                             <div class="su-right-note">
                                 Public alan daha sonra ayri olarak tasarlanacak.
-                                Bu gorunum GodMode super admin shell'i icindir.
+                                Bu gorunum Tanri Modu ust yonetici kabugu icindir.
                             </div>
                         @else
                             <div class="su-empty-frame">
@@ -348,19 +348,19 @@
                 <div class="container-fluid px-0">
                     <div class="row g-3 align-items-center">
                         <div class="col-12 col-xl-4">
-                            <div class="su-bottom-left">Stratejik Bilgiler, Roller, Degiskenler Menusu</div>
+                            <div class="su-bottom-left">Stratejik Bilgiler, Roller, Degiskenler Menuyu Acsu</div>
                         </div>
                         <div class="col-12 col-xl-4">
                             <div class="su-bottom-dock">
-                                <span class="su-dock-item">Home</span>
-                                <span class="su-dock-item">Universe</span>
-                                <span class="su-dock-item">Resources</span>
-                                <span class="su-dock-item">Projects</span>
-                                <span class="su-dock-item">AI</span>
+                                <span class="su-dock-item">Ana Sayfa</span>
+                                <span class="su-dock-item">Evren</span>
+                                <span class="su-dock-item">Kaynaklar</span>
+                                <span class="su-dock-item">Projeler</span>
+                                <span class="su-dock-item">YZ</span>
                             </div>
                         </div>
                         <div class="col-12 col-xl-3">
-                            <div class="su-bottom-right text-xl-end">{{ request()->getHost() }} / SemanticUniverse</div>
+                            <div class="su-bottom-right text-xl-end">{{ request()->getHost() }} / SemanticEvren</div>
                         </div>
                     </div>
                 </div>
@@ -368,9 +368,9 @@
         </div>
     </div>
 
-    <div class="offcanvas offcanvas-start su-offcanvas" tabindex="-1" id="suSystemMenu" aria-labelledby="suSystemMenuLabel">
+    <div class="offcanvas offcanvas-start su-offcanvas" tabindex="-1" id="suSistemMenuyu Ac" aria-labelledby="suSistemMenuyu AcLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="suSystemMenuLabel">System Menusu</h5>
+            <h5 class="offcanvas-title" id="suSistemMenuyu AcLabel">Sistem Menuyu Acsu</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Kapat"></button>
         </div>
         <div class="offcanvas-body">
@@ -399,22 +399,22 @@
                 <p class="su-settings-copy">Tum shell icin kullanilacak gorunumu sec. Bu tercih local olarak saklanir.</p>
                 <label class="su-pref-label" for="themePreset">Aktif Tema</label>
                 <select id="themePreset" class="su-pref-select" data-theme-select>
-                    <option value="theme-universe">Universe Classic</option>
-                    <option value="theme-atlas">Atlas Light</option>
-                    <option value="theme-orbit">Orbit Night</option>
+                    <option value="theme-universe">Evren Classic</option>
+                    <option value="theme-atlas">Atlas Acik</option>
+                    <option value="theme-orbit">Yorunge Gece</option>
                 </select>
             </section>
 
             <section class="su-settings-section">
-                <div class="su-settings-title">Frame Davranislari</div>
-                <p class="su-settings-copy">Her frame icin gorunurluk ve scroll davranisini ayri ayri sec.</p>
+                <div class="su-settings-title">Cerceve Davranislari</div>
+                <p class="su-settings-copy">Her cerceve icin gorunurluk ve kaydirma davranisini ayri ayri sec.</p>
 
                 <div class="su-settings-grid">
                     <label class="su-pref-field">
-                        <span>Ust Menu</span>
+                        <span>Ust Menuyu Ac</span>
                         <select class="su-pref-select" data-frame-mode="topbar">
                             <option value="fixed">Sabit</option>
-                            <option value="scroll">Scroll</option>
+                            <option value="scroll">Kaydir</option>
                             <option value="hidden">Gizli</option>
                         </select>
                     </label>
@@ -423,7 +423,7 @@
                         <span>Ribbon</span>
                         <select class="su-pref-select" data-frame-mode="ribbon">
                             <option value="fixed">Sabit</option>
-                            <option value="scroll">Scroll</option>
+                            <option value="scroll">Kaydir</option>
                             <option value="hidden">Gizli</option>
                         </select>
                     </label>
@@ -432,7 +432,7 @@
                         <span>Sol Frame</span>
                         <select class="su-pref-select" data-frame-mode="leftnav">
                             <option value="fixed">Sabit</option>
-                            <option value="scroll">Scroll</option>
+                            <option value="scroll">Kaydir</option>
                             <option value="hidden">Gizli</option>
                         </select>
                     </label>
@@ -440,7 +440,7 @@
                     <label class="su-pref-field">
                         <span>Orta Frame</span>
                         <select class="su-pref-select" data-frame-mode="center">
-                            <option value="scroll">Scroll</option>
+                            <option value="scroll">Kaydir</option>
                             <option value="fixed">Sabit</option>
                             <option value="hidden">Gizli</option>
                         </select>
@@ -450,7 +450,7 @@
                         <span>Sag Panel</span>
                         <select class="su-pref-select" data-frame-mode="rightpanel">
                             <option value="fixed">Sabit</option>
-                            <option value="scroll">Scroll</option>
+                            <option value="scroll">Kaydir</option>
                             <option value="hidden">Gizli</option>
                         </select>
                     </label>
@@ -459,7 +459,7 @@
                         <span>Alt Bar / Dock</span>
                         <select class="su-pref-select" data-frame-mode="bottombar">
                             <option value="fixed">Sabit</option>
-                            <option value="scroll">Scroll</option>
+                            <option value="scroll">Kaydir</option>
                             <option value="hidden">Gizli</option>
                         </select>
                     </label>
@@ -467,11 +467,11 @@
             </section>
 
             <section class="su-settings-section">
-                <div class="su-settings-title">Hazir Presetler</div>
+                <div class="su-settings-title">Hazir Kullanimlar</div>
                 <div class="su-preset-list">
-                    <button type="button" class="su-preset-button" data-preset="desktop">Masaustu Calisma</button>
+                    <button type="button" class="su-preset-button" data-preset="desktop">Masaustu Calismasi</button>
                     <button type="button" class="su-preset-button" data-preset="focus">Odaklanmis Orta Alan</button>
-                    <button type="button" class="su-preset-button" data-preset="review">Inceleme Modu</button>
+                    <button type="button" class="su-preset-button" data-preset="review">Inceleme Gorunumu</button>
                 </div>
             </section>
         </div>
@@ -554,14 +554,14 @@
 
             function applyAll(settings) {
                 applyTheme(settings.theme);
-                applyTopMenu(settings.topMenu);
+                applyTopMenuyu Ac(settings.topMenu);
                 Object.entries(settings.frames).forEach(function ([name, mode]) {
                     applyFrameMode(name, mode);
                 });
                 saveSettings(settings);
             }
 
-            function applyTopMenu(menuName) {
+            function applyTopMenuyu Ac(menuName) {
                 document.querySelectorAll('[data-top-menu]').forEach(function (button) {
                     button.classList.toggle('su-menu-item-active', button.dataset.topMenu === menuName);
                     button.classList.toggle('su-menu-item-settings-active', false);
