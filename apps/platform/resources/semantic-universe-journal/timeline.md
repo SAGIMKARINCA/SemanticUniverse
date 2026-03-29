@@ -416,3 +416,18 @@ Neden yaptık:
 Sonuç:
 - Kaynak dokümanlar artık ayrıştırılmış kartlar halinde görülebiliyor.
 - Kaynak arşivi için ayrı sayfa, arama ve filtreleme desteği oluştu.
+
+## 2026-03-29 | Kodlama bozulmaları dosya düzeyinde teşhis edilip UTF-8 standardı netleştirildi
+
+Ne yaptık:
+- Shell, tarihçe ve kaynaklar katmanındaki görünür metinler dosya kodlaması açısından yeniden incelendi.
+- İçerik hatası ile dosya kodlama hatası birbirinden ayrıştırıldı.
+- Yayın dosyalarının UTF-8 doğrulamasını zorunlu kılan karar ortak hafızaya işlendi.
+
+Neden yaptık:
+- Tarayıcıda görülen bozuk karakterlerin gerçek sebebini doğru teşhis etmek için.
+- Aynı sorunun staging ve history katmanında tekrar etmesini önlemek için.
+
+Sonuç:
+- Görünür metinlerde içerik düzeltmesi ile kodlama düzeltmesi artık ayrı kontrol adımları olarak ele alınacak.
+- UTF-8 kalite kapısı dosya düzeyinde netleştirildi.

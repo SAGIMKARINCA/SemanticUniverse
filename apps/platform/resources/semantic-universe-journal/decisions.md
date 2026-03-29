@@ -161,3 +161,14 @@ Karar:
 Neden:
 - Görünür arayüzü kurumsal, okunur ve güvenilir tutmak için.
 - Daha önce yaşanan encoding ve yazım bozulmalarının tekrar yayına çıkmasını önlemek için.
+
+## D-018 | Yayın dosyalarının kodlaması dosya düzeyinde doğrulanır
+
+Karar:
+- Blade, route, kaynak manifesti, journal ve detail markdown dosyaları yayına alınmadan önce dosya düzeyinde UTF-8 olarak doğrulanır.
+- Terminal veya editör çıktısında görülen bozuk karakterler, dosyanın gerçek kodlaması ayrıca doğrulanmadan içerik hatası sayılmaz.
+- Kodlama sorunu tespit edilirse önce dosya kodlaması düzeltilir; yalnız gerçek metin hataları içerik revizyonu ile değiştirilir.
+
+Neden:
+- Aynı metin, dosya yanlış kodlamayla kaydedildiğinde tarayıcıda bozuk görünebilir.
+- İçerik doğru olsa bile yanlış kaydedilmiş dosyaların staging ve production ortamında aynı hatayı yeniden üretmesini önlemek için.
