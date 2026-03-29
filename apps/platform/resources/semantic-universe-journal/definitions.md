@@ -80,3 +80,9 @@ Tanım:
 Tanım:
 - Kullanıcının bir görevle ilgili verdiği dosya, sunum, determinant belgesi, eğitici açıklama, tanımlayıcı metin veya referans içerik; ilişkili tarihçe detayında İlgili Kaynaklar başlığı altında dosya yolu ve/veya açıklama ile kaydedilir.
 - Bu kayıt alanı bundan sonraki tüm eylemler için zorunlu kontrol noktasıdır.
+
+## Sunucu kaynak arşivi
+
+Tanım:
+- Kullanıcının süreç boyunca verdiği belge ve dosyaların, history/journal katmanından güvenli biçimde açılabilmesi için tutulan korumalı dosya alanıdır.
+- Bu arşivdeki her kaynağın detail kaydında tıklanabilir bir bağlantısı, yerel özgün yolu ve kısa açıklaması bulunur.

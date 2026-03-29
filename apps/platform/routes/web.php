@@ -38,6 +38,8 @@ Route::get('/semantic-universe/journal', function (Request $request) {
     $passwordError = $request->session()->pull('semantic_universe_journal_error');
     $journalPath = resource_path('semantic-universe-journal');
     $detailPath = $journalPath . DIRECTORY_SEPARATOR . 'details';
+    $sourcesManifestPath = $journalPath . DIRECTORY_SEPARATOR . 'sources.php';
+    $journalSources = File::exists($sourcesManifestPath) ? require $sourcesManifestPath : [];
 
     $timelineCategories = [
         'all' => 'Tüm Akış',
@@ -48,7 +50,19 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         'history' => 'Tarihçe',
     ];
 
-    $markdownToHtml = function (string $markdown): string {
+    $renderInlineMarkdown = function (string $text): string {
+        $placeholders = [];
+        $prepared = preg_replace_callback('/\[([^\]]+)\]\(([^)]+)\)/u', function (array $matches) use (&$placeholders): string {
+            $key = '__LINK_' . count($placeholders) . '__';
+            $placeholders[$key] = '<a href="' . e($matches[2]) . '" target="_blank" rel="noopener">' . e($matches[1]) . '</a>';
+
+            return $key;
+        }, $text) ?? $text;
+
+        return strtr(e($prepared), $placeholders);
+    };
+
+    $markdownToHtml = function (string $markdown) use ($renderInlineMarkdown): string {
         $lines = preg_split("/\r\n|\n|\r/", $markdown);
         $html = '';
         $inList = false;
@@ -69,7 +83,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
                     $html .= '</ul>';
                     $inList = false;
                 }
-                $html .= '<h4>' . e(substr($trimmed, 4)) . '</h4>';
+                $html .= '<h4>' . $renderInlineMarkdown(substr($trimmed, 4)) . '</h4>';
                 continue;
             }
 
@@ -78,7 +92,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
                     $html .= '</ul>';
                     $inList = false;
                 }
-                $html .= '<h3>' . e(substr($trimmed, 3)) . '</h3>';
+                $html .= '<h3>' . $renderInlineMarkdown(substr($trimmed, 3)) . '</h3>';
                 continue;
             }
 
@@ -87,7 +101,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
                     $html .= '</ul>';
                     $inList = false;
                 }
-                $html .= '<h2>' . e(substr($trimmed, 2)) . '</h2>';
+                $html .= '<h2>' . $renderInlineMarkdown(substr($trimmed, 2)) . '</h2>';
                 continue;
             }
 
@@ -96,7 +110,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
                     $html .= '<ul>';
                     $inList = true;
                 }
-                $html .= '<li>' . e(substr($trimmed, 2)) . '</li>';
+                $html .= '<li>' . $renderInlineMarkdown(substr($trimmed, 2)) . '</li>';
                 continue;
             }
 
@@ -105,7 +119,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
                 $inList = false;
             }
 
-            $html .= '<p>' . e($trimmed) . '</p>';
+            $html .= '<p>' . $renderInlineMarkdown($trimmed) . '</p>';
         }
 
         if ($inList) {
@@ -262,11 +276,13 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         $lines[] = '';
         $lines[] = '## İlgili Kaynaklar';
         $lines[] = '- Bu kayıt için ilgili dosya, eğitici metin ve referans kaynaklar henüz işlenmedi.';
+        $lines[] = '- Kaynak dosya sunucu arşivine yüklendiyse burada tıklanabilir bağlantı olarak gösterilmelidir.';
         $lines[] = '';
         $lines[] = '## Arşiv notu';
         $lines[] = '- Bu detay dosyası tarihçe katmanı için otomatik oluşturuldu.';
         $lines[] = '- Sonraki turda bu kayda ilişkili konuşma parçacıkları ve karar bağlantıları eklenebilir.';
         $lines[] = '- Kullanıcının verdiği dosya, eğitici açıklama ve tanımlayıcı metinler varsa bu kayda İlgili Kaynaklar başlığı altında zorunlu olarak eklenmelidir.';
+        $lines[] = '- Sunucu arşivine alınan kaynaklar detay içinden tıklanabilir bağlantı ile gösterilmelidir.';
 
         return implode("\n", $lines);
     };
@@ -337,9 +353,29 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         'decisionsHtml' => $markdownToHtml($rawDecisions),
         'definitionsHtml' => $markdownToHtml($rawDefinitions),
         'experimentsHtml' => $markdownToHtml($rawExperiments),
-        'ruleText' => 'Her yaptığın işi timeline.md, decisions.md, definitions.md ve experiments.md dosyalarına yaz. Kullanıcının verdiği dosya, eğitici metin ve tanımlayıcı kaynakları ilgili detay kayıtlarında İlgili Kaynaklar başlığı altında zorunlu olarak işle. Tüm kayıtları Türkçe imla, büyük harf ve noktalama kurallarına uygun tut.',
+        'ruleText' => 'Her yaptığın işi timeline.md, decisions.md, definitions.md ve experiments.md dosyalarına yaz. Kullanıcının verdiği dosya, eğitici metin ve tanımlayıcı kaynakları ilgili detay kayıtlarında İlgili Kaynaklar başlığı altında zorunlu olarak işle. Sunucu arşivine yüklenen kaynakları detail içinde tıklanabilir bağlantı ile göster. Tüm kayıtları Türkçe imla, büyük harf ve noktalama kurallarına uygun tut.',
     ]);
 })->name('semantic-universe.journal');
+
+Route::get('/semantic-universe/journal/source/{source}', function (Request $request, string $source) {
+    if (! $request->session()->get('semantic_universe_journal_unlocked', false)) {
+        abort(403);
+    }
+
+    $sourcesManifestPath = resource_path('semantic-universe-journal/sources.php');
+    $journalSources = File::exists($sourcesManifestPath) ? require $sourcesManifestPath : [];
+    $sourceMeta = $journalSources[$source] ?? null;
+
+    abort_if(! $sourceMeta || empty($sourceMeta['path']) || ! File::exists($sourceMeta['path']), 404);
+
+    $mime = $sourceMeta['mime'] ?? File::mimeType($sourceMeta['path']) ?? 'application/octet-stream';
+    $fileName = basename((string) $sourceMeta['path']);
+
+    return response()->file($sourceMeta['path'], [
+        'Content-Type' => $mime,
+        'Content-Disposition' => 'inline; filename="' . $fileName . '"',
+    ]);
+})->name('semantic-universe.journal.source');
 
 Route::post('/semantic-universe/journal/unlock', function (Request $request) {
     $input = (string) $request->input('password', '');

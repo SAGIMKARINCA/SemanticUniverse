@@ -370,3 +370,17 @@ Neden yaptık:
 
 Sonuç:
 - History katmanında kaynak/dosya referansı artık zorunlu kayıt standardı haline geldi.
+
+
+## 2026-03-29 | Verilen kaynak dosyaları sunucu arşivine alınmaya başlandı
+
+Ne yaptık:
+- İlk kurucu determinant dosyası sunucu arşivine alınacak yapı ile ilişkilendirildi.
+- Detail kayıtlarında tıklanabilir kaynak bağlantısı desteği tanımlandı.
+
+Neden yaptık:
+- Kullanıcının verdiği kaynakların tarihçe detaylarında yalnız metin olarak değil, açılabilir belge olarak da görünmesi için.
+- Ortak hafızayı gerçek bir araştırma arşivi ve kanıt katmanı hâline getirmek için.
+
+Sonuç:
+- Journal oturumu üzerinden erişilen ilk kaynak dosyası arşiv modeli tanımlandı.

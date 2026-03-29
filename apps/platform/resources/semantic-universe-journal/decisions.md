@@ -129,3 +129,14 @@ Karar:
 Neden:
 - Tarihçe katmanını yalnızca sonuç kaydı değil, kaynak izi taşıyan bir araştırma hafızasına dönüştürmek için.
 - Verilen belge, sunum ve eğitici metinlerin sonraki turlarda kaybolmasını önlemek için.
+
+## D-015 | İlgili kaynak dosyaları sunucu arşivine alınır
+
+Karar:
+- Kullanıcının bu süreçlerde verdiği dosyalar, uygun olduğunda history/journal katmanı için sunucu arşivine yüklenir.
+- Detail kayıtlarında dosya adı tıklanabilir bağlantı olarak gösterilir.
+- Kaynağın yerel özgün yolu ve kısa açıklaması detail içinde korunur.
+
+Neden:
+- Tarihçe katmanını yalnız not değil, belge ve kanıt taşıyan yaşayan bir hafıza katmanına dönüştürmek için.
+- Sonraki turlarda verilen determinant, sunum, eğitim ve açıklama dosyalarının kaybolmasını önlemek için.
