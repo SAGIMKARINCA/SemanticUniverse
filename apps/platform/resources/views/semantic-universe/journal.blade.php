@@ -256,7 +256,7 @@
                             <div>
                                 <span class="su-kicker">Kayit Detayi</span>
                                 <h3 id="detail-title-{{ $entry['record_id'] }}">{{ $entry['record_id'] }} | {{ $entry['title'] }}</h3>
-                                <p>{{ $entry['date'] }} Â· Gun ici {{ str_pad((string) $entry['sequence'], 2, '0', STR_PAD_LEFT) }} Â· {{ $timelineCategories[$entry['category']] ?? 'Akis' }}</p>
+                                <p>{{ $entry['date'] }} | Gun ici {{ str_pad((string) $entry['sequence'], 2, '0', STR_PAD_LEFT) }} | {{ $timelineCategories[$entry['category']] ?? 'Akis' }}</p>
                             </div>
                             <button type="button" class="su-detail-close" data-detail-close>Kapat</button>
                         </div>

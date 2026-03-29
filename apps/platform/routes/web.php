@@ -49,6 +49,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
     ];
 
     $markdownToHtml = function (string $markdown): string {
+        $markdown = preg_replace('/^\xEF\xBB\xBF/u', '', $markdown) ?? $markdown;
         $lines = preg_split("/\r\n|\n|\r/", $markdown);
         $html = '';
         $inList = false;
