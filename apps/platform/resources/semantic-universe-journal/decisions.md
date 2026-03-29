@@ -172,3 +172,15 @@ Karar:
 Neden:
 - Aynı metin, dosya yanlış kodlamayla kaydedildiğinde tarayıcıda bozuk görünebilir.
 - İçerik doğru olsa bile yanlış kaydedilmiş dosyaların staging ve production ortamında aynı hatayı yeniden üretmesini önlemek için.
+
+## D-019 | Görünür arayüz metinleri dil dosyaları üzerinden yönetilir
+
+Karar:
+- Semantic Universe'ta kullanıcıya görünen yeni metinler doğrudan Blade içine gömülmez; dil dosyaları ve anahtarlar üzerinden yönetilir.
+- Yeni ekranlar hazırlanırken en az Türkçe ve İngilizce eş zamanlı düşünülür; sonraki diller aynı anahtar kümesini genişleterek eklenir.
+- Dil seçimi oturum düzeyinde korunur ve ana kabuk, history ve kaynaklar katmanı bu seçime göre birlikte davranır.
+
+Neden:
+- Çok dilli büyümeyi baştan düzenli kurmak için.
+- Aynı metni farklı sayfalarda dağınık biçimde tekrar yazarak bakım maliyetini artırmamak için.
+- Türkçe-İngilizce karışıklığını ve sonradan acele çeviri kaynaklı kalite kaybını önlemek için.

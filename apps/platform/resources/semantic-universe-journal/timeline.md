@@ -431,3 +431,19 @@ Neden yaptık:
 Sonuç:
 - Görünür metinlerde içerik düzeltmesi ile kodlama düzeltmesi artık ayrı kontrol adımları olarak ele alınacak.
 - UTF-8 kalite kapısı dosya düzeyinde netleştirildi.
+
+## 2026-03-29 | Çok dilli arayüz temeli kuruldu
+
+Ne yaptık:
+- Semantic Universe shell, tarihçe ve kaynaklar sayfaları için Türkçe ve İngilizce dil dosyaları oluşturuldu.
+- Menüye dil seçici eklendi ve aktif dil oturum bazlı yönetilir hâle getirildi.
+- Görünür metinler Blade dosyalarından çıkarılıp dil anahtarları üzerinden okunacak yapıya taşındı.
+
+Neden yaptık:
+- Semantic Universe atölyesini yalnız Türkçe değil, İngilizce ve daha sonra eklenecek diller için de büyütülebilir kurmak.
+- Yeni ekranlar geliştirilirken aynı işi tekrar tekrar elle çevirmemek.
+- Çok dilli yayın disiplinini baştan kurup sonradan pahalı dönüşüm ihtiyacını önlemek.
+
+Sonuç:
+- Shell, history ve kaynaklar katmanında çok dilli temel hazırlandı.
+- Yeni görünür metinlerin dil dosyaları üzerinden yönetilmesi için kurucu altyapı oluştu.

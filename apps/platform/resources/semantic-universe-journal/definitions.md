@@ -91,3 +91,10 @@ Tanım:
 Tanım:
 - Kullanıcının süreç boyunca verdiği sunum, pdf ve benzeri kaynak dosyaların journal/history içinde konu, rol ve stratejik kullanım amacı ile saklandığı katalog katmanıdır.
 - Bu katalogdaki kaynaklar; ilke, değer, stratejik yöntem ve yol haritası referansı olarak sonraki turlarda kullanılmak üzere korunur.
+
+## Çok dilli arayüz katmanı
+
+Tanım:
+- Semantic Universe'ta kullanıcıya görünen metinlerin Türkçe, İngilizce ve ileride eklenecek diğer diller için ortak anahtar kümesi üzerinden yönetildiği görünür dil katmanıdır.
+- Bu katmanda görünür metinler doğrudan sayfa içine gömülmez; dil dosyaları ve locale seçimi ile çağrılır.
+- Ana kabuk, tarihçe ve kaynaklar gibi yüzeyler aynı dil seçimi ile birlikte davranır.
