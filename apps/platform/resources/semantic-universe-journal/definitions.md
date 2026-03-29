@@ -86,3 +86,8 @@ Tanım:
 Tanım:
 - Kullanıcının süreç boyunca verdiği belge ve dosyaların, history/journal katmanından güvenli biçimde açılabilmesi için tutulan korumalı dosya alanıdır.
 - Bu arşivdeki her kaynağın detail kaydında tıklanabilir bir bağlantısı, yerel özgün yolu ve kısa açıklaması bulunur.
+## Kaynak doküman kataloğu
+
+Tanım:
+- Kullanıcının süreç boyunca verdiği sunum, pdf ve benzeri kaynak dosyaların journal/history içinde konu, rol ve stratejik kullanım amacı ile saklandığı katalog katmanıdır.
+- Bu katalogdaki kaynaklar; ilke, değer, stratejik yöntem ve yol haritası referansı olarak sonraki turlarda kullanılmak üzere korunur.

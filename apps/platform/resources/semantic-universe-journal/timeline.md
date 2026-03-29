@@ -384,3 +384,18 @@ Neden yaptık:
 
 Sonuç:
 - Journal oturumu üzerinden erişilen ilk kaynak dosyası arşiv modeli tanımlandı.
+
+
+## 2026-03-29 | Semantik hastane sunum seti kaynak arşivine eklendi
+
+Ne yaptık:
+- Semantik hastane sunum setindeki kaynak dosyalar journal arşiv kataloğuna işlendi.
+- İndirilebilir olan dosyalar sunucu arşivine alındı, büyük dosya katalogda bekleyen kaynak olarak işaretlendi.
+- Journal ekranına kaynak dokümanlar paneli eklendi.
+
+Neden yaptık:
+- Bu sunumları ileride ilkeler, değerler, stratejik yöntemler ve yol haritaları olarak kullanabilmek için.
+- History katmanını yaşayan bir kaynak doküman arşivine dönüştürmek için.
+
+Sonuç:
+- Journal içinde indirilebilir kaynak doküman kataloğu oluştu.

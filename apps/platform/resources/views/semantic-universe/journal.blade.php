@@ -223,6 +223,42 @@
                     <section class="su-journal-side-stack">
                         <section class="su-journal-panel">
                             <div class="su-form-block-head">
+                                <h3>Kaynak Dokümanlar</h3>
+                                <p>İlkeler, değerler, stratejik yöntemler ve yol haritaları için kullanılacak arşiv kaynakları.</p>
+                            </div>
+                            <div class="su-source-library">
+                                @foreach ($journalSources as $source)
+                                    <article class="su-source-card">
+                                        <div class="su-source-card-top">
+                                            <span class="su-source-category">{{ $source['category'] }}</span>
+                                            @if ($source['available'] && $source['download_url'])
+                                                <a class="su-source-link" href="{{ $source['download_url'] }}" target="_blank" rel="noopener">İndir</a>
+                                            @else
+                                                <span class="su-source-status">Beklemede</span>
+                                            @endif
+                                        </div>
+                                        <h4>{{ $source['title'] }}</h4>
+                                        <p>{{ $source['summary'] }}</p>
+                                        @if (! empty($source['roles']))
+                                            <ul class="su-source-roles">
+                                                @foreach ($source['roles'] as $role)
+                                                    <li>{{ $role }}</li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                        <div class="su-source-meta">
+                                            <span>Kaynak yolu</span>
+                                            <code>{{ $source['original_path'] }}</code>
+                                        </div>
+                                        @if (! empty($source['status_note']))
+                                            <small class="su-source-note">{{ $source['status_note'] }}</small>
+                                        @endif
+                                    </article>
+                                @endforeach
+                            </div>
+                        </section>
+                        <section class="su-journal-panel">
+                            <div class="su-form-block-head">
                                 <h3>Kararlar</h3>
                                 <p>Resmî kararlar ve stratejik sabitler.</p>
                             </div>

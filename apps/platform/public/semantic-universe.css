@@ -1654,3 +1654,109 @@ body.su-page-journal {
     }
 }
 
+
+.su-source-library {
+  display: grid;
+  gap: 1rem;
+}
+
+.su-source-card {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  background: rgba(248, 252, 255, 0.88);
+  border: 1px solid rgba(24, 85, 118, 0.14);
+  box-shadow: 0 14px 32px rgba(13, 57, 82, 0.08);
+}
+
+.su-source-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.su-source-category,
+.su-source-status,
+.su-source-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.su-source-category {
+  background: rgba(28, 116, 160, 0.12);
+  color: #185576;
+}
+
+.su-source-status {
+  background: rgba(187, 132, 16, 0.12);
+  color: #8f5e0d;
+}
+
+.su-source-link {
+  background: #15597e;
+  color: #fff;
+  text-decoration: none;
+}
+
+.su-source-card h4 {
+  margin: 0;
+  font-size: 1.12rem;
+  color: #10334e;
+}
+
+.su-source-card p,
+.su-source-note {
+  margin: 0;
+  color: #355b73;
+  line-height: 1.6;
+}
+
+.su-source-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.su-source-roles li {
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(20, 84, 117, 0.08);
+  color: #145475;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.su-source-meta {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.su-source-meta span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #15597e;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.su-source-meta code {
+  white-space: normal;
+  word-break: break-word;
+  padding: 0.7rem 0.8rem;
+  border-radius: 12px;
+  background: rgba(16, 51, 78, 0.06);
+  color: #20465e;
+}

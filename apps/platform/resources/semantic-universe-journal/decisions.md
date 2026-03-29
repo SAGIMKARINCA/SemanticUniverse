@@ -140,3 +140,13 @@ Karar:
 Neden:
 - Tarihçe katmanını yalnız not değil, belge ve kanıt taşıyan yaşayan bir hafıza katmanına dönüştürmek için.
 - Sonraki turlarda verilen determinant, sunum, eğitim ve açıklama dosyalarının kaybolmasını önlemek için.
+## D-016 | Kaynak doküman kataloğu stratejik arşivdir
+
+Karar:
+- Kullanıcının verdiği sunum, pdf ve benzeri kaynak dosyalar journal/history katmanında Kaynak Dokümanlar başlığı altında kataloglanır.
+- Bu katalog; ilkeler, değerler, stratejik yöntemler ve yol haritaları için resmî başvuru arşivi olarak kullanılır.
+- Uygun boyuttaki dosyalar sunucu arşivine alınır; büyük dosyalar katalogda bekleyen kaynak olarak işaretlenir ve ayrı yükleme ile tamamlanır.
+
+Neden:
+- Gelecek planlama ve ürün kararlarında kullanılan kurucu kaynakların kaybolmamasını sağlamak için.
+- Journal katmanını metin notlarının ötesinde, açılabilir ve indirilebilir bir bilgi arşivine dönüştürmek için.

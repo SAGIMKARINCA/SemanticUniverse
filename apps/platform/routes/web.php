@@ -341,6 +341,22 @@ Route::get('/semantic-universe/journal', function (Request $request) {
 
     $featuredEntries = array_slice(array_reverse($timelineEntries), 0, 3);
 
+    $journalSourceCards = [];
+    foreach ($journalSources as $sourceId => $sourceMeta) {
+        $sourcePath = $sourceMeta['path'] ?? null;
+        $available = is_string($sourcePath) && $sourcePath !== '' && File::exists($sourcePath);
+        $journalSourceCards[] = [
+            'id' => $sourceId,
+            'title' => $sourceMeta['title'] ?? $sourceId,
+            'category' => $sourceMeta['category'] ?? 'Kaynak Doküman',
+            'summary' => $sourceMeta['summary'] ?? '',
+            'roles' => $sourceMeta['roles'] ?? [],
+            'original_path' => $sourceMeta['original_path'] ?? '',
+            'available' => $available,
+            'download_url' => $available ? route('semantic-universe.journal.source', ['source' => $sourceId]) : null,
+            'status_note' => $sourceMeta['status_note'] ?? null,
+        ];
+    }
     return view('semantic-universe.journal', [
         'isUnlocked' => $isUnlocked,
         'passwordError' => $passwordError,
@@ -350,6 +366,7 @@ Route::get('/semantic-universe/journal', function (Request $request) {
         'timelineCounts' => $timelineCounts,
         'timelineYears' => $timelineYears,
         'featuredEntries' => $featuredEntries,
+        'journalSources' => $journalSourceCards,
         'decisionsHtml' => $markdownToHtml($rawDecisions),
         'definitionsHtml' => $markdownToHtml($rawDefinitions),
         'experimentsHtml' => $markdownToHtml($rawExperiments),
