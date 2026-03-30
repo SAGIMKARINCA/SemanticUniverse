@@ -473,3 +473,10 @@ Neden yaptık:
 
 Sonuç:
 - History ve kaynaklar tarafında dil değiştirici akışı daha kararlı ve tekrar edilebilir hâle geldi.
+
+## 2026-03-30 | Çerçeve davranışı güvenli moda geri alındı
+
+- Yanlışlıkla seçilen gizli çerçeve modu ana atölye ekranını görünmez hale getiriyordu.
+- Tema ve çerçeve davranışı eski güvenli düzene döndürüldü.
+- Kritik frameler için Gizli seçeneği kaldırıldı ve eski bozuk tercihler otomatik Sabit moduna çevrildi.
+

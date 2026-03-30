@@ -195,7 +195,6 @@ return [
             'frame_options' => [
                 'Sabit',
                 'Kaydırılabilir',
-                'Gizli',
             ],
             'settings_cards' => [
                 [

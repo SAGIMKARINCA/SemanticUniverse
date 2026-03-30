@@ -204,3 +204,14 @@ Karar:
 
 Neden:
 - History ve kaynaklar sayfalarında dil değişiminden sonra eski sorgu parametresinin yeni seçimi ezmesini önlemek için.
+
+## D-022 | Kritik frameler görünmez moda alınamaz
+
+Karar:
+- Ana atölye kabuğunda üst çubuk, sol panel, orta alan, sağ panel ve alt dock topluca görünmez moda geçirilemez.
+- Çerçeve davranışı kullanıcı tercihlerinde yalnızca Sabit ve Kaydırılabilir seçenekleriyle yönetilir.
+
+Neden:
+- Yanlışlıkla seçilen görünmez mod, geri alma imkanı olmadan ekranı fiilen kullanılamaz hale getiriyordu.
+- Tanrı modu yaratıcı platformunda güvenli varsayılanlar korunmalıdır.
+

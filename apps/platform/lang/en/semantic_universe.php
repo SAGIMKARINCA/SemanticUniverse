@@ -195,7 +195,6 @@ return [
             'frame_options' => [
                 'Fixed',
                 'Scrollable',
-                'Hidden',
             ],
             'settings_cards' => [
                 [
