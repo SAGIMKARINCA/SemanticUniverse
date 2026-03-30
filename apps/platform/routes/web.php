@@ -286,7 +286,10 @@ $parseTimelineEntries = function (string $timelineMarkdown, array $categoryLabel
         $classifyTimelineCategory,
         $buildGeneratedDetailMarkdown,
         $markdownToHtml,
-        $cleanText
+        $cleanText,
+        $resolveJournalPath,
+        $currentLocale,
+        $detailLabels
     ) {
         if (! $current) {
             return;
