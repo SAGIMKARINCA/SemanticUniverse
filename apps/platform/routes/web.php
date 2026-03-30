@@ -175,6 +175,18 @@ $buildLocaleOptions = function (string $currentLocale, string $redirectUrl) use 
         ->all();
 };
 
+$resolveJournalPath = function (string $relativePath, string $locale) {
+    $basePath = resource_path('semantic-universe-journal');
+    $localizedPath = $basePath.'/locales/'.$locale.'/'.$relativePath;
+    $defaultPath = $basePath.'/'.$relativePath;
+
+    if ($locale !== 'tr' && file_exists($localizedPath)) {
+        return $localizedPath;
+    }
+
+    return $defaultPath;
+};
+
 $classifyTimelineCategory = function (array $entry) use ($cleanText) {
     $text = Str::lower($cleanText(
         $entry['title'].' '.
@@ -202,20 +214,20 @@ $classifyTimelineCategory = function (array $entry) use ($cleanText) {
     return 'foundation';
 };
 
-$buildGeneratedDetailMarkdown = function (array $entry) {
+$buildGeneratedDetailMarkdown = function (array $entry, array $detailLabels) {
     $lines = [
         '# '.$entry['record_id'].' | '.$entry['title'],
         '',
-        'Tarih: '.$entry['date'],
+        $detailLabels['date'].': '.$entry['date'],
         '',
-        'Gün içi sıra: '.$entry['sequence'],
+        $detailLabels['day_sequence'].': '.$entry['sequence'],
         '',
-        'Kategori: '.$entry['category_label'],
+        $detailLabels['category'].': '.$entry['category_label'],
     ];
 
     if (! empty($entry['what'])) {
         $lines[] = '';
-        $lines[] = '## Neler konuşuldu';
+        $lines[] = '## '.$detailLabels['discussed'];
         foreach ($entry['what'] as $item) {
             $lines[] = '- '.$item;
         }
@@ -223,7 +235,7 @@ $buildGeneratedDetailMarkdown = function (array $entry) {
 
     if (! empty($entry['what'])) {
         $lines[] = '';
-        $lines[] = '## Neler yapıldı';
+        $lines[] = '## '.$detailLabels['done'];
         foreach ($entry['what'] as $item) {
             $lines[] = '- '.$item;
         }
@@ -231,7 +243,7 @@ $buildGeneratedDetailMarkdown = function (array $entry) {
 
     if (! empty($entry['why'])) {
         $lines[] = '';
-        $lines[] = '## Neden yapıldı';
+        $lines[] = '## '.$detailLabels['why'];
         foreach ($entry['why'] as $item) {
             $lines[] = '- '.$item;
         }
@@ -239,25 +251,26 @@ $buildGeneratedDetailMarkdown = function (array $entry) {
 
     if (! empty($entry['result'])) {
         $lines[] = '';
-        $lines[] = '## Sonuç';
+        $lines[] = '## '.$detailLabels['result'];
         foreach ($entry['result'] as $item) {
             $lines[] = '- '.$item;
         }
     }
 
     $lines[] = '';
-    $lines[] = '## Arşiv Notu';
-    $lines[] = '- Bu detay dosyası history katmanı için otomatik oluşturuldu.';
+    $lines[] = '## '.$detailLabels['archive_note'];
+    $lines[] = '- '.$detailLabels['generated_note'];
 
     return implode("\n", $lines);
 };
 
-$parseTimelineEntries = function (string $timelineMarkdown, array $categoryLabels) use (
+$parseTimelineEntries = function (string $timelineMarkdown, array $categoryLabels, string $currentLocale, array $detailLabels) use (
     $cleanText,
     $formatArchiveLine,
     $classifyTimelineCategory,
     $buildGeneratedDetailMarkdown,
-    $markdownToHtml
+    $markdownToHtml,
+    $resolveJournalPath
 ) {
     $lines = preg_split('/\R/u', $timelineMarkdown) ?: [];
     $entries = [];
@@ -289,12 +302,20 @@ $parseTimelineEntries = function (string $timelineMarkdown, array $categoryLabel
         $current['category_label'] = $categoryLabels[$current['category']] ?? ucfirst($current['category']);
         $current['summary'] = $current['result'][0] ?? $current['what'][0] ?? $current['why'][0] ?? $current['title'];
 
-        $detailPath = resource_path('semantic-universe-journal/details/'.$current['record_id'].'.md');
-        $detailMarkdown = file_exists($detailPath)
-            ? $cleanText(file_get_contents($detailPath))
-            : $buildGeneratedDetailMarkdown($current);
+        $detailPath = $resolveJournalPath('details/'.$current['record_id'].'.md', $currentLocale);
+        $defaultDetailPath = resource_path('semantic-universe-journal/details/'.$current['record_id'].'.md');
 
-        $current['detail_file'] = basename($detailPath);
+        if ($currentLocale !== 'tr' && ! file_exists($detailPath)) {
+            $detailMarkdown = $buildGeneratedDetailMarkdown($current, $detailLabels);
+        } elseif (file_exists($detailPath)) {
+            $detailMarkdown = $cleanText(file_get_contents($detailPath));
+        } elseif (file_exists($defaultDetailPath)) {
+            $detailMarkdown = $cleanText(file_get_contents($defaultDetailPath));
+        } else {
+            $detailMarkdown = $buildGeneratedDetailMarkdown($current, $detailLabels);
+        }
+
+        $current['detail_file'] = $current['record_id'].'.md';
         $current['detail_markdown'] = $detailMarkdown;
         $current['detail_html'] = $markdownToHtml($detailMarkdown);
 
@@ -399,10 +420,11 @@ $loadSources = function (string $currentLocale) use ($cleanText) {
 
 $buildSharedViewData = function (Request $request, array $extra = []) use ($applyLocale, $buildLocaleOptions) {
     $currentLocale = $applyLocale($request->query('lang'));
+    $redirectUrl = $request->fullUrlWithQuery(['lang' => null]);
 
     return array_merge([
         'currentLocale' => $currentLocale,
-        'localeOptions' => $buildLocaleOptions($currentLocale, $request->fullUrl()),
+        'localeOptions' => $buildLocaleOptions($currentLocale, $redirectUrl),
         'ui' => trans('semantic_universe'),
         'isGodMode' => Session::get('semantic_universe_mode') === 'godmode',
     ], $extra);
@@ -467,13 +489,20 @@ Route::get('/semantic-universe/journal', function (Request $request) use (
     $cleanText,
     $parseTimelineEntries,
     $loadSources,
-    $markdownToHtml
+    $markdownToHtml,
+    $resolveJournalPath
 ) {
     $shared = $buildSharedViewData($request);
     $ui = $shared['ui'];
+    $currentLocale = $shared['currentLocale'];
 
-    $timelineMarkdown = $cleanText(file_get_contents(resource_path('semantic-universe-journal/timeline.md')));
-    $timelineEntries = array_reverse($parseTimelineEntries($timelineMarkdown, $ui['journal']['timeline_categories']));
+    $timelineMarkdown = $cleanText(file_get_contents($resolveJournalPath('timeline.md', $currentLocale)));
+    $timelineEntries = array_reverse($parseTimelineEntries(
+        $timelineMarkdown,
+        $ui['journal']['timeline_categories'],
+        $currentLocale,
+        $ui['journal']['detail_labels']
+    ));
 
     $timelineCounts = ['all' => count($timelineEntries)];
     foreach (array_keys($ui['journal']['timeline_categories']) as $categoryKey) {
@@ -492,7 +521,7 @@ Route::get('/semantic-universe/journal', function (Request $request) use (
         ->all();
     rsort($timelineYears);
 
-    $sourceCards = $loadSources($shared['currentLocale']);
+    $sourceCards = $loadSources($currentLocale);
 
     return view('semantic-universe.journal', array_merge($shared, [
         'isUnlocked' => Session::get('semantic_universe_journal_unlocked', false),
@@ -505,9 +534,9 @@ Route::get('/semantic-universe/journal', function (Request $request) use (
         'featuredEntries' => $featuredEntries,
         'timelineYears' => $timelineYears,
         'sourceCards' => $sourceCards,
-        'decisionsHtml' => $markdownToHtml(file_get_contents(resource_path('semantic-universe-journal/decisions.md'))),
-        'definitionsHtml' => $markdownToHtml(file_get_contents(resource_path('semantic-universe-journal/definitions.md'))),
-        'experimentsHtml' => $markdownToHtml(file_get_contents(resource_path('semantic-universe-journal/experiments.md'))),
+        'decisionsHtml' => $markdownToHtml(file_get_contents($resolveJournalPath('decisions.md', $currentLocale))),
+        'definitionsHtml' => $markdownToHtml(file_get_contents($resolveJournalPath('definitions.md', $currentLocale))),
+        'experimentsHtml' => $markdownToHtml(file_get_contents($resolveJournalPath('experiments.md', $currentLocale))),
     ]));
 })->name('semantic-universe.journal');
 

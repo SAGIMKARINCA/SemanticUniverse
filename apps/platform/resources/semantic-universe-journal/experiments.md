@@ -172,3 +172,16 @@ Ne denendi:
 
 Sonuç:
 - Tarihçe görünümündeki metinler daha okunur, tutarlı ve kurumsal bir yazım düzenine kavuştu.
+
+## E-013 | History ve kaynaklar için çok dilli içerik hizalama deneyi
+
+Amaç:
+- Dil değişiminin history ve kaynaklar yüzeylerinde görünür içerik seviyesinde de çalışmasını sağlamak.
+
+Ne denendi:
+- Locale bazlı journal dosyaları.
+- Kaynak manifestinde İngilizce metadata alanları.
+- Türkçe fallback ve İngilizce içerik birlikte çözümleme.
+
+Sonuç:
+- Dil seçimi artık yalnız menülerde değil, history ve kaynaklar içeriğinde de etkili hale geldi.

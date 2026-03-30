@@ -259,6 +259,19 @@ return [
         'locked_copy' => 'This layer protects the timeline, decisions, definitions and experiment records.',
         'locked_button' => 'Open History Layer',
         'locked_password' => 'History Password',
+        'password_hint' => 'Hint: use the shared workshop key.',
+        'password_error' => 'The password could not be verified.',
+        'detail_labels' => [
+            'date' => 'Date',
+            'day_sequence' => 'Day Order',
+            'category' => 'Category',
+            'discussed' => 'What Was Discussed',
+            'done' => 'What Was Done',
+            'why' => 'Why It Was Done',
+            'result' => 'Outcome',
+            'archive_note' => 'Archive Note',
+            'generated_note' => 'This detail entry was generated automatically from the related timeline record.',
+        ],
         'rule_kicker' => 'Working Rule',
         'storyboard' => [
             'act_1' => [

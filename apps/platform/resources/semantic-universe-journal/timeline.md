@@ -447,3 +447,29 @@ Neden yaptık:
 Sonuç:
 - Shell, history ve kaynaklar katmanında çok dilli temel hazırlandı.
 - Yeni görünür metinlerin dil dosyaları üzerinden yönetilmesi için kurucu altyapı oluştu.
+
+## 2026-03-30 | History ve kaynaklar içerik katmanı locale tabanlı hale getirildi
+
+Ne yaptık:
+- History için `timeline`, `decisions`, `definitions` ve `experiments` dosyalarının İngilizce kopyaları eklendi.
+- Kaynaklar manifestine İngilizce kategori, özet, rol ve durum notu alanları işlendi.
+- Journal route'ları locale'a göre içerik dosyası çözecek şekilde tamamlandı.
+
+Neden yaptık:
+- Dil seçiminin sadece menü ve kabukta değil, içerik katmanında da gerçekten değişmesini sağlamak için.
+- History ve Kaynaklar yüzeylerinde Türkçe-İngilizce karışık görünümü ortadan kaldırmak için.
+
+Sonuç:
+- Çok dilli geçiş artık history ve kaynaklar sayfalarında görünür içerik seviyesinde çalışır hale geldi.
+
+## 2026-03-30 | Locale yönlendirme akışı history ve kaynaklar için kararlı hâle getirildi
+
+Ne yaptık:
+- Dil değiştirici bağlantılarında eski `lang` sorgusunun tekrar taşınmasını engelledik.
+- History ve kaynaklar sayfalarının seçilen dili temiz URL ve session üzerinden korumasını sağladık.
+
+Neden yaptık:
+- Dil değiştirme sonrasında bazı sayfalarda önceki dil parametresi yeniden yazılıyor ve görünür içerik beklenen dile geçmiyor gibi davranıyordu.
+
+Sonuç:
+- History ve kaynaklar tarafında dil değiştirici akışı daha kararlı ve tekrar edilebilir hâle geldi.

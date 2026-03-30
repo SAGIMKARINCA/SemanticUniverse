@@ -14,6 +14,17 @@ return [
             'Kavramsal çerçeve',
         ],
         'status_note' => null,
+        'translations' => [
+            'en' => [
+                'category' => 'Foundational Document',
+                'summary' => 'The first foundational document that explains Semantic Universe determinants and the logic of the upper system.',
+                'roles' => [
+                    'Primary source',
+                    'Foundational document',
+                    'Conceptual framework',
+                ],
+            ],
+        ],
     ],
     'saas-kaynak-agaci-mantigi' => [
         'title' => 'SAAS KAYNAK AĞACI MANTIĞI.pptx',
@@ -28,6 +39,17 @@ return [
             'Stratejik yöntem',
         ],
         'status_note' => null,
+        'translations' => [
+            'en' => [
+                'category' => 'Resource Architecture',
+                'summary' => 'A foundational presentation that explains resource-tree logic, parent-child resource relations and modular structure in the SaaS model.',
+                'roles' => [
+                    'Source document',
+                    'Roadmap',
+                    'Strategic method',
+                ],
+            ],
+        ],
     ],
     'hbys-kaynak-katmanlari-v2-1' => [
         'title' => 'HBYS KAYNAK_KATMANLARI V.2.1.pdf',
@@ -42,6 +64,17 @@ return [
             'Referans model',
         ],
         'status_note' => null,
+        'translations' => [
+            'en' => [
+                'category' => 'Resource Layers',
+                'summary' => 'A core reference document that explains resource layers and the class-layer logic of resources in the HBYS context.',
+                'roles' => [
+                    'Source document',
+                    'Set of principles',
+                    'Reference model',
+                ],
+            ],
+        ],
     ],
     'proses-bolumleme-alt-prosesler-standardi' => [
         'title' => 'Proses Bölümleme, Alt Prosesler Tasarlama ve Bu Süreç Ne Yapar İçeriği Oluşturma Standardı.pptx',
@@ -56,6 +89,17 @@ return [
             'Eğitici doküman',
         ],
         'status_note' => null,
+        'translations' => [
+            'en' => [
+                'category' => 'Process Design',
+                'summary' => 'A practice-oriented presentation that carries the standard for process decomposition, subprocess design and process description.',
+                'roles' => [
+                    'Standard',
+                    'Strategic method',
+                    'Training document',
+                ],
+            ],
+        ],
     ],
     'semanger-yapisal-kavramsal-sunum-v2-2' => [
         'title' => 'Semanger Yapısal Kavramsal Sunum V.2.2.pptx',
@@ -70,6 +114,18 @@ return [
             'Yol haritası',
         ],
         'status_note' => 'Bu dosya GitHub sınırını aşan büyük boyutlu bir sunumdur; kataloga işlendi, doğrudan repo arşivine alınmadı. Gerekirse sunucuya ayrı kanaldan yüklenecek.',
+        'translations' => [
+            'en' => [
+                'category' => 'Conceptual Framework',
+                'summary' => 'The main umbrella presentation that explains the structural and conceptual framework of Semanger at scale.',
+                'roles' => [
+                    'Primary source',
+                    'Conceptual framework',
+                    'Roadmap',
+                ],
+                'status_note' => 'This presentation exceeds GitHub size limits; it is catalogued, but not yet archived directly in the repository. It can be uploaded to the server through a separate channel when needed.',
+            ],
+        ],
     ],
     'parmaklarla-anlatim' => [
         'title' => 'Parmaklarla Anlatım.pptx',
@@ -84,6 +140,17 @@ return [
             'İletişim yöntemi',
         ],
         'status_note' => null,
+        'translations' => [
+            'en' => [
+                'category' => 'Narrative Model',
+                'summary' => 'A pedagogical narrative framework that makes the conceptual explanation easier to understand.',
+                'roles' => [
+                    'Training document',
+                    'Values',
+                    'Communication method',
+                ],
+            ],
+        ],
     ],
     'saglik-yonetisimi-semanger-21-yuzyil' => [
         'title' => '21. Yüzyılda Sağlık Yönetişimi - Semanger.pptx',
@@ -98,6 +165,17 @@ return [
             'Stratejik yöntem',
         ],
         'status_note' => null,
+        'translations' => [
+            'en' => [
+                'category' => 'Governance',
+                'summary' => 'A strategic presentation that frames 21st-century health governance through the Semanger perspective.',
+                'roles' => [
+                    'Set of principles',
+                    'Values',
+                    'Strategic method',
+                ],
+            ],
+        ],
     ],
     'kut-yolu-ve-duvari' => [
         'title' => 'KUT Yolu ve Duvarı.pptx',
@@ -112,6 +190,17 @@ return [
             'Değerler',
         ],
         'status_note' => null,
+        'translations' => [
+            'en' => [
+                'category' => 'Strategic Model',
+                'summary' => 'A conceptual-strategic presentation that explains the KUT approach through the metaphors of path and wall.',
+                'roles' => [
+                    'Strategic method',
+                    'Roadmap',
+                    'Values',
+                ],
+            ],
+        ],
     ],
     'is-hayati-bir-yaris-ve-ilerleme-v3-1' => [
         'title' => 'İŞ HAYATI BİR YARIŞ VE İLERLEME V.3.1..pptx',
@@ -126,6 +215,17 @@ return [
             'Kurum kültürü',
         ],
         'status_note' => null,
+        'translations' => [
+            'en' => [
+                'category' => 'Institutional Culture',
+                'summary' => 'A cultural-strategic presentation that frames working life through competition, progress and development.',
+                'roles' => [
+                    'Values',
+                    'Set of principles',
+                    'Institutional culture',
+                ],
+            ],
+        ],
     ],
     'alper-surec-v3-2' => [
         'title' => 'Alper Süreç V.3.2.pptx',
@@ -140,6 +240,17 @@ return [
             'Eğitici doküman',
         ],
         'status_note' => null,
+        'translations' => [
+            'en' => [
+                'category' => 'Process Architecture',
+                'summary' => 'A working presentation that exemplifies process and subprocess design and supports process-oriented thinking.',
+                'roles' => [
+                    'Strategic method',
+                    'Process standard',
+                    'Training document',
+                ],
+            ],
+        ],
     ],
     'toplanti-yonetimi-slayt' => [
         'title' => 'TOPLANTI YÖNETİMİ SLAYT.pptx',
@@ -154,6 +265,16 @@ return [
             'Eğitici doküman',
         ],
         'status_note' => null,
+        'translations' => [
+            'en' => [
+                'category' => 'Meeting Management',
+                'summary' => 'A core presentation to be used as a reference for meeting management, decision production and work discipline.',
+                'roles' => [
+                    'Standard',
+                    'Management method',
+                    'Training document',
+                ],
+            ],
+        ],
     ],
 ];
-

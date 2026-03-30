@@ -261,6 +261,17 @@ return [
         'locked_password' => 'Tarihçe Şifresi',
         'password_hint' => 'İpucu: Ortak atölye anahtarını kullan.',
         'password_error' => 'Şifre doğrulanamadı.',
+        'detail_labels' => [
+            'date' => 'Tarih',
+            'day_sequence' => 'Gün İçi Sıra',
+            'category' => 'Kategori',
+            'discussed' => 'Neler Konuşuldu',
+            'done' => 'Neler Yapıldı',
+            'why' => 'Neden Yapıldı',
+            'result' => 'Sonuç',
+            'archive_note' => 'Arşiv Notu',
+            'generated_note' => 'Bu detay kaydı, ilgili zaman çizgisi girdisinden otomatik olarak üretildi.',
+        ],
         'rule_kicker' => 'Çalışma Kuralı',
         'storyboard' => [
             'act_1' => [

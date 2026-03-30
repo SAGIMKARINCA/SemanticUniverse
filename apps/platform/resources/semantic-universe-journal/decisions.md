@@ -184,3 +184,23 @@ Neden:
 - Çok dilli büyümeyi baştan düzenli kurmak için.
 - Aynı metni farklı sayfalarda dağınık biçimde tekrar yazarak bakım maliyetini artırmamak için.
 - Türkçe-İngilizce karışıklığını ve sonradan acele çeviri kaynaklı kalite kaybını önlemek için.
+
+## D-020 | History ve kaynaklar içeriği locale bazlı dosyalardan yüklenir
+
+Karar:
+- History yüzeyindeki `timeline`, `decisions`, `definitions` ve `experiments` içerikleri locale bazlı journal dosyalarından yüklenir.
+- Kaynaklar yüzeyindeki kategori, özet, rol ve durum notu gibi metadata alanları locale bazlı manifest katmanından çözülür.
+- İçerik çevirisi yoksa kontrollü fallback uygulanır; ancak yeni çok dilli içeriklerde Türkçe ve İngilizce birlikte hazırlanır.
+
+Neden:
+- Dil değişiminin yalnız üst kabukta kalmasını önlemek için.
+- History ve kaynaklar sayfalarında gerçekten çok dilli bir kullanıcı deneyimi üretmek için.
+
+## D-021 | Dil değiştirici temiz URL ile çalışır
+
+Karar:
+- Dil değiştirici bağlantıları, önceki `lang` sorgusunu tekrar taşımayan temiz yönlendirme adresleri üretir.
+- Görünür dil, session ve locale içerik çözümlemesi üzerinden yönetilir.
+
+Neden:
+- History ve kaynaklar sayfalarında dil değişiminden sonra eski sorgu parametresinin yeni seçimi ezmesini önlemek için.

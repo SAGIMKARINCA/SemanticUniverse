@@ -98,3 +98,9 @@ Tanım:
 - Semantic Universe'ta kullanıcıya görünen metinlerin Türkçe, İngilizce ve ileride eklenecek diğer diller için ortak anahtar kümesi üzerinden yönetildiği görünür dil katmanıdır.
 - Bu katmanda görünür metinler doğrudan sayfa içine gömülmez; dil dosyaları ve locale seçimi ile çağrılır.
 - Ana kabuk, tarihçe ve kaynaklar gibi yüzeyler aynı dil seçimi ile birlikte davranır.
+
+## Çok dilli içerik katmanı
+
+Tanım:
+- History, kararlar, tanımlar, deneyler ve kaynak metadata'sı gibi içerik dokümanlarının locale bazlı dosya veya çeviri manifestleri üzerinden yüklendiği katmandır.
+- Bu katman, arayüz çevirisinin ötesine geçerek sayfanın içeriğini de seçilen dile göre değiştirir.
